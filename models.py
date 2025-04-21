@@ -26,16 +26,6 @@ class ProductMetadata(BaseModel):
     vat: float
     displayCategories: str
 
-class ProductResponse(BaseModel):
-    id: int
-    product_display_name: str
-    display_categories: str
-    product_descriptors: dict
-    article_attributes: dict
-    master_category: dict
-    sub_category: dict
-    article_type: dict
-    product_metadata: ProductMetadata
 
 class ProductChunkTyped(BaseModel):
     """
@@ -169,6 +159,82 @@ class ProductChunkTyped(BaseModel):
             metadata=ProductMetadata(**metadata)
         )
 
+
+
+class ProductResponse(BaseModel):
+    id: int
+    product_display_name: str
+    display_categories: str
+    product_descriptors: dict
+    article_attributes: dict
+    master_category: dict
+    sub_category: dict
+    article_type: dict
+    product_metadata: ProductMetadata
+
+    @classmethod
+    def from_product_chunk(cls, chunk: ProductChunkTyped) -> "ProductResponse":
+        """
+        Create a ProductResponse instance from a ProductChunkTyped object
+        """
+        # Parse product_content string to extract required fields
+        content_parts = chunk.product_content.split(". ")
+        
+        # Initialize dictionaries
+        product_descriptors = {}
+        article_attributes = {}
+        master_category = {}
+        sub_category = {}
+        article_type = {}
+        
+        # Parse each section of the product_content
+        for part in content_parts:
+            if part.startswith("Product Descriptors: "):
+                desc_items = part.replace("Product Descriptors: ", "").split(", ")
+                for item in desc_items:
+                    if ": " in item:
+                        key, value = item.split(": ", 1)
+                        product_descriptors[key] = {"value": value}
+                        
+            elif part.startswith("Article Attributes: "):
+                attr_items = part.replace("Article Attributes: ", "").split(", ")
+                for item in attr_items:
+                    if ": " in item:
+                        key, value = item.split(": ", 1)
+                        article_attributes[key] = value
+                        
+            elif part.startswith("Master Category: "):
+                cat_items = part.replace("Master Category: ", "").split(", ")
+                for item in cat_items:
+                    if ": " in item:
+                        key, value = item.split(": ", 1)
+                        master_category[key] = value
+                        
+            elif part.startswith("Sub Category: "):
+                subcat_items = part.replace("Sub Category: ", "").split(", ")
+                for item in subcat_items:
+                    if ": " in item:
+                        key, value = item.split(": ", 1)
+                        sub_category[key] = value
+                        
+            elif part.startswith("Article Type: "):
+                type_items = part.replace("Article Type: ", "").split(", ")
+                for item in type_items:
+                    if ": " in item:
+                        key, value = item.split(": ", 1)
+                        article_type[key] = value
+
+        return cls(
+            id=chunk.id,
+            product_display_name=chunk.metadata.productDisplayName,
+            display_categories=chunk.metadata.displayCategories,
+            product_descriptors=product_descriptors,
+            article_attributes=article_attributes,
+            master_category=master_category,
+            sub_category=sub_category,
+            article_type=article_type,
+            product_metadata=chunk.metadata
+        )
 
 class AddInput(BaseModel):
     a: int

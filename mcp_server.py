@@ -20,6 +20,7 @@ from PIL import Image as PILImage
 from tqdm import tqdm
 import hashlib
 from pathlib import Path
+import re
 
 mcp = FastMCP("Agent")
 
@@ -300,7 +301,7 @@ def debug_error(error: str) -> list[base.Message]:
     ]
 
 @mcp.tool()
-def search_product_documents(query: str, top_k: int = 20)-> list[ProductResponse]:
+def search_product_documents(query: str, top_k: int = 5)-> list[ProductResponse]:
     """
     Based on the query, search for relevant products from the product documents.
     Return the top_k products.
@@ -322,27 +323,38 @@ def search_product_documents(query: str, top_k: int = 20)-> list[ProductResponse
         print(f"Distances: {D}, Indices: {I}")
         
         results = []
-        i=0
         for idx in I[0]:  # I[0] because I is a 2D array
             if idx < len(metadata_list):  # Ensure index is valid
                 data = metadata_list[idx]
-                product_chunk= ProductChunkTyped(
-                    id=data["product_id"],
-                    product_content=data["chunk"],
-                    metadata=ProductMetadata(**json.loads(data["metadata"].replace("'", '"')))
-                )
-                print(f"Product Chunk: {product_chunk}")
-                print("+++++++++", i)
-                i+=1
-                with open("product_chunk.json", "w") as f:
-                    f.write(product_chunk.model_dump_json())
-                print(product_chunk)
-                results.append(ProductResponse.from_product_chunk(product_chunk))
-                # i+=1
+                try:
+                    # First, properly format the metadata string for JSON parsing
+                    metadata_str = data["metadata"]
+                    # Replace single quotes with double quotes, but handle nested quotes properly
+                    metadata_str = re.sub(r"'(.*?)'", r'"\1"', metadata_str)
+                    # Parse the metadata JSON
+                    metadata_dict = json.loads(metadata_str)
+                    
+                    product_chunk = ProductChunkTyped(
+                        id=data["product_id"],
+                        product_content=data["chunk"],
+                        metadata=ProductMetadata(**metadata_dict)
+                    )
+                    
+                    with open("product_chunk.json", "w") as f:
+                        json.dump(product_chunk.model_dump(), f, indent=2)
+                    
+                    results.append(ProductResponse.from_product_chunk(product_chunk))
+                    print(len(results))
+                    for result in results:
+                        print(result.model_dump_json(indent=2))
+                        print("--------------------------------")
+                except json.JSONDecodeError as je:
+                    mcp_log("ERROR", f"JSON decode error for metadata: {str(je)}\nMetadata string: {metadata_str}")
+                    continue
+                except Exception as e:
+                    mcp_log("ERROR", f"Error processing product chunk: {str(e)}")
+                    continue
         
-        for result in results:
-            print(result.model_dump_json(indent=2))
-            print("--------------------------------")
         return results
             
     except Exception as e:
@@ -392,7 +404,13 @@ def process_product_documents():
             product_id = product.id
             embedding = get_embeddings(product_content)
             #all_embeddings.append(embedding)
-            new_metadata = {"doc": file.name, "chunk": product_content, "product_id": f"{product_id}","metadata": f"{metadata.model_dump_json()}"}
+            
+            new_metadata = {
+                "doc": file.name,
+                "chunk": product_content,
+                "product_id": str(product_id),
+                "metadata": json.dumps(metadata.model_dump())
+            }
             
             metadata_list.append(new_metadata)
             if embedding is not None:
@@ -442,11 +460,11 @@ if __name__ == "__main__":
         server_thread.start()   
     
         time.sleep(2)
-        # process_product_documents()
+        process_product_documents()
         query = "Nike T-shirt for casual wear"
         query = "I'm looking for a backpack that's suitable for hiking. It should be lightweight, durable, and ideally water-resistant. I'd like something comfortable to wear for long periods, with enough space for outdoor gear. Can you recommend one that works well for hiking trips?"
-
-        search_product_documents(query)
+        print("Query: ", query)
+        search_product_documents(query, top_k=5 )
         try:
             while True:
                 time.sleep(1)

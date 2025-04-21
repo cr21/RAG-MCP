@@ -80,14 +80,14 @@ class ProductChunkTyped(BaseModel):
         
         # Handle article attributes with cleaned text
         article_attributes = ", ".join([
-            f"{k}: {cls.clean_text(str(v))}" 
+            f"{k}: {cls.clean_text(str(v).replace(',', ''))}" 
             for k, v in product_data.get("articleAttributes", {}).items()
         ])
 
         # Handle master category dictionary with cleaned text
         master_category_dict = product_data.get("masterCategory", {})
         master_category_attrs = ", ".join([
-            f"{k}: {cls.clean_text(str(v))}" 
+                f"{k}: {cls.clean_text(str(v)).replace(',', '')}" 
             for k, v in master_category_dict.items()
             if not isinstance(v, dict) and v is not None
         ])
@@ -95,7 +95,7 @@ class ProductChunkTyped(BaseModel):
         # Handle sub category dictionary with cleaned text
         sub_category_dict = product_data.get("subCategory", {})
         sub_category_attrs = ", ".join([
-            f"{k}: {cls.clean_text(str(v))}" 
+            f"{k}: {cls.clean_text(str(v)).replace(',', '')}" 
             for k, v in sub_category_dict.items()
             if not isinstance(v, dict) and v is not None
         ])
@@ -103,7 +103,7 @@ class ProductChunkTyped(BaseModel):
         # Handle article type dictionary with cleaned text
         article_type_dict = product_data.get("articleType", {})
         article_type_attrs = ", ".join([
-            f"{k}: {cls.clean_text(str(v))}" 
+            f"{k}: {cls.clean_text(str(v)).replace(',', '')}" 
             for k, v in article_type_dict.items()
             if not isinstance(v, dict) and v is not None
         ])
@@ -114,17 +114,17 @@ class ProductChunkTyped(BaseModel):
             if isinstance(desc_data, dict) and "value" in desc_data:
                 value = cls.clean_text(desc_data["value"])
                 if value:  # Only add if there's actual content after cleaning
-                    product_descriptors.append(f"{desc_key}: {value}")
+                    product_descriptors.append(f"{desc_key}: {value.replace(',', '')}")
 
-        # Construct product_content string with cleaned text
+        # Construct product_content string with cleaned text and unique separator |#|
         product_content = (
-            f"productDisplayName: {cls.clean_text(product_data.get('productDisplayName'))}. "
-            f"displayCategories: {cls.clean_text(product_data.get('displayCategories'))}. "
-            f"Product Descriptors: {', '.join(product_descriptors)}. "
-            f"Article Attributes: {article_attributes}. "
-            f"Master Category: {master_category_attrs}. "
-            f"Sub Category: {sub_category_attrs}. "
-            f"Article Type: {article_type_attrs}. "
+            f"productDisplayName: {cls.clean_text(product_data.get('productDisplayName'))} |#| "
+            f"displayCategories: {cls.clean_text(product_data.get('displayCategories'))} |#| "
+            f"Product Descriptors: {', '.join(product_descriptors)} |#| "
+            f"Article Attributes: {article_attributes} |#| "
+            f"Master Category: {master_category_attrs} |#| "
+            f"Sub Category: {sub_category_attrs} |#| "
+            f"Article Type: {article_type_attrs}"
         )
 
         # Construct metadata
@@ -177,64 +177,78 @@ class ProductResponse(BaseModel):
         """
         Create a ProductResponse instance from a ProductChunkTyped object
         """
-        # Parse product_content string to extract required fields
-        content_parts = chunk.product_content.split(". ")
-        
-        # Initialize dictionaries
-        product_descriptors = {}
-        article_attributes = {}
-        master_category = {}
-        sub_category = {}
-        article_type = {}
-        
-        # Parse each section of the product_content
-        for part in content_parts:
-            if part.startswith("Product Descriptors: "):
-                desc_items = part.replace("Product Descriptors: ", "").split(", ")
-                for item in desc_items:
-                    if ": " in item:
-                        key, value = item.split(": ", 1)
-                        product_descriptors[key] = {"value": value}
-                        
-            elif part.startswith("Article Attributes: "):
-                attr_items = part.replace("Article Attributes: ", "").split(", ")
-                for item in attr_items:
-                    if ": " in item:
-                        key, value = item.split(": ", 1)
-                        article_attributes[key] = value
-                        
-            elif part.startswith("Master Category: "):
-                cat_items = part.replace("Master Category: ", "").split(", ")
-                for item in cat_items:
-                    if ": " in item:
-                        key, value = item.split(": ", 1)
-                        master_category[key] = value
-                        
-            elif part.startswith("Sub Category: "):
-                subcat_items = part.replace("Sub Category: ", "").split(", ")
-                for item in subcat_items:
-                    if ": " in item:
-                        key, value = item.split(": ", 1)
-                        sub_category[key] = value
-                        
-            elif part.startswith("Article Type: "):
-                type_items = part.replace("Article Type: ", "").split(", ")
-                for item in type_items:
-                    if ": " in item:
-                        key, value = item.split(": ", 1)
-                        article_type[key] = value
+        part=''
+        try:
+            # Parse product_content string to extract required fields using the unique separator
+            content_parts = chunk.product_content.split(" |#| ")
+            #print(content_parts)
+            # Initialize dictionaries
+            product_descriptors = {}
+            article_attributes = {}
+            master_category = {}
+            sub_category = {}
+            article_type = {}
+            
+            # Parse each section of the product_content
+            for part in content_parts:
+                part = part.strip()  # Clean up any whitespace
+                
+                if part.startswith("productDisplayName: "):
+                    product_display_name = part.replace("productDisplayName: ", "").strip()
+                    
+                elif part.startswith("displayCategories: "):
+                    display_categories = part.replace("displayCategories: ", "").strip()
+                    
+                elif part.startswith("Product Descriptors: "):
+                    desc_items = part.replace("Product Descriptors: ", "").split(", ")
+                    for item in desc_items:
+                        if ": " in item:
+                            key, value = item.split(": ", 1)
+                            product_descriptors[key.strip()] = {"value": value.strip()}
+                            
+                elif part.startswith("Article Attributes: "):
+                    attr_items = part.replace("Article Attributes: ", "").split(", ")
+                    for item in attr_items:
+                        if ": " in item:
+                            key, value = item.split(": ", 1)
+                            article_attributes[key.strip()] = value.strip()
+                            
+                elif part.startswith("Master Category: "):
+                    cat_items = part.replace("Master Category: ", "").split(", ")
+                    for item in cat_items:
+                        if ": " in item:
+                            key, value = item.split(": ", 1)
+                            master_category[key.strip()] = value.strip()
+                            
+                elif part.startswith("Sub Category: "):
+                    subcat_items = part.replace("Sub Category: ", "").split(", ")
+                    for item in subcat_items:
+                        if ": " in item:
+                            key, value = item.split(": ", 1)
+                            sub_category[key.strip()] = value.strip()
+                            
+                elif part.startswith("Article Type: "):
+                    type_items = part.replace("Article Type: ", "").split(", ")
+                    for item in type_items:
+                        if ": " in item:
+                            key, value = item.split(": ", 1)
+                            article_type[key.strip()] = value.strip()
 
-        return cls(
-            id=chunk.id,
-            product_display_name=chunk.metadata.productDisplayName,
-            display_categories=chunk.metadata.displayCategories,
-            product_descriptors=product_descriptors,
-            article_attributes=article_attributes,
-            master_category=master_category,
-            sub_category=sub_category,
-            article_type=article_type,
-            product_metadata=chunk.metadata
-        )
+            return cls(
+                id=chunk.id,
+                product_display_name=chunk.metadata.productDisplayName,
+                display_categories=chunk.metadata.displayCategories,
+                product_descriptors=product_descriptors,
+                article_attributes=article_attributes,
+                master_category=master_category,
+                sub_category=sub_category,
+                article_type=article_type,
+                product_metadata=chunk.metadata
+            )
+        except Exception as e:
+            print(e)
+            print(part)
+            raise ValueError(f"Error parsing product chunk: {str(e)}\nProduct content: {chunk.product_content}")
 
 class AddInput(BaseModel):
     a: int

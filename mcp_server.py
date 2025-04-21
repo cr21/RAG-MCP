@@ -130,11 +130,11 @@ def product_metadata_analysis_for_refine_or_tuning_search_result()-> dict:
     
     article_attributes = ['Add-Ons', 'Ankle Height', 'Arch Type', 'Assorted', 'Back', 'Base Metal', 'Belt Width', 'Blouse', 'Blouse Fabric', 'Body or Garment Size', 'Border', 'Bottom Closure', 'Bottom Fabric', 'Bottom Pattern', 'Bottom Type', 'Brand', 'Brand Fit Name', 'Brick', 'Business Unit', 'Case', 'Character', 'Class', 'Cleats', 'Closure', 'Coin Pocket Type', 'Collar', 'Colour Family', 'Colour Hex Code', 'Colour Shade Name', 'Compartment Closure', 'Concern', 'Content', 'Coverage', 'Cuff', 'Cushioning', 'Design', 'Design Styling', 'Dial Colour', 'Dial Material', 'Dial Pattern', 'Dial Shape', 'Display', 'Distance', 'Distress', 'Dupatta', 'Dupatta Border', 'Dupatta Fabric', 'Dupatta Pattern', 'Effects', 'External Pocket', 'Fabric', 'Fabric 2', 'Fabric 3', 'Fabric Purity', 'Fabric Type', 'Face Shape', 'Fade', 'Family', 'Fastening', 'Fastening and Back Detail', 'Feature', 'Features', 'Features 2', 'Features 3', 'Fine Jewellery', 'Finish', 'Fit', 'Flap Type', 'Fly Type', 'Formulation', 'Fragrance', 'Frame Colour', 'Frame Material', 'Handles', 'Haul Loop Type', 'Heel Height', 'Heel Type', 'Hemline', 'Hood', 'Insole', 'Knit or Woven', 'Laptop Compartment', 'Laptop Size', 'Length', 'Lens Colour', 'Lining', 'Lining Fabric', 'Main Trend', 'Make', 'Material', 'Micro Trend', 'Minimum Shelf Life in Months', 'Minimum Usable Period in Months', 'Model Name', 'Movement', 'Multipack Set', 'Neck', 'Needle', 'Number of Card Holders', 'Number of Compartments', 'Number of Components', 'Number of Contents', 'Number of External Pockets', 'Number of ID Card Holder', 'Number of Inner Pockets', 'Number of Main Compartments', 'Number of Mobile Pouch', 'Number of Panels', 'Number of Pockets', 'Number of Slip Pockets', 'Number of Zips', 'Occasion', 'Ornamentation', 'Outsole Type', 'Padded Shoulder Strap', 'Padding', 'Pattern', 'Pattern Coverage', 'Placket', 'Placket Length', 'Plating', 'Player Type', 'Players', 'Pocket', 'Pocket Type', 'Power Source', 'Print or Pattern Type', 'Processing Time', 'Pronation for Running Shoes', 'Reversible', 'Running Type', 'SPF', 'Saree Fabric', 'Scratch Resistance', 'Seam', 'Segment', 'Set Size', 'Shade', 'Shape', 'Shoe Width', 'Shoulder Strap Type', 'Side Pockets', 'Size', 'Skin Tone', 'Skin Type', 'Sleeve Length', 'Sleeve Styling', 'Sling Strap', 'Slit Detail', 'Sole Material', 'Sport', 'Sport Team', 'Sports Bra Support', 'Stitch', 'Stone Type', 'Strap', 'Strap Closure', 'Strap Colour', 'Strap Material', 'Strap Style', 'Strap Type', 'Straps', 'Strength', 'Stretch', 'Stretchable', 'Style', 'Sub Trend', 'Surface Styling', 'Surface Type', 'Tablet Sleeve', 'Technique', 'Technology', 'Toe Shape', 'Top Design Styling', 'Top Fabric', 'Top Hemline', 'Top Length', 'Top Pattern', 'Top Shape', 'Top Type', 'Total Shelf Life in Months', 'Transparency', 'Trends', 'Type', 'Type of Distress', 'Type of Pleat', 'Units Per Bundle', 'Volume', 'Volume in Litres', 'Waist Rise', 'Waistband', 'Warranty', 'Wash Care', 'Water Resistance', 'Weave Pattern', 'Weave Type', 'Wiring', 'taxMaterial']
     # in master_category typeName is important field is typeName e.g Apparel,Accessories, Footwear, Accessories
-    master_category = ['active','id','isExchangeable','isReturnable','isTryAndBuyEnabled','pickupEnabled','socialSharingEnabled','typeName']
+    master_category = ['typeName']
     # in sub_category typeName is important field is typeName e.g Topwear, Bags, Shoes, Water Bottle
-    sub_category = ['active','id','isExchangeable','isReturnable','isTryAndBuyEnabled','pickupEnabled','socialSharingEnabled','typeName']
+    sub_category = ['typeName']
     # in article_type typeName is important field is typeName e.g Tshirts, Backpacks, Sports Shoes, Water Bottle
-    article_type = ['active','disclaimerText','disclaimerTitle','id','isExchangeable','isMyntsEnabled','isReturnable','isTryAndBuyEnabled','pickupEnabled','productImageTag','serviceabilityDisclaimer','socialSharingEnabled','typeName']
+    article_type = ['typeName']
     product_descriptors = ['description', 'materials_care_desc', 'size_fit_desc', 'style_note']
     metadata = ["id","price","discountedPrice","styleType","productTypeId","articleNumber","productDisplayName","variantName","myntraRating",  "catalogAddDate","brandName","ageGroup","gender","baseColour","colour1","colour2","fashionType","season","year","usage","vat","displayCategories"]
     return {
@@ -320,7 +320,7 @@ def search_product_documents(query: str, top_k: int = 5)-> list[ProductResponse]
         query_embedding = query_embedding.reshape(1, -1)
         # Search returns (D, I) where D is distances and I is indices
         D, I = index.search(query_embedding, k=top_k)
-        print(f"Distances: {D}, Indices: {I}")
+        # print(f"Distances: {D}, Indices: {I}")
         
         results = []
         for idx in I[0]:  # I[0] because I is a 2D array
@@ -332,22 +332,17 @@ def search_product_documents(query: str, top_k: int = 5)-> list[ProductResponse]
                     # Replace single quotes with double quotes, but handle nested quotes properly
                     metadata_str = re.sub(r"'(.*?)'", r'"\1"', metadata_str)
                     # Parse the metadata JSON
-                    metadata_dict = json.loads(metadata_str)
-                    
+                    metadata_dict = json.loads(metadata_str)  
                     product_chunk = ProductChunkTyped(
                         id=data["product_id"],
                         product_content=data["chunk"],
                         metadata=ProductMetadata(**metadata_dict)
                     )
                     
-                    with open("product_chunk.json", "w") as f:
-                        json.dump(product_chunk.model_dump(), f, indent=2)
-                    
                     results.append(ProductResponse.from_product_chunk(product_chunk))
-                    print(len(results))
-                    for result in results:
-                        print(result.model_dump_json(indent=2))
-                        print("--------------------------------")
+                    # for result in results:
+                    #     print(result.model_dump_json(indent=2))
+                    #     print("--------------------------------")
                 except json.JSONDecodeError as je:
                     mcp_log("ERROR", f"JSON decode error for metadata: {str(je)}\nMetadata string: {metadata_str}")
                     continue
@@ -389,7 +384,7 @@ def process_product_documents():
     converter= MarkItDown()
     
     for i, file in enumerate(DOC_PATH.glob("*.json")):
-        print(f"Processing file {i+1} : {file.name}...")
+        mcp_log("INFO", f"Processing file {i+1} : {file.name}...")
         f_md_hash = file_md5_hash(file)
         if file.name in CACHE_META and CACHE_META[file.name] == f_md_hash:
             mcp_log("INFO", f"Skipping {file.name} - already processed.")
@@ -462,9 +457,14 @@ if __name__ == "__main__":
         time.sleep(2)
         process_product_documents()
         query = "Nike T-shirt for casual wear"
-        query = "I'm looking for a backpack that's suitable for hiking. It should be lightweight, durable, and ideally water-resistant. I'd like something comfortable to wear for long periods, with enough space for outdoor gear. Can you recommend one that works well for hiking trips?"
+        # query = "brand:Nike category:Topwear productType:T-shirt fashionType:Casual material:Cotton fit:Regular useCase:EverydayWear"
+        # query = "I'm looking for a Nike topwear T-shirt that has a relaxed fit, is made from breathable material like cotton or a cotton blend, and is designed to be both comfortable and stylish for everyday casual use."
+        query2 = " brand: Nike, category: Topwear, productType: T-shirt, fashionType: Casual"
+        query+=query2
+        # query = "brandName: Nike, Categpry top wear fashion casual comfort comfortable "
         print("Query: ", query)
         search_product_documents(query, top_k=5 )
+        print("--------------------------------")
         try:
             while True:
                 time.sleep(1)

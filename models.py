@@ -89,7 +89,7 @@ class ProductChunkTyped(BaseModel):
         master_category_attrs = ", ".join([
                 f"{k}: {cls.clean_text(str(v)).replace(',', '')}" 
             for k, v in master_category_dict.items()
-            if not isinstance(v, dict) and v is not None
+            if not isinstance(v, dict) and v is not None and k =='typeName'
         ])
 
         # Handle sub category dictionary with cleaned text
@@ -97,7 +97,7 @@ class ProductChunkTyped(BaseModel):
         sub_category_attrs = ", ".join([
             f"{k}: {cls.clean_text(str(v)).replace(',', '')}" 
             for k, v in sub_category_dict.items()
-            if not isinstance(v, dict) and v is not None
+            if not isinstance(v, dict) and v is not None and k =='typeName'
         ])
 
         # Handle article type dictionary with cleaned text
@@ -105,7 +105,7 @@ class ProductChunkTyped(BaseModel):
         article_type_attrs = ", ".join([
             f"{k}: {cls.clean_text(str(v)).replace(',', '')}" 
             for k, v in article_type_dict.items()
-            if not isinstance(v, dict) and v is not None
+            if not isinstance(v, dict) and v is not None and k =='typeName'
         ])
         
         # Handle product descriptors with cleaned text
@@ -246,8 +246,6 @@ class ProductResponse(BaseModel):
                 product_metadata=chunk.metadata
             )
         except Exception as e:
-            print(e)
-            print(part)
             raise ValueError(f"Error parsing product chunk: {str(e)}\nProduct content: {chunk.product_content}")
 
 class AddInput(BaseModel):

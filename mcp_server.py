@@ -300,7 +300,7 @@ def debug_error(error: str) -> list[base.Message]:
     ]
 
 @mcp.tool()
-def search_product_documents(query: str, top_k: int = 5)-> list[ProductResponse]:
+def search_product_documents(query: str, top_k: int = 20)-> list[ProductResponse]:
     """
     Based on the query, search for relevant products from the product documents.
     Return the top_k products.
@@ -322,6 +322,7 @@ def search_product_documents(query: str, top_k: int = 5)-> list[ProductResponse]
         print(f"Distances: {D}, Indices: {I}")
         
         results = []
+        i=0
         for idx in I[0]:  # I[0] because I is a 2D array
             if idx < len(metadata_list):  # Ensure index is valid
                 data = metadata_list[idx]
@@ -330,7 +331,14 @@ def search_product_documents(query: str, top_k: int = 5)-> list[ProductResponse]
                     product_content=data["chunk"],
                     metadata=ProductMetadata(**json.loads(data["metadata"].replace("'", '"')))
                 )
+                print(f"Product Chunk: {product_chunk}")
+                print("+++++++++", i)
+                i+=1
+                with open("product_chunk.json", "w") as f:
+                    f.write(product_chunk.model_dump_json())
+                print(product_chunk)
                 results.append(ProductResponse.from_product_chunk(product_chunk))
+                # i+=1
         
         for result in results:
             print(result.model_dump_json(indent=2))
@@ -384,7 +392,7 @@ def process_product_documents():
             product_id = product.id
             embedding = get_embeddings(product_content)
             #all_embeddings.append(embedding)
-            new_metadata = {"doc": file.name, "chunk": product_content, "product_id": f"{product_id}","metadata": f"{metadata.model_dump_jsonC()}"}
+            new_metadata = {"doc": file.name, "chunk": product_content, "product_id": f"{product_id}","metadata": f"{metadata.model_dump_json()}"}
             
             metadata_list.append(new_metadata)
             if embedding is not None:
@@ -435,7 +443,10 @@ if __name__ == "__main__":
     
         time.sleep(2)
         # process_product_documents()
-        search_product_documents("Nike T-shirt for casual wear")
+        query = "Nike T-shirt for casual wear"
+        query = "I'm looking for a backpack that's suitable for hiking. It should be lightweight, durable, and ideally water-resistant. I'd like something comfortable to wear for long periods, with enough space for outdoor gear. Can you recommend one that works well for hiking trips?"
+
+        search_product_documents(query)
         try:
             while True:
                 time.sleep(1)

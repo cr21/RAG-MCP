@@ -320,7 +320,7 @@ def search_product_documents(query: str, top_k: int = 5)-> list[ProductResponse]
         query_embedding = query_embedding.reshape(1, -1)
         # Search returns (D, I) where D is distances and I is indices
         D, I = index.search(query_embedding, k=top_k)
-        # print(f"Distances: {D}, Indices: {I}")
+        print(f"Distances: {D}, Indices: {I}")
         
         results = []
         for idx in I[0]:  # I[0] because I is a 2D array
@@ -340,9 +340,9 @@ def search_product_documents(query: str, top_k: int = 5)-> list[ProductResponse]
                     )
                     
                     results.append(ProductResponse.from_product_chunk(product_chunk))
-                    # for result in results:
-                    #     print(result.model_dump_json(indent=2))
-                    #     print("--------------------------------")
+                    for result in results:
+                        print(result.model_dump_json(indent=2))
+                        print("--------------------------------")
                 except json.JSONDecodeError as je:
                     mcp_log("ERROR", f"JSON decode error for metadata: {str(je)}\nMetadata string: {metadata_str}")
                     continue
@@ -461,6 +461,8 @@ if __name__ == "__main__":
         # query = "I'm looking for a Nike topwear T-shirt that has a relaxed fit, is made from breathable material like cotton or a cotton blend, and is designed to be both comfortable and stylish for everyday casual use."
         query2 = " brand: Nike, category: Topwear, productType: T-shirt, fashionType: Casual"
         query+=query2
+        query = "Get a T-shirt with brandName Nike, fashionType Casual, Gender Male, AgeGroup under 18."
+        # query = "Find a backpack for hiking activity."
         # query = "brandName: Nike, Categpry top wear fashion casual comfort comfortable "
         print("Query: ", query)
         search_product_documents(query, top_k=5 )

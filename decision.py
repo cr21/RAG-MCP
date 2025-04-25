@@ -79,7 +79,7 @@ Input Summary:
 
 ✅ Examples:
 - User asks: "Nike T-shirt for casual wear"
-- FUNCTION_CALL: ask_user_for_clarification_feedback|original_user_query="Find Nike T-shirt for Men",query_from_llm="Is this T-shirt for Casual wear or sports"
+- FUNCTION_CALL: ask_user_for_clarification_feedback|original_user_query=original_user_query|query_from_llm=query_from_llm
   - [Recieves feedback from user or modified query]
   - FUNCTION_CALL: search_product_documents|query=modified_query,top_k=5
   - [Receives a list of product responses]

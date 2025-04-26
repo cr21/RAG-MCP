@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import Optional, Dict, List
 import re
 
+    
 class ProductMetadata(BaseModel):
     id: int
     price: float
@@ -26,6 +27,24 @@ class ProductMetadata(BaseModel):
     vat: float
     displayCategories: str
 
+class ProductMetadataSubset(BaseModel):
+    id: int
+    price: float
+    fashionType: str
+    productDisplayName: str
+    variantName: str
+    displayCategories: str
+
+    @classmethod
+    def from_product_metadata(cls, product_metadata: ProductMetadata) -> "ProductMetadataSubset":
+        return cls(
+            id=product_metadata.id,
+            price=product_metadata.price,
+            fashionType=product_metadata.fashionType,
+            productDisplayName=product_metadata.productDisplayName,
+            variantName=product_metadata.variantName,
+            displayCategories=product_metadata.displayCategories
+        )
 
 class ProductChunkTyped(BaseModel):
     """

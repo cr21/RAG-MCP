@@ -4,15 +4,19 @@ from typing import List, Optional
 from dotenv import load_dotenv
 from google import genai
 import os
+import datetime
 
+# try:
+#     from agent import log
+# except ImportError:
+#     import datetime
+#     def log(stage: str, msg: str):
+#         now = datetime.datetime.now().strftime("%H:%M:%S")
+#         print(f"[{now}] [{stage}] {msg}")
 
-try:
-    from agent import log
-except ImportError:
-    import datetime
-    def log(stage: str, msg: str):
-        now = datetime.datetime.now().strftime("%H:%M:%S")
-        print(f"[{now}] [{stage}] {msg}")
+def log(stage: str, msg: str):
+    now = datetime.datetime.now().strftime("%H:%M:%S")
+    print(f"[{now}] [{stage}] {msg}")
 
 load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
@@ -47,17 +51,19 @@ Always follow this loop:
 
 
 1. Think step-by-step about the problem.
-2. If the user query is unclear, ask for clarification concisely, focusing only on product attributes, entities, or metadata.
+2. If the user query is unclear, modify the query concisely, focusing only on product attributes, entities, or metadata.
 3. If a tool is needed, respond using the format:
    FUNCTION_CALL: tool_name|param1=value1|param2=value2
 4. When the retrieval result is known, refine or rerank the results based on relevance to the user query. Use tools like `product_metadata_analysis_for_refine_or_tuning_search_result` if needed.
 5. When the final answer is ready, respond using:
-   FINAL_ANSWER: [your final result]
+   FINAL_ANSWER: [your final result in json format preety printed]
+6. FINAL_ANSWER should be a list of ProductResponse Metadata subset objects in pretty format once final answer is ready, use tools available to generate desired output.
+7. If you call preety_print_product_metadata_response tool, you should receive a string representation of list of ProductMetadataSubset objects, you can use it directly in FINAL_ANSWER. and stop further processing.
 
 
 Guidelines:
 - Respond using EXACTLY ONE of the formats above per step.
-- If user query is not clear, or need refinement,modify user query by asking some feedback questions, but be very consice and modify only if needed, modify interms of product attributes, entities, brands or some kind of metadata and values, no verbose modification.
+- If user query is not clear, or need refinement,modify user query interms of product attributes, entities, brands or some kind of metadata and values, no verbose modification.
 - Do NOT include extra text, explanation, or formatting.
 - Use nested keys (e.g., input.string) and square brackets for lists.
 - You can reference these relevant memories:
@@ -70,26 +76,26 @@ Input Summary:
 - Tool hint: {perception.tool_hint or 'None'}
 
 ✅ Examples:
-- FUNCTION_CALL: ask_user_for_clarification_feedback|original_user_query="Find Nike T-shirt for Men",query_from_llm="Is this T-shirt for Casual wear or sports"
 - FUNCTION_CALL: return_ranked_product_response_from_ranked_index|product_responses=[ProductResponse(name="Nike T-shirt for Men", price=100, description="This is a Nike T-shirt for Men"), ProductResponse(name="Adidas T-shirt for Men", price=80, description="This is an Adidas T-shirt for Men")],ranked_indices=[0,1]
 - FUNCTION_CALL: product_metadata_analysis_for_refine_or_tuning_search_result
 - FUNCTION_CALL: search_product_documents|query="Find Nike T-shirt for Men",top_k=5
 - FUNCTION_CALL: int_list_to_exponential_sum|input.int_list=[73,78,68,73,65]
-- FINAL_ANSWER: [ProductResponse]
+- FUNCTION_CALL: preety_print_product_metadata_response|product_response_list=[ProductResponse(name="Nike T-shirt for Men", price=100, description="This is a Nike T-shirt for Men"), ProductResponse(name="Adidas T-shirt for Men", price=80, description="This is an Adidas T-shirt for Men")]
+- FINAL_ANSWER: [final answer]
 
 ✅ Examples:
 - User asks: "Nike T-shirt for casual wear"
-- FUNCTION_CALL: ask_user_for_clarification_feedback|original_user_query=original_user_query|query_from_llm=query_from_llm
-  - [Recieves feedback from user or modified query]
   - FUNCTION_CALL: search_product_documents|query=modified_query,top_k=5
   - [Receives a list of product responses]
   - FUNCTION_CALL: product_metadata_analysis_for_refine_or_tuning_search_result
   - [Received detail metadata of product]
   - Idetify the Ranked indices of product responses based on relevance to user query
   - FUNCTION_CALL: return_ranked_product_response_from_ranked_index|product_responses=[ProductResponse(name="Nike T-shirt for Men", price=100, description="This is a Nike T-shirt for Men"), ProductResponse(name="Adidas T-shirt for Men", price=80, description="This is an Adidas T-shirt for Men")],ranked_indices=[0,1]
-  - [receives a final answer]
-  - FINAL_ANSWER: [ProductResponse]
-
+  - [receives a final answer - List[ProductResponse]]
+  - FUNCTION_CALL: preety_print_product_metadata_response|product_response_list=[ProductResponse(name="Nike T-shirt for Men", price=100, description="This is a Nike T-shirt for Men"), ProductResponse(name="Adidas T-shirt for Men", price=80, description="This is an Adidas T-shirt for Men")]
+  - [receives a final answer - string representation of list of ProductMetadataSubset objects]
+  - FINAL_ANSWER: [final answer ]
+  
 
 IMPORTANT:
 - 🚫 Do NOT invent tools. Use only the tools listed below.
@@ -98,8 +104,10 @@ IMPORTANT:
 - Only repeat `search_product_documents` if the last result was irrelevant or empty, or never call search_product_documents with same input query.
 - ❌ Do NOT repeat function calls with the same parameters.
 - ❌ Do NOT output unstructured responses.
+- If user does not provide clarification or feedback, proceed with next step with same input query and give best answer you can.
 - 🧠 Think before each step. Verify intermediate results mentally before proceeding.
 - 💥 If unsure or no tool fits, skip to FINAL_ANSWER: [unknown]
+- 💥 If you need to print product response in a pretty format, use preety_print_product_metadata_response tool, ideally before geneating FINAL_ANSWER call preety_print_product_metadata_response tool.
 - ✅ You have only 3 attempts. Final attempt must be FINAL_ANSWER]
 """
     

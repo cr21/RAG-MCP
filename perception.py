@@ -5,14 +5,18 @@ from dotenv import load_dotenv
 from google import genai
 import re
 from ast import literal_eval
+import datetime
+# try:
+#     from agent import log
+# except ImportError:
+#     import datetime
+#     def log(stage: str, msg: str):
+#         now = datetime.datetime.now().strftime("%H:%M:%S")
+#         print(f"[{now}] [{stage}] {msg}")
 
-try:
-    from agent import log
-except ImportError:
-    import datetime
-    def log(stage: str, msg: str):
-        now = datetime.datetime.now().strftime("%H:%M:%S")
-        print(f"[{now}] [{stage}] {msg}")
+def log(stage: str, msg: str):
+    now = datetime.datetime.now().strftime("%H:%M:%S")
+    print(f"[{now}] [{stage}] {msg}")
 
 load_dotenv()
 
@@ -46,7 +50,7 @@ Respond with a Python dictionary containing the following keys:
   Do not include unnecessary words try to include entities or keywords based on the user input.
   For example: "Get a T-shirt with brandName Nike, fashionType Casual, Gender Male, AgeGroup under 18."
 
-- tool_hint: (Optional) Suggest the name of the MCP tool (e.g., "search_product_documents", "ask_user_for_clarification_feedback") that might help, or return None if no tool is needed.
+- tool_hint: (Optional) Suggest the name of the MCP tool (e.g., "search_product_documents","product_metadata_analysis_for_refine_or_tuning_search_result") that might help, or return None if no tool is needed.
 
 Return only the dictionary in a single line. Do NOT wrap it in ```json or any other formatting. Ensure `entities` is a list of strings, not a dictionary.
 """

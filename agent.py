@@ -71,8 +71,18 @@ async def main(user_input: str):
 									log("agent", f"✅ FINAL RESULT: {plan}")
 									break
 								try:
+									# Ensure stdout and stderr are flushed before any tool execution
+									sys.stdout.flush()
+									sys.stderr.flush()
+									
 									result = await execute_tool(session, tools, plan)
 									log("tool", f"{result.tool_name} returned: {result.result}")
+
+									# If we got user feedback, update the query
+									# if result.tool_name == "ask_user_for_clarification_feedback":
+									# 	user_input = result.result
+									# 	# Continue with the next search using the refined query
+									# 	continue
 
 									memory.add(MemoryRecord(
 										text=f"Tool call: {result.tool_name} with {result.arguments}, got: {result.result}",
@@ -83,7 +93,8 @@ async def main(user_input: str):
 										tool_name=result.tool_name
 									))
 
-									user_input = f"Original task: {query}\nPrevious output: {result.result}\nWhat should I do next?"
+									if result.tool_name != "ask_user_for_clarification_feedback":
+										user_input = f"Original task: {query}\nPrevious output: {result.result}\nWhat should I do next?"
 								
 								except Exception as e:
 									log("error", f"Tool execution failed: {e}")

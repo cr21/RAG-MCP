@@ -91,8 +91,17 @@ def preety_print_product_metadata_response(product_response_list: List[ProductRe
         
         # Handle different input types
         if isinstance(product_response_list, str):
-            # Single JSON string
-            data = json.loads(product_response_list)
+            # Single JSON string - Fix escaping before parsing
+            try:
+                # First try direct JSON parsing
+                data = json.loads(product_response_list)
+            except json.JSONDecodeError:
+                # If that fails, try cleaning the string
+                cleaned_json = product_response_list.replace("\\'", "'")  # Replace escaped single quotes
+                cleaned_json = cleaned_json.replace('\\"', '"')  # Replace escaped double quotes
+                cleaned_json = cleaned_json.replace('\\\\', '\\')  # Replace double backslashes
+                data = json.loads(cleaned_json)
+                
             if isinstance(data, list):
                 responses.extend([ProductResponse(**item) for item in data])
             else:
@@ -101,8 +110,15 @@ def preety_print_product_metadata_response(product_response_list: List[ProductRe
             # List of JSON strings or ProductResponse objects
             for item in product_response_list:
                 if isinstance(item, str):
-                    # Parse JSON string
-                    data = json.loads(item)
+                    try:
+                        # First try direct JSON parsing
+                        data = json.loads(item)
+                    except json.JSONDecodeError:
+                        # If that fails, try cleaning the string
+                        cleaned_json = item.replace("\\'", "'")
+                        cleaned_json = cleaned_json.replace('\\"', '"')
+                        cleaned_json = cleaned_json.replace('\\\\', '\\')
+                        data = json.loads(cleaned_json)
                     responses.append(ProductResponse(**data))
                 elif isinstance(item, ProductResponse):
                     responses.append(item)
@@ -123,7 +139,7 @@ def preety_print_product_metadata_response(product_response_list: List[ProductRe
         # Join with newlines instead of spaces to better separate products
         return "\n\n".join(formatted_responses)
     except Exception as e:
-        return f"Error formatting product response: {str(e)}"
+        return f"Error formatting product response: {str(e)}\nInput: {product_response_list[:200]}..."
 
 @mcp.tool()
 def return_ranked_product_response_from_ranked_index(

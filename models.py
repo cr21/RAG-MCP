@@ -84,6 +84,11 @@ class ProductChunkTyped(BaseModel):
         text = re.sub(r'&#\d+;', '', text)
         text = re.sub(r'&[a-zA-Z0-9]+;', '', text)
         
+        # Clean up escaped characters
+        text = text.replace("\\'", "'")  # Replace escaped single quotes
+        text = text.replace('\\"', '"')  # Replace escaped double quotes
+        text = text.replace('\\\\', '\\')  # Replace double backslashes
+        
         # Normalize whitespace
         text = re.sub(r'\s+', ' ', text)
         

@@ -28,12 +28,12 @@ class ProductMetadata(BaseModel):
     displayCategories: str
 
 class ProductMetadataSubset(BaseModel):
-    id: int
-    price: float
-    fashionType: str
-    productDisplayName: str
-    variantName: str
-    displayCategories: str
+    id: Optional[int]
+    price: Optional[float]
+    fashionType: Optional[str]
+    productDisplayName: Optional[str]
+    variantName: Optional[str]
+    displayCategories: Optional[str]
 
     @classmethod
     def from_product_metadata(cls, product_metadata: ProductMetadata) -> "ProductMetadataSubset":

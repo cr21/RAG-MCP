@@ -5,6 +5,7 @@ import ast
 import asyncio
 import sys
 import datetime
+from log_utils import log
 # # Optional: import log from agent if shared, else define locally
 # try:
 #     from agent import log
@@ -14,9 +15,9 @@ import datetime
 #         now = datetime.datetime.now().strftime("%H:%M:%S")
 #         print(f"[{now}] [{stage}] {msg}")
 
-def log(stage: str, msg: str):
-    now = datetime.datetime.now().strftime("%H:%M:%S")
-    print(f"[{now}] [{stage}] {msg}")
+# def log(stage: str, msg: str):
+#     now = datetime.datetime.now().strftime("%H:%M:%S")
+#     print(f"[{now}] [{stage}] {msg}")
 class ToolCallResult(BaseModel):
     tool_name: str
     arguments: Dict[str, Any]
@@ -26,12 +27,10 @@ class ToolCallResult(BaseModel):
 def parse_function_call(response: str) -> tuple[str, Dict[str, Any]]:
     """Parses FUNCTION_CALL string into tool name and arguments."""
     try:
-        print("response parse_function_call", response)
         if not response.startswith("FUNCTION_CALL:"):
             raise ValueError("Not a valid FUNCTION_CALL")
 
         _, function_info = response.split(":", 1)
-        print("function_info", function_info)
         parts = [p.strip() for p in function_info.split("|")]
         if len(parts) == 1:
             func_name = parts[0]
@@ -117,7 +116,7 @@ async def execute_tool(session: ClientSession, tools: list[Any], response: str) 
         else:
             out = str(result)
         
-        log("tool", f"✅ {tool_name} result: {out}")
+        #log("tool", f"✅ {tool_name} result: {out}")
         return ToolCallResult(
             tool_name=tool_name,
             arguments=args,

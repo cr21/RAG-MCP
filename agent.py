@@ -8,13 +8,13 @@ from decision import generate_plan
 from action import execute_tool
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
-
+from log_utils import log
 import shutil
 import sys
 
-def log(stage: str, msg: str):
-    now = datetime.datetime.now().strftime("%H:%M:%S")
-    print(f"[{now}] [{stage}] {msg}")
+# def log(stage: str, msg: str):
+#     now = datetime.datetime.now().strftime("%H:%M:%S")
+#     print(f"[{now}] [{stage}] {msg}")
     
 max_steps = 5
 

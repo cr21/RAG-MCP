@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from google import genai
 import os
 import datetime
+from log_utils import log
 
 # try:
 #     from agent import log
@@ -14,9 +15,9 @@ import datetime
 #         now = datetime.datetime.now().strftime("%H:%M:%S")
 #         print(f"[{now}] [{stage}] {msg}")
 
-def log(stage: str, msg: str):
-    now = datetime.datetime.now().strftime("%H:%M:%S")
-    print(f"[{now}] [{stage}] {msg}")
+# def log(stage: str, msg: str):
+#     now = datetime.datetime.now().strftime("%H:%M:%S")
+#     print(f"[{now}] [{stage}] {msg}")
 
 load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
@@ -52,6 +53,8 @@ Always follow this loop:
 
 1. Think step-by-step about the problem.
 2. If the user query is unclear, modify the query concisely, focusing only on product attributes, entities, or metadata.
+    e.g If user query is "Puma T-shirt for casual wear for female under 18"
+    - Modify query could be "BrandName Puma, Appreal - T-shirt, Comfort casual Gender female Age group under 18" or similarly you can modify query to focus only on product attributes, entities, or metadata.
 3. If a tool is needed, respond using the format:
    FUNCTION_CALL: tool_name|param1=value1|param2=value2
 4. When the retrieval result is known, refine or rerank the results based on relevance to the user query. Use tools like `product_metadata_analysis_for_refine_or_tuning_search_result, preety_print_product_metadata_response` if needed.
@@ -120,6 +123,8 @@ Always follow this loop:
 
 1. Think step-by-step about the problem.
 2. If the user query is unclear, modify the query concisely, focusing only on product attributes, entities, or metadata.
+     e.g If user query is "Puma T-shirt for casual wear for female under 18"
+    - Modify query could be "BrandName Puma, Appreal - T-shirt, Comfort casual Gender female Age group under 18" or similarly you can modify query to focus only on product attributes, entities, or metadata.
 3. If a tool is needed, respond using the format:
    FUNCTION_CALL: tool_name|param1=value1|param2=value2
 4. When the retrieval result is known, refine or rerank the results based on relevance to the user query. Use tools like `product_metadata_analysis_for_refine_or_tuning_search_result`, `preety_print_product_metadata_response` if needed.
@@ -166,7 +171,9 @@ Relevant Memories:
 - Skipping FINAL_ANSWER after pretty print
 
 ✅ Final Checklist:
+- If you call search_product_documents when earlier query did not return good results, make sure to modify query to focus only on product attributes, entities, or metadata to better match the query.
 - Did you call `preety_print_product_metadata_response`? → Then you MUST respond next with FINAL_ANSWER.
+- VERY IMPORTANT: If you Call `preety_print_product_metadata_response` tool -> Instead, use the result and end with FINAL_ANSWER.
 - Are you about to call another tool after pretty print? → ❌ DON’T. Instead, use the result and end with FINAL_ANSWER.
 
 """

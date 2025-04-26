@@ -6,6 +6,7 @@ from google import genai
 import re
 from ast import literal_eval
 import datetime
+from log_utils import log
 # try:
 #     from agent import log
 # except ImportError:
@@ -14,9 +15,9 @@ import datetime
 #         now = datetime.datetime.now().strftime("%H:%M:%S")
 #         print(f"[{now}] [{stage}] {msg}")
 
-def log(stage: str, msg: str):
-    now = datetime.datetime.now().strftime("%H:%M:%S")
-    print(f"[{now}] [{stage}] {msg}")
+# def log(stage: str, msg: str):
+#     now = datetime.datetime.now().strftime("%H:%M:%S")
+#     print(f"[{now}] [{stage}] {msg}")
 
 load_dotenv()
 
@@ -43,12 +44,14 @@ Respond with a Python dictionary containing the following keys:
 - intent: A brief phrase describing what the user wants.
 - entities: A list of key-value-like strings representing product attributes. 
   For example, if the input is "Nike T-shirt for casual wear for men under age 18", extract:
-  ["BrandName:Nike", "ApparelType:T-shirt", "FashionType:Casual", "Gender:Male", "AgeGroup:Under 18"]
+    ["BrandName:Nike", "ApparelType:T-shirt", "FashionType:Casual", "Gender:Male", "AgeGroup:Under 18"]
 
 - modified_user_input: (Optional) A rewritten version of the query that includes the extracted attributes in natural language.
   Include structured attributes and values if possible. If not applicable, return None.
   Do not include unnecessary words try to include entities or keywords based on the user input.
-  For example: "Get a T-shirt with brandName Nike, fashionType Casual, Gender Male, AgeGroup under 18."
+  For example, if the input is "Nike T-shirt for casual wear for men under age 18", extract:
+    ["BrandName:Nike", "ApparelType:T-shirt", "FashionType:Casual", "Gender:Male", "AgeGroup:Under 18"]
+
 
 - tool_hint: (Optional) Suggest the name of the MCP tool (e.g., "search_product_documents","product_metadata_analysis_for_refine_or_tuning_search_result") that might help, or return None if no tool is needed.
 
@@ -62,7 +65,7 @@ Return only the dictionary in a single line. Do NOT wrap it in ```json or any ot
         raw = response.text.strip()
         # Strip ALL Markdown formatting (python, json, etc.)
         clean = re.sub(r"^```\w*\n|```$", "", raw.strip(), flags=re.MULTILINE).strip()
-        print("clean", clean, type(clean))
+        # print("clean", clean, type(clean))
         try:
             parsed = literal_eval(clean)
         except Exception as e:
@@ -80,5 +83,5 @@ Return only the dictionary in a single line. Do NOT wrap it in ```json or any ot
 
 
 
-if __name__ == "__main__":
-    print(extract_perception("Looking for backpack for hiking"))
+# if __name__ == "__main__":
+#     print(extract_perception("Looking for backpack for hiking"))

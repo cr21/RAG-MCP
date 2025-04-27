@@ -25,7 +25,7 @@ class ProductMetadata(BaseModel):
     year: str
     usage: str
     vat: float
-    displayCategories: str
+    displayCategories: Optional[str]
 
 class ProductMetadataSubset(BaseModel):
     id: Optional[int]
@@ -33,7 +33,7 @@ class ProductMetadataSubset(BaseModel):
     fashionType: Optional[str]
     productDisplayName: Optional[str]
     variantName: Optional[str]
-    displayCategories: Optional[str]
+    displayCategories: Optional[str] 
 
     @classmethod
     def from_product_metadata(cls, product_metadata: ProductMetadata) -> "ProductMetadataSubset":
@@ -188,12 +188,12 @@ class ProductChunkTyped(BaseModel):
 class ProductResponse(BaseModel):
     id: int
     product_display_name: str
-    display_categories: str
-    product_descriptors: dict
-    article_attributes: dict
-    master_category: dict
-    sub_category: dict
-    article_type: dict
+    display_categories: Optional[str]
+    product_descriptors: Optional[dict]
+    article_attributes: Optional[dict]
+    master_category: Optional[dict]
+    sub_category: Optional[dict]
+    article_type: Optional[dict]
     product_metadata: ProductMetadata
 
     @classmethod

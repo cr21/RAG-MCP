@@ -525,7 +525,7 @@ if __name__ == "__main__":
         server_thread.start()   
     
         time.sleep(2)
-        process_product_documents()
+        #process_product_documents()
 
         # search_product_documents("backpack")
         try:

@@ -9,6 +9,7 @@ from action import execute_tool
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from log_utils import log
+import json
 import shutil
 import sys
 
@@ -59,10 +60,15 @@ async def main(user_input: str):
 								log("loop", f"Step {step + 1} started")
 
 								perception = extract_perception(user_input)
-								log("perception", f"Intent: {perception.intent}, Tool hint: {perception.tool_hint}")
-
+								perception_result = perception.model_dump()
+								perception_result_str = json.dumps(perception_result, indent=4)
+								log("perception", f"Perception result: {perception_result_str}")
+								# log("perception", f"User original query: {perception.user_input}, Modified query by perception: {perception.modified_user_input}")
+								# log("perception", f"Intent: {perception.intent}, Tool hint: {perception.tool_hint}")
+								# log("perception", f"Entities Extracted: {perception.entities}")
 								retrieved = memory.retrieve(query=user_input, top_k=3, session_filter=session_id)
 								log("memory", f"Retrieved {len(retrieved)} relevant memories")
+								#log("memory", f"Retrieved memories: {retrieved}")
 
 								plan = generate_plan(perception, retrieved, tool_descriptions=tool_descriptions)
 								log("plan", f"Plan generated: {plan}")

@@ -95,7 +95,7 @@ Structured Query         Contextual Data         Action Plan / Final     Tool Ex
                                                     Answer               Response Handling
 ```
 
-![flowchart](./Frame%201.jpg)
+![flowchart](./flowchart.jpg)
 ## Detailed Explanation of Cognitive Components of RAG AI Agent
 
 ### 1. Perception 🧠

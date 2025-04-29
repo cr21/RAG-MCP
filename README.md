@@ -1,5 +1,5 @@
 
-# Rise of Agentic AI and Birth of Model Context Protocol (MCP)
+# Agentic AI and Birth of Model Context Protocol (MCP) - ECommerce Product Search RAG Agent Case Study
 
 ## The Evolution of AI: From Text Generation to Agentic Action
 

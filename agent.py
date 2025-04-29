@@ -68,7 +68,7 @@ async def main(user_input: str):
 								# log("perception", f"Entities Extracted: {perception.entities}")
 								retrieved = memory.retrieve(query=user_input, top_k=3, session_filter=session_id)
 								log("memory", f"Retrieved {len(retrieved)} relevant memories")
-								#log("memory", f"Retrieved memories: {retrieved}")
+								# log("memory", f"Retrieved memories: {retrieved}")
 
 								plan = generate_plan(perception, retrieved, tool_descriptions=tool_descriptions)
 								log("plan", f"Plan generated: {plan}")

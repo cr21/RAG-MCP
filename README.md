@@ -40,7 +40,7 @@ However, integrating with multiple diverse applications faced significant challe
 
 As AI assistants became more capable, they remained trapped by **information silos** — isolated from real-world data in business tools, repositories, and systems. Connecting models to data was messy: every new source needed **custom integration**, making scaling difficult.
 
-To solve this, Anthropic created **Model Context Protocol (MCP)** — an **open, universal standard** that connects AI models securely to data sources. Instead of building one-off connectors for each system, MCP lets AI tools and data systems **communicate through a single standardized protocol**.
+To solve this, [Anthropic](https://www.anthropic.com/news/model-context-protocol) created **Model Context Protocol (MCP)** — an **open, universal standard** that connects AI models securely to data sources. Instead of building one-off connectors for each system, MCP lets AI tools and data systems **communicate through a single standardized protocol**.
 
 MCP introduces:
 - **MCP Servers**: Expose data securely to AI agents.
@@ -67,7 +67,7 @@ Consider an MCP-powered AI handling a scheduling request:
 
 ### Ecommerce Product Search RAG Agent with Model Context Protocol (MCP)
 
-A smart RAG (Retrieval-Augmented Generation) agent built for E-commerce product search, It follows a structured cognitive design made up of four key steps: Perception, Memory, Decision, and Action. These steps help the agent think and act in a human-like way.
+A smart RAG (Retrieval-Augmented Generation) agent built for E-commerce product search, It follows a structured cognitive design made up of four key steps: **Perception, Memory, Decision, and Action**. These steps help the agent think and act in a human-like way.
 All parts are smoothly connected using something called the Model Context Protocol (MCP).
 
 Overview
@@ -100,7 +100,7 @@ Structured Query         Contextual Data         Action Plan / Final     Tool Ex
 
 ### 1. Perception 🧠
 
-The Perception component interprets and structures raw user inputs. It leverages language models (LLMs) to extract crucial information such as intent, entities (product attributes), and potential tool suggestions to guide the subsequent processes.
+The Perception component **interprets and structures raw user inputs.** It leverages **language models**(LLMs) to extract crucial information such as **intent, entities (product attributes), and potential tool suggestions** to guide the subsequent processes.
 
 - **Purpose:** Convert user queries into structured, actionable data, Modified user query for if necessary.
 - **Example:**
@@ -122,9 +122,9 @@ The Perception component interprets and structures raw user inputs. It leverages
 
 ### 2. Memory 🧵
 
-Memory stores historical interactions, user preferences, and relevant context using embeddings and semantic search techniques. It employs FAISS for efficient retrieval of similar past interactions based on current queries.
+**Memory** stores **historical interactions, user preferences**, and relevant context using embeddings and semantic search techniques. It employs **FAISS** for efficient retrieval of similar past interactions based on current queries.
 
-Memory Maintain a conversation_history and incrementally update the prompt, keeping the context fresh. This reinforces the idea that reasoning unfolded over multiple rounds.
+**Memory** Maintain a **conversation_history** and incrementally update the prompt, keeping the context fresh. This reinforces the idea that reasoning unfolded over multiple rounds.
 
 - **Purpose:** Enhance context-awareness by recalling previous relevant information.
 - **Example:**
@@ -149,12 +149,12 @@ Memory Maintain a conversation_history and incrementally update the prompt, keep
 
 ### 3. Decision 📋
 
-The Decision component plays the role of a "strategic planner" inside  Ecommerce Product Search Agent.
-Its main job is to synthesize user inputs (from Perception) and contextual memory (from Memory) to intelligently plan the next best action.
+The Decision component plays the role of a **"strategic planner"** inside  Ecommerce Product Search Agent.
+Its main job is to **synthesize user inputs (from Perception) and contextual memory (from Memory)** to intelligently plan the next best action.
 
 It does this by following a carefully designed prompt that guides the agent step-by-step toward making good decisions without wasting tool calls or returning incomplete answers.
 
-### Carefully designed prompt for Ecommerce Search Product RAG Agent
+### Carefully **designed prompt for Ecommerce Search Product RAG Agent**
 
 ```text
 memory_texts = "\n".join(f"- {m.text}" for m in memory_items) or "None"
@@ -308,7 +308,7 @@ Relevant Memories:
 
 ### 4. Action 🛠️
 
-Action executes the strategic decisions formulated previously. It involves dynamically calling MCP-integrated external tools, handling responses, and integrating outputs back into the cognitive flow.
+Action executes the strategic decisions formulated previously. It involves **dynamically calling MCP-integrated external tools**, handling responses, and integrating outputs back into the cognitive flow.
 
 - **Purpose:** Execute planned actions, retrieve results, and finalize outputs.
 - **Example:**
@@ -324,10 +324,10 @@ Action executes the strategic decisions formulated previously. It involves dynam
 ---
 
 ## MCP Integration
-MCP standardizes interactions with external tools, providing a unified interface for dynamic execution and structured communication.
+**MCP** standardizes interactions with external tools, providing a unified interface for **dynamic execution and structured communication.**
 
 ---
-The Model Context Protocol acts like a smart control center. It helps the agent manage its memory, tools, and actions smoothly.
+The Model Context Protocol acts like a smart control center. It helps the **agent manage its memory, tools, and actions smoothly.**
 
 With MCP, the agent can:
 1. Easily understand what tools are available

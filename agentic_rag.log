@@ -1,0 +1,1452 @@
+🧑 What Product do you want to find Today? → [agent] Starting agent...
+[agent] current working directory:  /Users/chiragtagadiya/MyProjects/EAG1/RAG-MCP
+Connection established, creating session...
+[agent] Session created, initializing...
+[agent] MCP session initialized
+Available tools: ['preety_print_product_metadata_response', 'return_ranked_product_response_from_ranked_index', 'product_metadata_analysis_for_refine_or_tuning_search_result', 'add', 'sqrt', 'subtract', 'multiply', 'divide', 'power', 'cbrt', 'factorial', 'log', 'remainder', 'sin', 'cos', 'tan', 'create_thumbnail', 'strings_to_chars_to_int', 'int_list_to_exponential_sum', 'fibonacci_numbers', 'search_product_documents']
+Requesting tool list...
+╭─── 🤖 AGENT ────╮
+│ 21 tools loaded │
+╰─── 00:46:52 ────╯
+╭─── 🔁 LOOP ────╮
+│ Step 1 started │
+╰─── 00:46:52 ───╯
+╭───────────────────────── 🧠 PERCEPTION ─────────────────────────╮
+│ Perception result: {                                            │
+│     "user_input": "backpack for hiking 50l",                    │
+│     "modified_user_input": "hiking backpack with 50L capacity", │
+│     "intent": "find a backpack",                                │
+│     "entities": [                                               │
+│         "ApparelType:Backpack",                                 │
+│         "Activity:Hiking",                                      │
+│         "Capacity:50L"                                          │
+│     ],                                                          │
+│     "tool_hint": "search_product_documents"                     │
+│ }                                                               │
+╰─────────────────────────── 00:46:53 ────────────────────────────╯
+╭────────── 🧵 MEMORY ──────────╮
+│ Retrieved 0 relevant memories │
+╰────────── 00:46:53 ───────────╯
+╭────────────────────────────────── 📋 PLAN ──────────────────────────────────╮
+│ LLM output: Okay, I understand the process.                                 │
+│                                                                             │
+│ First, I need to search for backpacks for hiking with a 50L capacity.       │
+│ FUNCTION_CALL: search_product_documents|query="Backpack Hiking 50L",top_k=5 │
+╰───────────────────────────────── 00:46:54 ──────────────────────────────────╯
+╭────────────────────────────────────────── 📋 PLAN ──────────────────────────────────────────╮
+│ Plan generated: FUNCTION_CALL: search_product_documents|query="Backpack Hiking 50L",top_k=5 │
+╰───────────────────────────────────────── 00:46:54 ──────────────────────────────────────────╯
+╭────────────────────────────────── 🧩 PARSER ──────────────────────────────────╮
+│ Parsed: search_product_documents → {'query': '"Backpack Hiking 50L",top_k=5'} │
+╰────────────────────────────────── 00:46:54 ───────────────────────────────────╯
+╭─────────────────────────────────────── 🛠️ TOOL ────────────────────────────────────────╮
+│ ⚙️ Calling 'search_product_documents' with: {'query': '"Backpack Hiking 50L",top_k=5'} │
+╰────────────────────────────────────── 00:46:54 ───────────────────────────────────────╯
+╭───────────────────────────────────────────────────── 🛠️ TOOL ─────────────────────────────────────────────────────╮
+│ search_product_documents returned: ['{"id": 1556, "product_display_name": "Quechua Forclaz Large  Backpack - 50  │
+│ ltr Orange", "display_categories": "Accessories and Clearance,Sale and Clearance,Accessories,Sale",              │
+│ "product_descriptors": {"description": {"value": "1. Capacity: 61 litres 2. Adjustable and designed for comfort  │
+│ with a ventilated mesh back 3. Easy to carry 4. Comes with compression straps chest strap tensioners hand rests  │
+│ 5. Ample storage space with pockets provided - 1 inner 3 outer 1 on belt This extra-large sized quechua backpack │
+│ is a perfect excuse to put it all in one bag and shoot off on that unplanned but the most welcome trip! It\'s    │
+│ designed to endure harsh conditions encountered in outdoor adventure Sports like trekking or travelling over     │
+│ several days. The accessible bottom of the backpack multiple compartments and pockets adjustable straps and      │
+│ dry-Fit cushioned back make the FORCLAZ Blue - Large - 61 litre backpack a great backpack and a wise buy! Care   │
+│ instructions: Clean by hand using lukewarm soapy water and a brush. Use a waterproofing spray to renew the       │
+│ water-repellent properties of the fabric if required. How to pack a rucksack - Put sleeping equipment at the     │
+│ bottom. Position heavy items close to the back. Clothes can be placed all around these. You can put a mattress   │
+│ under the lid and a tent can be fixed underneath the rucksack if there is no room left inside. Use the pockets   │
+│ to store the small accessories you will need during the hike. How to fit a rucksack - Loosen all the straps      │
+│ (shoulder strap hip belt tensioners). Wear and carry backpack on your back."}}, "article_attributes": {},        │
+│ "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": "Bags"}, "article_type":            │
+│ {"typeName": "Backpacks"}, "product_metadata": {"id": 1556, "price": 2199.0, "discountedPrice": 2199.0,          │
+│ "styleType": "P", "productTypeId": 294, "articleNumber": "922866", "productDisplayName": "Quechua Forclaz Large  │
+│ Backpack - 50 ltr Orange", "variantName": "Forclaz Large", "myntraRating": 10.0, "catalogAddDate": 1445524255,   │
+│ "brandName": "Quechua", "ageGroup": "Adults-Unisex", "gender": "Unisex", "baseColour": "Black", "colour1":       │
+│ "Orange", "colour2": "NA", "fashionType": "Fashion", "season": "Summer", "year": "2011", "usage": "Sports",      │
+│ "vat": 14.5, "displayCategories": "Accessories and Clearance,Sale and Clearance,Accessories,Sale"}}', '{"id":    │
+│ 4602, "product_display_name": "Wildcraft Unisex Red Trailblazer Backpack", "display_categories": "Accessories",  │
+│ "product_descriptors": {"materials_care_desc": {"value": "Nylon Wipe with a clean dry cloth when needed"},       │
+│ "size_fit_desc": {"value": "Height: 74 cm Width: 22 cm Depth: 32 cm"}, "description": {"value": "Red and black   │
+│ backpack has a flap across the mouth with a zip pocket secured with click clasp closures One haul loop two       │
+│ adjustable and padded shoulder straps One main compartment with drawstring closure and click clasp straps Two    │
+│ zip pockets on the sides Has a waist belt with a click clasp closure Disclaimer: Please note that the thread     │
+│ colour in the brand logo may vary from the image shown Note: The inner lining material/colour may vary from what │
+│ is shown in the image Warranty: 5 years against manufacturing defects"}, "style_note": {"value": "The            │
+│ Trailblazer from Wildcraft is a top loading backpack with compression straps for squishing the load and          │
+│ enhancing load stability. Step out of your comfort zone and indulge in the mystery of the great outdoors with    │
+│ this trusty backpack."}}, "article_attributes": {"Occasion": "Casual", "Size": "Medium", "Laptop Size": "NA",    │
+│ "Material": "PVC", "Compartment Closure": "Flap", "Number of Main Compartments": "3 and more"},                  │
+│ "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": "Bags"}, "article_type":            │
+│ {"typeName": "Backpacks"}, "product_metadata": {"id": 4602, "price": 4299.0, "discountedPrice": 1719.0,          │
+│ "styleType": "P", "productTypeId": 597, "articleNumber": "8903338319207", "productDisplayName": "Wildcraft       │
+│ Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red", "myntraRating": 1.0, "catalogAddDate":       │
+│ 1460462084, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex", "gender": "Unisex", "baseColour": "Red",      │
+│ "colour1": "Grey", "colour2": "NA", "fashionType": "Core", "season": "Winter", "year": "2015", "usage":          │
+│ "Travel", "vat": 14.5, "displayCategories": "Accessories"}}', '{"id": 39506, "product_display_name": "Peter      │
+│ England Unisex Black & Green Hiking Backpack", "display_categories": "Accessories", "product_descriptors":       │
+│ {"description": {"value": "Style Note peter england presents a wide range of efficient everyday travel gear      │
+│ combined with impressive style. This hiking bag is a carrier of purpose. The bag comes with attractive and       │
+│ smartly designed compartments and pouches to suit the outdoors and is also sleek and stylish. So saddle up and   │
+│ have a hiking trip of a lifetime! Product Details One main zipped compartment with an insert pocket click clasps │
+│ and an adjustable toggle strap Click clasps on the sides Waist band with click clasps and one mesh zipped pocket │
+│ on the waistband Wide adjustable padded handles and padded back for carrying at ease and to protect the          │
+│ shoulders and back from injuries Mesh back for ventilation Branding on the front Material and Care Synthetic     │
+│ Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm Width: 33 cm Depth: 15 cm"}},  │
+│ "article_attributes": {}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": "Bags"},  │
+│ "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 39506, "price": 3799.0, "discountedPrice": │
+│ 3077.0, "styleType": "P", "productTypeId": 294, "articleNumber": "PLHK312007", "productDisplayName": "Peter      │
+│ England Unisex Black & Green Hiking Backpack", "variantName": "HIKING BAG", "myntraRating": 1.0,                 │
+│ "catalogAddDate": 1460461939, "brandName": "Peter England", "ageGroup": "Adults-Unisex", "gender": "Unisex",     │
+│ "baseColour": "Black", "colour1": "Green", "colour2": "NA", "fashionType": "Fashion", "season": "Summer",        │
+│ "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}', '{"id": 51317,            │
+│ "product_display_name": "Wildcraft Unisex Orange Alpinist 55 Backpack", "display_categories": "Accessories",     │
+│ "product_descriptors": {"description": {"value": "Style Note For those who love outdoor adventures  this bag     │
+│ from wildcraft is just what you need to well be prepared. A practical bag with lots of support ample space and   │
+│ easy to carry this one from Wildcraft is a must have for trips trekking climbing or other adventurous            │
+│ activities. Product Details Orange grey and black backpack with branding on the top of the covering flap Two     │
+│ adjustable heavily padded shoulder straps with connecting strap with a click clock closure a padded strap for    │
+│ added support around your waist with click clock closure haul loops at the bottom One main compartment with      │
+│ toggle strap closure and an internal pocket with a flap closure with removable metal insert for better support   │
+│ flap with click clock closure an internal zippered pocket and adjustable straps on top to cover the main         │
+│ compartment opening Two zippered compartments on the sides and one zippered compartment near the base in front   │
+│ One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to protect   │
+│ your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap around  │
+│ the sides near the bottom Padded back and firm support at the back for support for heavy load Material and Care  │
+│ Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty: 5         │
+│ years"}}, "article_attributes": {"Laptop Compartment": "NA", "Business Unit": "NA", "Occasion": "Casual",        │
+│ "Size": "Large", "Laptop Size": "NA", "Print or Pattern Type": "Solid", "Number of Components": "1", "Number of  │
+│ Zips": "NA", "Tablet Sleeve": "No", "Segment": "NA", "Shoulder Strap Type": "Ergonomic", "Volume in Litres": "Up │
+│ to 23 Litres", "Technology": "NA", "Back": "Mesh", "Features": "NA", "Compartment Closure": "Flap", "Water       │
+│ Resistance": "No", "Warranty": "5 years", "Number of External Pockets": "NA", "Side Pockets": "NA", "Material":  │
+│ "Nylon", "Padded Shoulder Strap": "Padded", "Number of Main Compartments": "3 and more", "Surface Styling":      │
+│ "NA", "External Pocket": "NA", "Brick": "NA", "Haul Loop Type": "NA", "Add-Ons": "NA", "Features 2": "NA",       │
+│ "Family": "NA", "Class": "NA", "Processing Time": "NA"}, "master_category": {"typeName": "Accessories"},         │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 51317, "price": 5699.0, "discountedPrice": 5699.0, "styleType": "P", "productTypeId": 597, "articleNumber":      │
+│ "8903338000877", "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack", "variantName": "Alpinist  │
+│ 55 Orange", "myntraRating": 0.0, "catalogAddDate": 1460542152, "brandName": "Wildcraft", "ageGroup":             │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Orange", "colour1": "Grey", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2015", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 32864, "product_display_name": "Wildcraft Unisex Pink & Grey Backpack",                │
+│ "display_categories": "Accessories", "product_descriptors": {"materials_care_desc": {"value": "Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm"}, "description": {"value": "Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown"}, "style_note": {"value": "This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible."}}, "article_attributes":           │
+│ {"Occasion": "Casual", "Size": "Large", "Laptop Size": "NA", "Material": "Leather", "Compartment Closure":       │
+│ "Drawstring", "Number of Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"},      │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 32864, "price": 1395.0, "discountedPrice": 906.0, "styleType": "DEL", "productTypeId": 294, "articleNumber":     │
+│ "8903338006893", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack", "variantName": "Reflex",         │
+│ "myntraRating": 0.0, "catalogAddDate": 1460461939, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Pink", "colour1": "Grey", "colour2": "NA", "fashionType": "Fashion",          │
+│ "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}']       │
+╰──────────────────────────────────────────────────── 00:46:55 ────────────────────────────────────────────────────╯
+╭─── 🔁 LOOP ────╮
+│ Step 2 started │
+╰─── 00:46:58 ───╯
+╭───────────────────────────────────────────────── 🧠 PERCEPTION ──────────────────────────────────────────────────╮
+│ Perception result: {                                                                                             │
+│     "user_input": "Original task: backpack for hiking 50l\nPrevious output: ['{\"id\": 1556,                     │
+│ \"product_display_name\": \"Quechua Forclaz Large  Backpack - 50 ltr Orange\", \"display_categories\":           │
+│ \"Accessories and Clearance,Sale and Clearance,Accessories,Sale\", \"product_descriptors\": {\"description\":    │
+│ {\"value\": \"1. Capacity: 61 litres 2. Adjustable and designed for comfort with a ventilated mesh back 3. Easy  │
+│ to carry 4. Comes with compression straps chest strap tensioners hand rests 5. Ample storage space with pockets  │
+│ provided - 1 inner 3 outer 1 on belt This extra-large sized quechua backpack is a perfect excuse to put it all   │
+│ in one bag and shoot off on that unplanned but the most welcome trip! It\\'s designed to endure harsh conditions │
+│ encountered in outdoor adventure Sports like trekking or travelling over several days. The accessible bottom of  │
+│ the backpack multiple compartments and pockets adjustable straps and dry-Fit cushioned back make the FORCLAZ     │
+│ Blue - Large - 61 litre backpack a great backpack and a wise buy! Care instructions: Clean by hand using         │
+│ lukewarm soapy water and a brush. Use a waterproofing spray to renew the water-repellent properties of the       │
+│ fabric if required. How to pack a rucksack - Put sleeping equipment at the bottom. Position heavy items close to │
+│ the back. Clothes can be placed all around these. You can put a mattress under the lid and a tent can be fixed   │
+│ underneath the rucksack if there is no room left inside. Use the pockets to store the small accessories you will │
+│ need during the hike. How to fit a rucksack - Loosen all the straps (shoulder strap hip belt tensioners). Wear   │
+│ and carry backpack on your back.\"}}, \"article_attributes\": {}, \"master_category\": {\"typeName\":            │
+│ \"Accessories\"}, \"sub_category\": {\"typeName\": \"Bags\"}, \"article_type\": {\"typeName\": \"Backpacks\"},   │
+│ \"product_metadata\": {\"id\": 1556, \"price\": 2199.0, \"discountedPrice\": 2199.0, \"styleType\": \"P\",       │
+│ \"productTypeId\": 294, \"articleNumber\": \"922866\", \"productDisplayName\": \"Quechua Forclaz Large  Backpack │
+│ - 50 ltr Orange\", \"variantName\": \"Forclaz Large\", \"myntraRating\": 10.0, \"catalogAddDate\": 1445524255,   │
+│ \"brandName\": \"Quechua\", \"ageGroup\": \"Adults-Unisex\", \"gender\": \"Unisex\", \"baseColour\": \"Black\",  │
+│ \"colour1\": \"Orange\", \"colour2\": \"NA\", \"fashionType\": \"Fashion\", \"season\": \"Summer\", \"year\":    │
+│ \"2011\", \"usage\": \"Sports\", \"vat\": 14.5, \"displayCategories\": \"Accessories and Clearance,Sale and      │
+│ Clearance,Accessories,Sale\"}}', '{\"id\": 4602, \"product_display_name\": \"Wildcraft Unisex Red Trailblazer    │
+│ Backpack\", \"display_categories\": \"Accessories\", \"product_descriptors\": {\"materials_care_desc\":          │
+│ {\"value\": \"Nylon Wipe with a clean dry cloth when needed\"}, \"size_fit_desc\": {\"value\": \"Height: 74 cm   │
+│ Width: 22 cm Depth: 32 cm\"}, \"description\": {\"value\": \"Red and black backpack has a flap across the mouth  │
+│ with a zip pocket secured with click clasp closures One haul loop two adjustable and padded shoulder straps One  │
+│ main compartment with drawstring closure and click clasp straps Two zip pockets on the sides Has a waist belt    │
+│ with a click clasp closure Disclaimer: Please note that the thread colour in the brand logo may vary from the    │
+│ image shown Note: The inner lining material/colour may vary from what is shown in the image Warranty: 5 years    │
+│ against manufacturing defects\"}, \"style_note\": {\"value\": \"The Trailblazer from Wildcraft is a top loading  │
+│ backpack with compression straps for squishing the load and enhancing load stability. Step out of your comfort   │
+│ zone and indulge in the mystery of the great outdoors with this trusty backpack.\"}}, \"article_attributes\":    │
+│ {\"Occasion\": \"Casual\", \"Size\": \"Medium\", \"Laptop Size\": \"NA\", \"Material\": \"PVC\", \"Compartment   │
+│ Closure\": \"Flap\", \"Number of Main Compartments\": \"3 and more\"}, \"master_category\": {\"typeName\":       │
+│ \"Accessories\"}, \"sub_category\": {\"typeName\": \"Bags\"}, \"article_type\": {\"typeName\": \"Backpacks\"},   │
+│ \"product_metadata\": {\"id\": 4602, \"price\": 4299.0, \"discountedPrice\": 1719.0, \"styleType\": \"P\",       │
+│ \"productTypeId\": 597, \"articleNumber\": \"8903338319207\", \"productDisplayName\": \"Wildcraft Unisex Red     │
+│ Trailblazer Backpack\", \"variantName\": \"Trailblazer Red\", \"myntraRating\": 1.0, \"catalogAddDate\":         │
+│ 1460462084, \"brandName\": \"Wildcraft\", \"ageGroup\": \"Adults-Unisex\", \"gender\": \"Unisex\",               │
+│ \"baseColour\": \"Red\", \"colour1\": \"Grey\", \"colour2\": \"NA\", \"fashionType\": \"Core\", \"season\":      │
+│ \"Winter\", \"year\": \"2015\", \"usage\": \"Travel\", \"vat\": 14.5, \"displayCategories\": \"Accessories\"}}', │
+│ '{\"id\": 39506, \"product_display_name\": \"Peter England Unisex Black & Green Hiking Backpack\",               │
+│ \"display_categories\": \"Accessories\", \"product_descriptors\": {\"description\": {\"value\": \"Style Note     │
+│ peter england presents a wide range of efficient everyday travel gear combined with impressive style. This       │
+│ hiking bag is a carrier of purpose. The bag comes with attractive and smartly designed compartments and pouches  │
+│ to suit the outdoors and is also sleek and stylish. So saddle up and have a hiking trip of a lifetime! Product   │
+│ Details One main zipped compartment with an insert pocket click clasps and an adjustable toggle strap Click      │
+│ clasps on the sides Waist band with click clasps and one mesh zipped pocket on the waistband Wide adjustable     │
+│ padded handles and padded back for carrying at ease and to protect the shoulders and back from injuries Mesh     │
+│ back for ventilation Branding on the front Material and Care Synthetic Wipe with a clean dry cloth to remove     │
+│ dust Warranty : 6 months Size Height: 64 cm Width: 33 cm Depth: 15 cm\"}}, \"article_attributes\": {},           │
+│ \"master_category\": {\"typeName\": \"Accessories\"}, \"sub_category\": {\"typeName\": \"Bags\"},                │
+│ \"article_type\": {\"typeName\": \"Backpacks\"}, \"product_metadata\": {\"id\": 39506, \"price\": 3799.0,        │
+│ \"discountedPrice\": 3077.0, \"styleType\": \"P\", \"productTypeId\": 294, \"articleNumber\": \"PLHK312007\",    │
+│ \"productDisplayName\": \"Peter England Unisex Black & Green Hiking Backpack\", \"variantName\": \"HIKING BAG\", │
+│ \"myntraRating\": 1.0, \"catalogAddDate\": 1460461939, \"brandName\": \"Peter England\", \"ageGroup\":           │
+│ \"Adults-Unisex\", \"gender\": \"Unisex\", \"baseColour\": \"Black\", \"colour1\": \"Green\", \"colour2\":       │
+│ \"NA\", \"fashionType\": \"Fashion\", \"season\": \"Summer\", \"year\": \"2012\", \"usage\": \"Casual\",         │
+│ \"vat\": 14.5, \"displayCategories\": \"Accessories\"}}', '{\"id\": 51317, \"product_display_name\": \"Wildcraft │
+│ Unisex Orange Alpinist 55 Backpack\", \"display_categories\": \"Accessories\", \"product_descriptors\":          │
+│ {\"description\": {\"value\": \"Style Note For those who love outdoor adventures  this bag from wildcraft is     │
+│ just what you need to well be prepared. A practical bag with lots of support ample space and easy to carry this  │
+│ one from Wildcraft is a must have for trips trekking climbing or other adventurous activities. Product Details   │
+│ Orange grey and black backpack with branding on the top of the covering flap Two adjustable heavily padded       │
+│ shoulder straps with connecting strap with a click clock closure a padded strap for added support around your    │
+│ waist with click clock closure haul loops at the bottom One main compartment with toggle strap closure and an    │
+│ internal pocket with a flap closure with removable metal insert for better support flap with click clock closure │
+│ an internal zippered pocket and adjustable straps on top to cover the main compartment opening Two zippered      │
+│ compartments on the sides and one zippered compartment near the base in front One zippered compartment at the    │
+│ bottom to store the attached and elasticated rain cover for the bag to protect your belongings Adjustable straps │
+│ with click clock closures around the sides and bottom Adjustable strap around the sides near the bottom Padded   │
+│ back and firm support at the back for support for heavy load Material and Care Synthetic Machine wash only Do    │
+│ not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty: 5 years\"}}, \"article_attributes\":     │
+│ {\"Laptop Compartment\": \"NA\", \"Business Unit\": \"NA\", \"Occasion\": \"Casual\", \"Size\": \"Large\",       │
+│ \"Laptop Size\": \"NA\", \"Print or Pattern Type\": \"Solid\", \"Number of Components\": \"1\", \"Number of      │
+│ Zips\": \"NA\", \"Tablet Sleeve\": \"No\", \"Segment\": \"NA\", \"Shoulder Strap Type\": \"Ergonomic\", \"Volume │
+│ in Litres\": \"Up to 23 Litres\", \"Technology\": \"NA\", \"Back\": \"Mesh\", \"Features\": \"NA\",              │
+│ \"Compartment Closure\": \"Flap\", \"Water Resistance\": \"No\", \"Warranty\": \"5 years\", \"Number of External │
+│ Pockets\": \"NA\", \"Side Pockets\": \"NA\", \"Material\": \"Nylon\", \"Padded Shoulder Strap\": \"Padded\",     │
+│ \"Number of Main Compartments\": \"3 and more\", \"Surface Styling\": \"NA\", \"External Pocket\": \"NA\",       │
+│ \"Brick\": \"NA\", \"Haul Loop Type\": \"NA\", \"Add-Ons\": \"NA\", \"Features 2\": \"NA\", \"Family\": \"NA\",  │
+│ \"Class\": \"NA\", \"Processing Time\": \"NA\"}, \"master_category\": {\"typeName\": \"Accessories\"},           │
+│ \"sub_category\": {\"typeName\": \"Bags\"}, \"article_type\": {\"typeName\": \"Backpacks\"},                     │
+│ \"product_metadata\": {\"id\": 51317, \"price\": 5699.0, \"discountedPrice\": 5699.0, \"styleType\": \"P\",      │
+│ \"productTypeId\": 597, \"articleNumber\": \"8903338000877\", \"productDisplayName\": \"Wildcraft Unisex Orange  │
+│ Alpinist 55 Backpack\", \"variantName\": \"Alpinist 55 Orange\", \"myntraRating\": 0.0, \"catalogAddDate\":      │
+│ 1460542152, \"brandName\": \"Wildcraft\", \"ageGroup\": \"Adults-Unisex\", \"gender\": \"Unisex\",               │
+│ \"baseColour\": \"Orange\", \"colour1\": \"Grey\", \"colour2\": \"NA\", \"fashionType\": \"Fashion\",            │
+│ \"season\": \"Summer\", \"year\": \"2015\", \"usage\": \"Casual\", \"vat\": 14.5, \"displayCategories\":         │
+│ \"Accessories\"}}', '{\"id\": 32864, \"product_display_name\": \"Wildcraft Unisex Pink & Grey Backpack\",        │
+│ \"display_categories\": \"Accessories\", \"product_descriptors\": {\"materials_care_desc\": {\"value\":          │
+│ \"Polyester and nylon Wipe with a clean dry cloth when needed\"}, \"size_fit_desc\": {\"value\": \"Height: 45 cm │
+│ Width: 30 cm Depth: 18 cm\"}, \"description\": {\"value\": \"Pink and grey backpack One haul loop two padded and │
+│ adjustable shoulder straps Two main zip compartments one with an organizer sleeve Two external zip pockets on    │
+│ the front A mesh stash pocket on one side Padded back Warranty: 5 years from the date of purchase against        │
+│ manufacturing defects Note: The inner lining material/colour may vary from what is shown in the image            │
+│ Disclaimer: Please note that the thread colour in the brand logo may vary from the image shown\"},               │
+│ \"style_note\": {\"value\": \"This backpack from Wildcraft easily balances the fine line between sport and style │
+│ with its minimalist design. Wear this to a road trip or a trek into the woods to keep your belongings secure and │
+│ accessible.\"}}, \"article_attributes\": {\"Occasion\": \"Casual\", \"Size\": \"Large\", \"Laptop Size\":        │
+│ \"NA\", \"Material\": \"Leather\", \"Compartment Closure\": \"Drawstring\", \"Number of Main Compartments\": \"3 │
+│ and more\"}, \"master_category\": {\"typeName\": \"Accessories\"}, \"sub_category\": {\"typeName\": \"Bags\"},   │
+│ \"article_type\": {\"typeName\": \"Backpacks\"}, \"product_metadata\": {\"id\": 32864, \"price\": 1395.0,        │
+│ \"discountedPrice\": 906.0, \"styleType\": \"DEL\", \"productTypeId\": 294, \"articleNumber\":                   │
+│ \"8903338006893\", \"productDisplayName\": \"Wildcraft Unisex Pink & Grey Backpack\", \"variantName\":           │
+│ \"Reflex\", \"myntraRating\": 0.0, \"catalogAddDate\": 1460461939, \"brandName\": \"Wildcraft\", \"ageGroup\":   │
+│ \"Adults-Unisex\", \"gender\": \"Unisex\", \"baseColour\": \"Pink\", \"colour1\": \"Grey\", \"colour2\": \"NA\", │
+│ \"fashionType\": \"Fashion\", \"season\": \"Summer\", \"year\": \"2012\", \"usage\": \"Casual\", \"vat\": 14.5,  │
+│ \"displayCategories\": \"Accessories\"}}']\nWhat should I do next?",                                             │
+│     "modified_user_input": "hiking backpack with a capacity of 50 liters",                                       │
+│     "intent": "search for a hiking backpack",                                                                    │
+│     "entities": [                                                                                                │
+│         "ApparelType:backpack",                                                                                  │
+│         "Usage:hiking",                                                                                          │
+│         "Capacity:50L"                                                                                           │
+│     ],                                                                                                           │
+│     "tool_hint": "search_product_documents"                                                                      │
+│ }                                                                                                                │
+╰──────────────────────────────────────────────────── 00:46:59 ────────────────────────────────────────────────────╯
+╭────────── 🧵 MEMORY ──────────╮
+│ Retrieved 3 relevant memories │
+╰────────── 00:47:02 ───────────╯
+╭──────────────────────────────────────────────────── 📋 PLAN ─────────────────────────────────────────────────────╮
+│ LLM output: The search query "Backpack Hiking 50L" has been used multiple times and the results are the same.    │
+│ The results contain backpacks that are around 50L and suitable for hiking or travel. To provide a more focused   │
+│ result, I will print the metadata of the products.                                                               │
+│ FUNCTION_CALL: preety_print_product_metadata_response|product_response_list=['{"id": 1556,                       │
+│ "product_display_name": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "display_categories": "Accessories    │
+│ and Clearance,Sale and Clearance,Accessories,Sale", "product_descriptors": {"description": {"value": "1.         │
+│ Capacity: 61 litres 2. Adjustable and designed for comfort with a ventilated mesh back 3. Easy to carry 4. Comes │
+│ with compression straps chest strap tensioners hand rests 5. Ample storage space with pockets provided - 1 inner │
+│ 3 outer 1 on belt This extra-large sized quechua backpack is a perfect excuse to put it all in one bag and shoot │
+│ off on that unplanned but the most welcome trip! It\'s designed to endure harsh conditions encountered in        │
+│ outdoor adventure Sports like trekking or travelling over several days. The accessible bottom of the backpack    │
+│ multiple compartments and pockets adjustable straps and dry-Fit cushioned back make the FORCLAZ Blue - Large -   │
+│ 61 litre backpack a great backpack and a wise buy! Care instructions: Clean by hand using lukewarm soapy water   │
+│ and a brush. Use a waterproofing spray to renew the water-repellent properties of the fabric if required. How to │
+│ pack a rucksack - Put sleeping equipment at the bottom. Position heavy items close to the back. Clothes can be   │
+│ placed all around these. You can put a mattress under the lid and a tent can be fixed underneath the rucksack if │
+│ there is no room left inside. Use the pockets to store the small accessories you will need during the hike. How  │
+│ to fit a rucksack - Loosen all the straps (shoulder strap hip belt tensioners). Wear and carry backpack on your  │
+│ back."}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 1556, "price": 2199.0,            │
+│ "discountedPrice": 2199.0, "styleType": "P", "productTypeId": 294, "articleNumber": "922866",                    │
+│ "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "variantName": "Forclaz Large",         │
+│ "myntraRating": 10.0, "catalogAddDate": 1445524255, "brandName": "Quechua", "ageGroup": "Adults-Unisex",         │
+│ "gender": "Unisex", "baseColour": "Black", "colour1": "Orange", "colour2": "NA", "fashionType": "Fashion",       │
+│ "season": "Summer", "year": "2011", "usage": "Sports", "vat": 14.5, "displayCategories": "Accessories and        │
+│ Clearance,Sale and Clearance,Accessories,Sale"}}', '{"id": 4602, "product_display_name": "Wildcraft Unisex Red   │
+│ Trailblazer Backpack", "display_categories": "Accessories", "product_descriptors": {"materials_care_desc":       │
+│ {"value": "Nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 74 cm Width: 22  │
+│ cm Depth: 32 cm"}, "description": {"value": "Red and black backpack has a flap across the mouth with a zip       │
+│ pocket secured with click clasp closures One haul loop two adjustable and padded shoulder straps One main        │
+│ compartment with drawstring closure and click clasp straps Two zip pockets on the sides Has a waist belt with a  │
+│ click clasp closure Disclaimer: Please note that the thread colour in the brand logo may vary from the image     │
+│ shown Note: The inner lining material/colour may vary from what is shown in the image Warranty: 5 years against  │
+│ manufacturing defects"}, "style_note": {"value": "The Trailblazer from Wildcraft is a top loading backpack with  │
+│ compression straps for squishing the load and enhancing load stability. Step out of your comfort zone and        │
+│ indulge in the mystery of the great outdoors with this trusty backpack."}}, "article_attributes": {"Occasion":   │
+│ "Casual", "Size": "Medium", "Laptop Size": "NA", "Material": "PVC", "Compartment Closure": "Flap", "Number of    │
+│ Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName":  │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 4602, "price": 4299.0,            │
+│ "discountedPrice": 1719.0, "styleType": "P", "productTypeId": 597, "articleNumber": "8903338319207",             │
+│ "productDisplayName": "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red",             │
+│ "myntraRating": 1.0, "catalogAddDate": 1460462084, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Red", "colour1": "Grey", "colour2": "NA", "fashionType": "Core", "season":    │
+│ "Winter", "year": "2015", "usage": "Travel", "vat": 14.5, "displayCategories": "Accessories"}}', '{"id": 39506,  │
+│ "product_display_name": "Peter England Unisex Black & Green Hiking Backpack", "display_categories":              │
+│ "Accessories", "product_descriptors": {"description": {"value": "Style Note peter england presents a wide range  │
+│ of efficient everyday travel gear combined with impressive style. This hiking bag is a carrier of purpose. The   │
+│ bag comes with attractive and smartly designed compartments and pouches to suit the outdoors and is also sleek   │
+│ and stylish. So saddle up and have a hiking trip of a lifetime! Product Details One main zipped compartment with │
+│ an insert pocket click clasps and an adjustable toggle strap Click clasps on the sides Waist band with click     │
+│ clasps and one mesh zipped pocket on the waistband Wide adjustable padded handles and padded back for carrying   │
+│ at ease and to protect the shoulders and back from injuries Mesh back for ventilation Branding on the front      │
+│ Material and Care Synthetic Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm    │
+│ Width: 33 cm Depth: 15 cm"}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"},          │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 39506, "price": 3799.0, "discountedPrice": 3077.0, "styleType": "P", "productTypeId": 294, "articleNumber":      │
+│ "PLHK312007", "productDisplayName": "Peter England Unisex Black & Green Hiking Backpack", "variantName": "HIKING │
+│ BAG", "myntraRating": 1.0, "catalogAddDate": 1460461939, "brandName": "Peter England", "ageGroup":               │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Black", "colour1": "Green", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 51317, "product_display_name": "Wildcraft Unisex Orange Alpinist 55 Backpack",         │
+│ "display_categories": "Accessories", "product_descriptors": {"description": {"value": "Style Note For those who  │
+│ love outdoor adventures  this bag from wildcraft is just what you need to well be prepared. A practical bag with │
+│ lots of support ample space and easy to carry this one from Wildcraft is a must have for trips trekking climbing │
+│ or other adventurous activities. Product Details Orange grey and black backpack with branding on the top of the  │
+│ covering flap Two adjustable heavily padded shoulder straps with connecting strap with a click clock closure a   │
+│ padded strap for added support around your waist with click clock closure haul loops at the bottom One main      │
+│ compartment with toggle strap closure and an internal pocket with a flap closure with removable metal insert for │
+│ better support flap with click clock closure an internal zippered pocket and adjustable straps on top to cover   │
+│ the main compartment opening Two zippered compartments on the sides and one zippered compartment near the base   │
+│ in front One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to  │
+│ protect your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap │
+│ around the sides near the bottom Padded back and firm support at the back for support for heavy load Material    │
+│ and Care Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty:  │
+│ 5 years"}}, "article_attributes": {"Laptop Compartment": "NA", "Business Unit": "NA", "Occasion": "Casual",      │
+│ "Size": "Large", "Laptop Size": "NA", "Print or Pattern Type": "Solid", "Number of Components": "1", "Number of  │
+│ Zips": "NA", "Tablet Sleeve": "No", "Segment": "NA", "Shoulder Strap Type": "Ergonomic", "Volume in Litres": "Up │
+│ to 23 Litres", "Technology": "NA", "Back": "Mesh", "Features": "NA", "Compartment Closure": "Flap", "Water       │
+│ Resistance": "No", "Warranty": "5 years", "Number of External Pockets": "NA", "Side Pockets": "NA", "Material":  │
+│ "Nylon", "Padded Shoulder Strap": "Padded", "Number of Main Compartments": "3 and more", "Surface Styling":      │
+│ "NA", "External Pocket": "NA", "Brick": "NA", "Haul Loop Type": "NA", "Add-Ons": "NA", "Features 2": "NA",       │
+│ "Family": "NA", "Class": "NA", "Processing Time": "NA"}, "master_category": {"typeName": "Accessories"},         │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 51317, "price": 5699.0, "discountedPrice": 5699.0, "styleType": "P", "productTypeId": 597, "articleNumber":      │
+│ "8903338000877", "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack", "variantName": "Alpinist  │
+│ 55 Orange", "myntraRating": 0.0, "catalogAddDate": 1460542152, "brandName": "Wildcraft", "ageGroup":             │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Orange", "colour1": "Grey", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2015", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 32864, "product_display_name": "Wildcraft Unisex Pink & Grey Backpack",                │
+│ "display_categories": "Accessories", "product_descriptors": {"materials_care_desc": {"value": "Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm"}, "description": {"value": "Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown"}, "style_note": {"value": "This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible."}}, "article_attributes":           │
+│ {"Occasion": "Casual", "Size": "Large", "Laptop Size": "NA", "Material": "Leather", "Compartment Closure":       │
+│ "Drawstring", "Number of Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"},      │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 32864, "price": 1395.0, "discountedPrice": 906.0, "styleType": "DEL", "productTypeId": 294, "articleNumber":     │
+│ "8903338006893", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack", "variantName": "Reflex",         │
+│ "myntraRating": 0.0, "catalogAddDate": 1460461939, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Pink", "colour1": "Grey", "colour2": "NA", "fashionType": "Fashion",          │
+│ "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}']       │
+╰──────────────────────────────────────────────────── 00:47:16 ────────────────────────────────────────────────────╯
+╭──────────────────────────────────────────────────── 📋 PLAN ─────────────────────────────────────────────────────╮
+│ Plan generated: FUNCTION_CALL: preety_print_product_metadata_response|product_response_list=['{"id": 1556,       │
+│ "product_display_name": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "display_categories": "Accessories    │
+│ and Clearance,Sale and Clearance,Accessories,Sale", "product_descriptors": {"description": {"value": "1.         │
+│ Capacity: 61 litres 2. Adjustable and designed for comfort with a ventilated mesh back 3. Easy to carry 4. Comes │
+│ with compression straps chest strap tensioners hand rests 5. Ample storage space with pockets provided - 1 inner │
+│ 3 outer 1 on belt This extra-large sized quechua backpack is a perfect excuse to put it all in one bag and shoot │
+│ off on that unplanned but the most welcome trip! It\'s designed to endure harsh conditions encountered in        │
+│ outdoor adventure Sports like trekking or travelling over several days. The accessible bottom of the backpack    │
+│ multiple compartments and pockets adjustable straps and dry-Fit cushioned back make the FORCLAZ Blue - Large -   │
+│ 61 litre backpack a great backpack and a wise buy! Care instructions: Clean by hand using lukewarm soapy water   │
+│ and a brush. Use a waterproofing spray to renew the water-repellent properties of the fabric if required. How to │
+│ pack a rucksack - Put sleeping equipment at the bottom. Position heavy items close to the back. Clothes can be   │
+│ placed all around these. You can put a mattress under the lid and a tent can be fixed underneath the rucksack if │
+│ there is no room left inside. Use the pockets to store the small accessories you will need during the hike. How  │
+│ to fit a rucksack - Loosen all the straps (shoulder strap hip belt tensioners). Wear and carry backpack on your  │
+│ back."}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 1556, "price": 2199.0,            │
+│ "discountedPrice": 2199.0, "styleType": "P", "productTypeId": 294, "articleNumber": "922866",                    │
+│ "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "variantName": "Forclaz Large",         │
+│ "myntraRating": 10.0, "catalogAddDate": 1445524255, "brandName": "Quechua", "ageGroup": "Adults-Unisex",         │
+│ "gender": "Unisex", "baseColour": "Black", "colour1": "Orange", "colour2": "NA", "fashionType": "Fashion",       │
+│ "season": "Summer", "year": "2011", "usage": "Sports", "vat": 14.5, "displayCategories": "Accessories and        │
+│ Clearance,Sale and Clearance,Accessories,Sale"}}', '{"id": 4602, "product_display_name": "Wildcraft Unisex Red   │
+│ Trailblazer Backpack", "display_categories": "Accessories", "product_descriptors": {"materials_care_desc":       │
+│ {"value": "Nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 74 cm Width: 22  │
+│ cm Depth: 32 cm"}, "description": {"value": "Red and black backpack has a flap across the mouth with a zip       │
+│ pocket secured with click clasp closures One haul loop two adjustable and padded shoulder straps One main        │
+│ compartment with drawstring closure and click clasp straps Two zip pockets on the sides Has a waist belt with a  │
+│ click clasp closure Disclaimer: Please note that the thread colour in the brand logo may vary from the image     │
+│ shown Note: The inner lining material/colour may vary from what is shown in the image Warranty: 5 years against  │
+│ manufacturing defects"}, "style_note": {"value": "The Trailblazer from Wildcraft is a top loading backpack with  │
+│ compression straps for squishing the load and enhancing load stability. Step out of your comfort zone and        │
+│ indulge in the mystery of the great outdoors with this trusty backpack."}}, "article_attributes": {"Occasion":   │
+│ "Casual", "Size": "Medium", "Laptop Size": "NA", "Material": "PVC", "Compartment Closure": "Flap", "Number of    │
+│ Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName":  │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 4602, "price": 4299.0,            │
+│ "discountedPrice": 1719.0, "styleType": "P", "productTypeId": 597, "articleNumber": "8903338319207",             │
+│ "productDisplayName": "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red",             │
+│ "myntraRating": 1.0, "catalogAddDate": 1460462084, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Red", "colour1": "Grey", "colour2": "NA", "fashionType": "Core", "season":    │
+│ "Winter", "year": "2015", "usage": "Travel", "vat": 14.5, "displayCategories": "Accessories"}}', '{"id": 39506,  │
+│ "product_display_name": "Peter England Unisex Black & Green Hiking Backpack", "display_categories":              │
+│ "Accessories", "product_descriptors": {"description": {"value": "Style Note peter england presents a wide range  │
+│ of efficient everyday travel gear combined with impressive style. This hiking bag is a carrier of purpose. The   │
+│ bag comes with attractive and smartly designed compartments and pouches to suit the outdoors and is also sleek   │
+│ and stylish. So saddle up and have a hiking trip of a lifetime! Product Details One main zipped compartment with │
+│ an insert pocket click clasps and an adjustable toggle strap Click clasps on the sides Waist band with click     │
+│ clasps and one mesh zipped pocket on the waistband Wide adjustable padded handles and padded back for carrying   │
+│ at ease and to protect the shoulders and back from injuries Mesh back for ventilation Branding on the front      │
+│ Material and Care Synthetic Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm    │
+│ Width: 33 cm Depth: 15 cm"}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"},          │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 39506, "price": 3799.0, "discountedPrice": 3077.0, "styleType": "P", "productTypeId": 294, "articleNumber":      │
+│ "PLHK312007", "productDisplayName": "Peter England Unisex Black & Green Hiking Backpack", "variantName": "HIKING │
+│ BAG", "myntraRating": 1.0, "catalogAddDate": 1460461939, "brandName": "Peter England", "ageGroup":               │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Black", "colour1": "Green", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 51317, "product_display_name": "Wildcraft Unisex Orange Alpinist 55 Backpack",         │
+│ "display_categories": "Accessories", "product_descriptors": {"description": {"value": "Style Note For those who  │
+│ love outdoor adventures  this bag from wildcraft is just what you need to well be prepared. A practical bag with │
+│ lots of support ample space and easy to carry this one from Wildcraft is a must have for trips trekking climbing │
+│ or other adventurous activities. Product Details Orange grey and black backpack with branding on the top of the  │
+│ covering flap Two adjustable heavily padded shoulder straps with connecting strap with a click clock closure a   │
+│ padded strap for added support around your waist with click clock closure haul loops at the bottom One main      │
+│ compartment with toggle strap closure and an internal pocket with a flap closure with removable metal insert for │
+│ better support flap with click clock closure an internal zippered pocket and adjustable straps on top to cover   │
+│ the main compartment opening Two zippered compartments on the sides and one zippered compartment near the base   │
+│ in front One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to  │
+│ protect your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap │
+│ around the sides near the bottom Padded back and firm support at the back for support for heavy load Material    │
+│ and Care Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty:  │
+│ 5 years"}}, "article_attributes": {"Laptop Compartment": "NA", "Business Unit": "NA", "Occasion": "Casual",      │
+│ "Size": "Large", "Laptop Size": "NA", "Print or Pattern Type": "Solid", "Number of Components": "1", "Number of  │
+│ Zips": "NA", "Tablet Sleeve": "No", "Segment": "NA", "Shoulder Strap Type": "Ergonomic", "Volume in Litres": "Up │
+│ to 23 Litres", "Technology": "NA", "Back": "Mesh", "Features": "NA", "Compartment Closure": "Flap", "Water       │
+│ Resistance": "No", "Warranty": "5 years", "Number of External Pockets": "NA", "Side Pockets": "NA", "Material":  │
+│ "Nylon", "Padded Shoulder Strap": "Padded", "Number of Main Compartments": "3 and more", "Surface Styling":      │
+│ "NA", "External Pocket": "NA", "Brick": "NA", "Haul Loop Type": "NA", "Add-Ons": "NA", "Features 2": "NA",       │
+│ "Family": "NA", "Class": "NA", "Processing Time": "NA"}, "master_category": {"typeName": "Accessories"},         │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 51317, "price": 5699.0, "discountedPrice": 5699.0, "styleType": "P", "productTypeId": 597, "articleNumber":      │
+│ "8903338000877", "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack", "variantName": "Alpinist  │
+│ 55 Orange", "myntraRating": 0.0, "catalogAddDate": 1460542152, "brandName": "Wildcraft", "ageGroup":             │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Orange", "colour1": "Grey", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2015", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 32864, "product_display_name": "Wildcraft Unisex Pink & Grey Backpack",                │
+│ "display_categories": "Accessories", "product_descriptors": {"materials_care_desc": {"value": "Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm"}, "description": {"value": "Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown"}, "style_note": {"value": "This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible."}}, "article_attributes":           │
+│ {"Occasion": "Casual", "Size": "Large", "Laptop Size": "NA", "Material": "Leather", "Compartment Closure":       │
+│ "Drawstring", "Number of Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"},      │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 32864, "price": 1395.0, "discountedPrice": 906.0, "styleType": "DEL", "productTypeId": 294, "articleNumber":     │
+│ "8903338006893", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack", "variantName": "Reflex",         │
+│ "myntraRating": 0.0, "catalogAddDate": 1460461939, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Pink", "colour1": "Grey", "colour2": "NA", "fashionType": "Fashion",          │
+│ "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}']       │
+╰──────────────────────────────────────────────────── 00:47:16 ────────────────────────────────────────────────────╯
+╭─────────────────────────────────────────────────── 🧩 PARSER ────────────────────────────────────────────────────╮
+│ Parsed: preety_print_product_metadata_response → {'product_response_list': ['{"id": 1556,                        │
+│ "product_display_name": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "display_categories": "Accessories    │
+│ and Clearance,Sale and Clearance,Accessories,Sale", "product_descriptors": {"description": {"value": "1.         │
+│ Capacity: 61 litres 2. Adjustable and designed for comfort with a ventilated mesh back 3. Easy to carry 4. Comes │
+│ with compression straps chest strap tensioners hand rests 5. Ample storage space with pockets provided - 1 inner │
+│ 3 outer 1 on belt This extra-large sized quechua backpack is a perfect excuse to put it all in one bag and shoot │
+│ off on that unplanned but the most welcome trip! It\'s designed to endure harsh conditions encountered in        │
+│ outdoor adventure Sports like trekking or travelling over several days. The accessible bottom of the backpack    │
+│ multiple compartments and pockets adjustable straps and dry-Fit cushioned back make the FORCLAZ Blue - Large -   │
+│ 61 litre backpack a great backpack and a wise buy! Care instructions: Clean by hand using lukewarm soapy water   │
+│ and a brush. Use a waterproofing spray to renew the water-repellent properties of the fabric if required. How to │
+│ pack a rucksack - Put sleeping equipment at the bottom. Position heavy items close to the back. Clothes can be   │
+│ placed all around these. You can put a mattress under the lid and a tent can be fixed underneath the rucksack if │
+│ there is no room left inside. Use the pockets to store the small accessories you will need during the hike. How  │
+│ to fit a rucksack - Loosen all the straps (shoulder strap hip belt tensioners). Wear and carry backpack on your  │
+│ back."}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 1556, "price": 2199.0,            │
+│ "discountedPrice": 2199.0, "styleType": "P", "productTypeId": 294, "articleNumber": "922866",                    │
+│ "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "variantName": "Forclaz Large",         │
+│ "myntraRating": 10.0, "catalogAddDate": 1445524255, "brandName": "Quechua", "ageGroup": "Adults-Unisex",         │
+│ "gender": "Unisex", "baseColour": "Black", "colour1": "Orange", "colour2": "NA", "fashionType": "Fashion",       │
+│ "season": "Summer", "year": "2011", "usage": "Sports", "vat": 14.5, "displayCategories": "Accessories and        │
+│ Clearance,Sale and Clearance,Accessories,Sale"}}', '{"id": 4602, "product_display_name": "Wildcraft Unisex Red   │
+│ Trailblazer Backpack", "display_categories": "Accessories", "product_descriptors": {"materials_care_desc":       │
+│ {"value": "Nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 74 cm Width: 22  │
+│ cm Depth: 32 cm"}, "description": {"value": "Red and black backpack has a flap across the mouth with a zip       │
+│ pocket secured with click clasp closures One haul loop two adjustable and padded shoulder straps One main        │
+│ compartment with drawstring closure and click clasp straps Two zip pockets on the sides Has a waist belt with a  │
+│ click clasp closure Disclaimer: Please note that the thread colour in the brand logo may vary from the image     │
+│ shown Note: The inner lining material/colour may vary from what is shown in the image Warranty: 5 years against  │
+│ manufacturing defects"}, "style_note": {"value": "The Trailblazer from Wildcraft is a top loading backpack with  │
+│ compression straps for squishing the load and enhancing load stability. Step out of your comfort zone and        │
+│ indulge in the mystery of the great outdoors with this trusty backpack."}}, "article_attributes": {"Occasion":   │
+│ "Casual", "Size": "Medium", "Laptop Size": "NA", "Material": "PVC", "Compartment Closure": "Flap", "Number of    │
+│ Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName":  │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 4602, "price": 4299.0,            │
+│ "discountedPrice": 1719.0, "styleType": "P", "productTypeId": 597, "articleNumber": "8903338319207",             │
+│ "productDisplayName": "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red",             │
+│ "myntraRating": 1.0, "catalogAddDate": 1460462084, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Red", "colour1": "Grey", "colour2": "NA", "fashionType": "Core", "season":    │
+│ "Winter", "year": "2015", "usage": "Travel", "vat": 14.5, "displayCategories": "Accessories"}}', '{"id": 39506,  │
+│ "product_display_name": "Peter England Unisex Black & Green Hiking Backpack", "display_categories":              │
+│ "Accessories", "product_descriptors": {"description": {"value": "Style Note peter england presents a wide range  │
+│ of efficient everyday travel gear combined with impressive style. This hiking bag is a carrier of purpose. The   │
+│ bag comes with attractive and smartly designed compartments and pouches to suit the outdoors and is also sleek   │
+│ and stylish. So saddle up and have a hiking trip of a lifetime! Product Details One main zipped compartment with │
+│ an insert pocket click clasps and an adjustable toggle strap Click clasps on the sides Waist band with click     │
+│ clasps and one mesh zipped pocket on the waistband Wide adjustable padded handles and padded back for carrying   │
+│ at ease and to protect the shoulders and back from injuries Mesh back for ventilation Branding on the front      │
+│ Material and Care Synthetic Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm    │
+│ Width: 33 cm Depth: 15 cm"}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"},          │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 39506, "price": 3799.0, "discountedPrice": 3077.0, "styleType": "P", "productTypeId": 294, "articleNumber":      │
+│ "PLHK312007", "productDisplayName": "Peter England Unisex Black & Green Hiking Backpack", "variantName": "HIKING │
+│ BAG", "myntraRating": 1.0, "catalogAddDate": 1460461939, "brandName": "Peter England", "ageGroup":               │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Black", "colour1": "Green", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 51317, "product_display_name": "Wildcraft Unisex Orange Alpinist 55 Backpack",         │
+│ "display_categories": "Accessories", "product_descriptors": {"description": {"value": "Style Note For those who  │
+│ love outdoor adventures  this bag from wildcraft is just what you need to well be prepared. A practical bag with │
+│ lots of support ample space and easy to carry this one from Wildcraft is a must have for trips trekking climbing │
+│ or other adventurous activities. Product Details Orange grey and black backpack with branding on the top of the  │
+│ covering flap Two adjustable heavily padded shoulder straps with connecting strap with a click clock closure a   │
+│ padded strap for added support around your waist with click clock closure haul loops at the bottom One main      │
+│ compartment with toggle strap closure and an internal pocket with a flap closure with removable metal insert for │
+│ better support flap with click clock closure an internal zippered pocket and adjustable straps on top to cover   │
+│ the main compartment opening Two zippered compartments on the sides and one zippered compartment near the base   │
+│ in front One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to  │
+│ protect your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap │
+│ around the sides near the bottom Padded back and firm support at the back for support for heavy load Material    │
+│ and Care Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty:  │
+│ 5 years"}}, "article_attributes": {"Laptop Compartment": "NA", "Business Unit": "NA", "Occasion": "Casual",      │
+│ "Size": "Large", "Laptop Size": "NA", "Print or Pattern Type": "Solid", "Number of Components": "1", "Number of  │
+│ Zips": "NA", "Tablet Sleeve": "No", "Segment": "NA", "Shoulder Strap Type": "Ergonomic", "Volume in Litres": "Up │
+│ to 23 Litres", "Technology": "NA", "Back": "Mesh", "Features": "NA", "Compartment Closure": "Flap", "Water       │
+│ Resistance": "No", "Warranty": "5 years", "Number of External Pockets": "NA", "Side Pockets": "NA", "Material":  │
+│ "Nylon", "Padded Shoulder Strap": "Padded", "Number of Main Compartments": "3 and more", "Surface Styling":      │
+│ "NA", "External Pocket": "NA", "Brick": "NA", "Haul Loop Type": "NA", "Add-Ons": "NA", "Features 2": "NA",       │
+│ "Family": "NA", "Class": "NA", "Processing Time": "NA"}, "master_category": {"typeName": "Accessories"},         │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 51317, "price": 5699.0, "discountedPrice": 5699.0, "styleType": "P", "productTypeId": 597, "articleNumber":      │
+│ "8903338000877", "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack", "variantName": "Alpinist  │
+│ 55 Orange", "myntraRating": 0.0, "catalogAddDate": 1460542152, "brandName": "Wildcraft", "ageGroup":             │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Orange", "colour1": "Grey", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2015", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 32864, "product_display_name": "Wildcraft Unisex Pink & Grey Backpack",                │
+│ "display_categories": "Accessories", "product_descriptors": {"materials_care_desc": {"value": "Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm"}, "description": {"value": "Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown"}, "style_note": {"value": "This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible."}}, "article_attributes":           │
+│ {"Occasion": "Casual", "Size": "Large", "Laptop Size": "NA", "Material": "Leather", "Compartment Closure":       │
+│ "Drawstring", "Number of Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"},      │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 32864, "price": 1395.0, "discountedPrice": 906.0, "styleType": "DEL", "productTypeId": 294, "articleNumber":     │
+│ "8903338006893", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack", "variantName": "Reflex",         │
+│ "myntraRating": 0.0, "catalogAddDate": 1460461939, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Pink", "colour1": "Grey", "colour2": "NA", "fashionType": "Fashion",          │
+│ "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}']}      │
+╰──────────────────────────────────────────────────── 00:47:16 ────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────── 🛠️ TOOL ─────────────────────────────────────────────────────╮
+│ ⚙️ Calling 'preety_print_product_metadata_response' with: {'product_response_list': ['{"id": 1556,                │
+│ "product_display_name": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "display_categories": "Accessories    │
+│ and Clearance,Sale and Clearance,Accessories,Sale", "product_descriptors": {"description": {"value": "1.         │
+│ Capacity: 61 litres 2. Adjustable and designed for comfort with a ventilated mesh back 3. Easy to carry 4. Comes │
+│ with compression straps chest strap tensioners hand rests 5. Ample storage space with pockets provided - 1 inner │
+│ 3 outer 1 on belt This extra-large sized quechua backpack is a perfect excuse to put it all in one bag and shoot │
+│ off on that unplanned but the most welcome trip! It\'s designed to endure harsh conditions encountered in        │
+│ outdoor adventure Sports like trekking or travelling over several days. The accessible bottom of the backpack    │
+│ multiple compartments and pockets adjustable straps and dry-Fit cushioned back make the FORCLAZ Blue - Large -   │
+│ 61 litre backpack a great backpack and a wise buy! Care instructions: Clean by hand using lukewarm soapy water   │
+│ and a brush. Use a waterproofing spray to renew the water-repellent properties of the fabric if required. How to │
+│ pack a rucksack - Put sleeping equipment at the bottom. Position heavy items close to the back. Clothes can be   │
+│ placed all around these. You can put a mattress under the lid and a tent can be fixed underneath the rucksack if │
+│ there is no room left inside. Use the pockets to store the small accessories you will need during the hike. How  │
+│ to fit a rucksack - Loosen all the straps (shoulder strap hip belt tensioners). Wear and carry backpack on your  │
+│ back."}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 1556, "price": 2199.0,            │
+│ "discountedPrice": 2199.0, "styleType": "P", "productTypeId": 294, "articleNumber": "922866",                    │
+│ "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "variantName": "Forclaz Large",         │
+│ "myntraRating": 10.0, "catalogAddDate": 1445524255, "brandName": "Quechua", "ageGroup": "Adults-Unisex",         │
+│ "gender": "Unisex", "baseColour": "Black", "colour1": "Orange", "colour2": "NA", "fashionType": "Fashion",       │
+│ "season": "Summer", "year": "2011", "usage": "Sports", "vat": 14.5, "displayCategories": "Accessories and        │
+│ Clearance,Sale and Clearance,Accessories,Sale"}}', '{"id": 4602, "product_display_name": "Wildcraft Unisex Red   │
+│ Trailblazer Backpack", "display_categories": "Accessories", "product_descriptors": {"materials_care_desc":       │
+│ {"value": "Nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 74 cm Width: 22  │
+│ cm Depth: 32 cm"}, "description": {"value": "Red and black backpack has a flap across the mouth with a zip       │
+│ pocket secured with click clasp closures One haul loop two adjustable and padded shoulder straps One main        │
+│ compartment with drawstring closure and click clasp straps Two zip pockets on the sides Has a waist belt with a  │
+│ click clasp closure Disclaimer: Please note that the thread colour in the brand logo may vary from the image     │
+│ shown Note: The inner lining material/colour may vary from what is shown in the image Warranty: 5 years against  │
+│ manufacturing defects"}, "style_note": {"value": "The Trailblazer from Wildcraft is a top loading backpack with  │
+│ compression straps for squishing the load and enhancing load stability. Step out of your comfort zone and        │
+│ indulge in the mystery of the great outdoors with this trusty backpack."}}, "article_attributes": {"Occasion":   │
+│ "Casual", "Size": "Medium", "Laptop Size": "NA", "Material": "PVC", "Compartment Closure": "Flap", "Number of    │
+│ Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName":  │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 4602, "price": 4299.0,            │
+│ "discountedPrice": 1719.0, "styleType": "P", "productTypeId": 597, "articleNumber": "8903338319207",             │
+│ "productDisplayName": "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red",             │
+│ "myntraRating": 1.0, "catalogAddDate": 1460462084, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Red", "colour1": "Grey", "colour2": "NA", "fashionType": "Core", "season":    │
+│ "Winter", "year": "2015", "usage": "Travel", "vat": 14.5, "displayCategories": "Accessories"}}', '{"id": 39506,  │
+│ "product_display_name": "Peter England Unisex Black & Green Hiking Backpack", "display_categories":              │
+│ "Accessories", "product_descriptors": {"description": {"value": "Style Note peter england presents a wide range  │
+│ of efficient everyday travel gear combined with impressive style. This hiking bag is a carrier of purpose. The   │
+│ bag comes with attractive and smartly designed compartments and pouches to suit the outdoors and is also sleek   │
+│ and stylish. So saddle up and have a hiking trip of a lifetime! Product Details One main zipped compartment with │
+│ an insert pocket click clasps and an adjustable toggle strap Click clasps on the sides Waist band with click     │
+│ clasps and one mesh zipped pocket on the waistband Wide adjustable padded handles and padded back for carrying   │
+│ at ease and to protect the shoulders and back from injuries Mesh back for ventilation Branding on the front      │
+│ Material and Care Synthetic Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm    │
+│ Width: 33 cm Depth: 15 cm"}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"},          │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 39506, "price": 3799.0, "discountedPrice": 3077.0, "styleType": "P", "productTypeId": 294, "articleNumber":      │
+│ "PLHK312007", "productDisplayName": "Peter England Unisex Black & Green Hiking Backpack", "variantName": "HIKING │
+│ BAG", "myntraRating": 1.0, "catalogAddDate": 1460461939, "brandName": "Peter England", "ageGroup":               │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Black", "colour1": "Green", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 51317, "product_display_name": "Wildcraft Unisex Orange Alpinist 55 Backpack",         │
+│ "display_categories": "Accessories", "product_descriptors": {"description": {"value": "Style Note For those who  │
+│ love outdoor adventures  this bag from wildcraft is just what you need to well be prepared. A practical bag with │
+│ lots of support ample space and easy to carry this one from Wildcraft is a must have for trips trekking climbing │
+│ or other adventurous activities. Product Details Orange grey and black backpack with branding on the top of the  │
+│ covering flap Two adjustable heavily padded shoulder straps with connecting strap with a click clock closure a   │
+│ padded strap for added support around your waist with click clock closure haul loops at the bottom One main      │
+│ compartment with toggle strap closure and an internal pocket with a flap closure with removable metal insert for │
+│ better support flap with click clock closure an internal zippered pocket and adjustable straps on top to cover   │
+│ the main compartment opening Two zippered compartments on the sides and one zippered compartment near the base   │
+│ in front One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to  │
+│ protect your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap │
+│ around the sides near the bottom Padded back and firm support at the back for support for heavy load Material    │
+│ and Care Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty:  │
+│ 5 years"}}, "article_attributes": {"Laptop Compartment": "NA", "Business Unit": "NA", "Occasion": "Casual",      │
+│ "Size": "Large", "Laptop Size": "NA", "Print or Pattern Type": "Solid", "Number of Components": "1", "Number of  │
+│ Zips": "NA", "Tablet Sleeve": "No", "Segment": "NA", "Shoulder Strap Type": "Ergonomic", "Volume in Litres": "Up │
+│ to 23 Litres", "Technology": "NA", "Back": "Mesh", "Features": "NA", "Compartment Closure": "Flap", "Water       │
+│ Resistance": "No", "Warranty": "5 years", "Number of External Pockets": "NA", "Side Pockets": "NA", "Material":  │
+│ "Nylon", "Padded Shoulder Strap": "Padded", "Number of Main Compartments": "3 and more", "Surface Styling":      │
+│ "NA", "External Pocket": "NA", "Brick": "NA", "Haul Loop Type": "NA", "Add-Ons": "NA", "Features 2": "NA",       │
+│ "Family": "NA", "Class": "NA", "Processing Time": "NA"}, "master_category": {"typeName": "Accessories"},         │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 51317, "price": 5699.0, "discountedPrice": 5699.0, "styleType": "P", "productTypeId": 597, "articleNumber":      │
+│ "8903338000877", "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack", "variantName": "Alpinist  │
+│ 55 Orange", "myntraRating": 0.0, "catalogAddDate": 1460542152, "brandName": "Wildcraft", "ageGroup":             │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Orange", "colour1": "Grey", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2015", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 32864, "product_display_name": "Wildcraft Unisex Pink & Grey Backpack",                │
+│ "display_categories": "Accessories", "product_descriptors": {"materials_care_desc": {"value": "Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm"}, "description": {"value": "Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown"}, "style_note": {"value": "This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible."}}, "article_attributes":           │
+│ {"Occasion": "Casual", "Size": "Large", "Laptop Size": "NA", "Material": "Leather", "Compartment Closure":       │
+│ "Drawstring", "Number of Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"},      │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 32864, "price": 1395.0, "discountedPrice": 906.0, "styleType": "DEL", "productTypeId": 294, "articleNumber":     │
+│ "8903338006893", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack", "variantName": "Reflex",         │
+│ "myntraRating": 0.0, "catalogAddDate": 1460461939, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Pink", "colour1": "Grey", "colour2": "NA", "fashionType": "Fashion",          │
+│ "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}']}      │
+╰──────────────────────────────────────────────────── 00:47:16 ────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────── 🛠️ TOOL ─────────────────────────────────────────────────────╮
+│ preety_print_product_metadata_response returned: ['{\n  "id": 1556,\n  "price": 2199.0,\n  "fashionType":        │
+│ "Fashion",\n  "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange",\n  "variantName":         │
+│ "Forclaz Large",\n  "displayCategories": "Accessories and Clearance,Sale and                                     │
+│ Clearance,Accessories,Sale"\n}\n\n{\n  "id": 4602,\n  "price": 4299.0,\n  "fashionType": "Core",\n               │
+│ "productDisplayName": "Wildcraft Unisex Red Trailblazer Backpack",\n  "variantName": "Trailblazer Red",\n        │
+│ "displayCategories": "Accessories"\n}\n\n{\n  "id": 39506,\n  "price": 3799.0,\n  "fashionType": "Fashion",\n    │
+│ "productDisplayName": "Peter England Unisex Black & Green Hiking Backpack",\n  "variantName": "HIKING BAG",\n    │
+│ "displayCategories": "Accessories"\n}\n\n{\n  "id": 51317,\n  "price": 5699.0,\n  "fashionType": "Fashion",\n    │
+│ "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack",\n  "variantName": "Alpinist 55 Orange",\n  │
+│ "displayCategories": "Accessories"\n}\n\n{\n  "id": 32864,\n  "price": 1395.0,\n  "fashionType": "Fashion",\n    │
+│ "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack",\n  "variantName": "Reflex",\n                     │
+│ "displayCategories": "Accessories"\n}']                                                                          │
+╰──────────────────────────────────────────────────── 00:47:16 ────────────────────────────────────────────────────╯
+╭─── 🔁 LOOP ────╮
+│ Step 3 started │
+╰─── 00:47:20 ───╯
+╭───────────────────────────────────────────────── 🧠 PERCEPTION ──────────────────────────────────────────────────╮
+│ Perception result: {                                                                                             │
+│     "user_input": "Original task: backpack for hiking 50l\nPrevious output: ['{\\n  \"id\": 1556,\\n  \"price\": │
+│ 2199.0,\\n  \"fashionType\": \"Fashion\",\\n  \"productDisplayName\": \"Quechua Forclaz Large  Backpack - 50 ltr │
+│ Orange\",\\n  \"variantName\": \"Forclaz Large\",\\n  \"displayCategories\": \"Accessories and Clearance,Sale    │
+│ and Clearance,Accessories,Sale\"\\n}\\n\\n{\\n  \"id\": 4602,\\n  \"price\": 4299.0,\\n  \"fashionType\":        │
+│ \"Core\",\\n  \"productDisplayName\": \"Wildcraft Unisex Red Trailblazer Backpack\",\\n  \"variantName\":        │
+│ \"Trailblazer Red\",\\n  \"displayCategories\": \"Accessories\"\\n}\\n\\n{\\n  \"id\": 39506,\\n  \"price\":     │
+│ 3799.0,\\n  \"fashionType\": \"Fashion\",\\n  \"productDisplayName\": \"Peter England Unisex Black & Green       │
+│ Hiking Backpack\",\\n  \"variantName\": \"HIKING BAG\",\\n  \"displayCategories\": \"Accessories\"\\n}\\n\\n{\\n │
+│ \"id\": 51317,\\n  \"price\": 5699.0,\\n  \"fashionType\": \"Fashion\",\\n  \"productDisplayName\": \"Wildcraft  │
+│ Unisex Orange Alpinist 55 Backpack\",\\n  \"variantName\": \"Alpinist 55 Orange\",\\n  \"displayCategories\":    │
+│ \"Accessories\"\\n}\\n\\n{\\n  \"id\": 32864,\\n  \"price\": 1395.0,\\n  \"fashionType\": \"Fashion\",\\n        │
+│ \"productDisplayName\": \"Wildcraft Unisex Pink & Grey Backpack\",\\n  \"variantName\": \"Reflex\",\\n           │
+│ \"displayCategories\": \"Accessories\"\\n}']\nWhat should I do next?",                                           │
+│     "modified_user_input": "Hiking backpack with 50L capacity",                                                  │
+│     "intent": "Find a backpack for hiking with a 50L capacity.",                                                 │
+│     "entities": [                                                                                                │
+│         "Activity:Hiking",                                                                                       │
+│         "Capacity:50L",                                                                                          │
+│         "Category:Backpack"                                                                                      │
+│     ],                                                                                                           │
+│     "tool_hint": null                                                                                            │
+│ }                                                                                                                │
+╰──────────────────────────────────────────────────── 00:47:21 ────────────────────────────────────────────────────╯
+╭────────── 🧵 MEMORY ──────────╮
+│ Retrieved 3 relevant memories │
+╰────────── 00:47:22 ───────────╯
+╭──────────────────────────────────────────────────── 📋 PLAN ─────────────────────────────────────────────────────╮
+│ LLM output: The previous search returned some backpacks, including one with 50L capacity. Now, let's display the │
+│ detailed metadata of these products to help the user make a decision.                                            │
+│ FUNCTION_CALL: preety_print_product_metadata_response|product_response_list=['{"id": 1556, "price": 2199.0,      │
+│ "fashionType": "Fashion", "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange",               │
+│ "variantName": "Forclaz Large", "displayCategories": "Accessories and Clearance,Sale and                         │
+│ Clearance,Accessories,Sale"}', '{"id": 4602, "price": 4299.0, "fashionType": "Core", "productDisplayName":       │
+│ "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red", "displayCategories":              │
+│ "Accessories"}', '{"id": 39506, "price": 3799.0, "fashionType": "Fashion", "productDisplayName": "Peter England  │
+│ Unisex Black & Green Hiking Backpack", "variantName": "HIKING BAG", "displayCategories": "Accessories"}',        │
+│ '{"id": 51317, "price": 5699.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft Unisex Orange         │
+│ Alpinist 55 Backpack", "variantName": "Alpinist 55 Orange", "displayCategories": "Accessories"}', '{"id": 32864, │
+│ "price": 1395.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack",        │
+│ "variantName": "Reflex", "displayCategories": "Accessories"}']                                                   │
+╰──────────────────────────────────────────────────── 00:47:24 ────────────────────────────────────────────────────╯
+╭──────────────────────────────────────────────────── 📋 PLAN ─────────────────────────────────────────────────────╮
+│ Plan generated: FUNCTION_CALL: preety_print_product_metadata_response|product_response_list=['{"id": 1556,       │
+│ "price": 2199.0, "fashionType": "Fashion", "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr       │
+│ Orange", "variantName": "Forclaz Large", "displayCategories": "Accessories and Clearance,Sale and                │
+│ Clearance,Accessories,Sale"}', '{"id": 4602, "price": 4299.0, "fashionType": "Core", "productDisplayName":       │
+│ "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red", "displayCategories":              │
+│ "Accessories"}', '{"id": 39506, "price": 3799.0, "fashionType": "Fashion", "productDisplayName": "Peter England  │
+│ Unisex Black & Green Hiking Backpack", "variantName": "HIKING BAG", "displayCategories": "Accessories"}',        │
+│ '{"id": 51317, "price": 5699.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft Unisex Orange         │
+│ Alpinist 55 Backpack", "variantName": "Alpinist 55 Orange", "displayCategories": "Accessories"}', '{"id": 32864, │
+│ "price": 1395.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack",        │
+│ "variantName": "Reflex", "displayCategories": "Accessories"}']                                                   │
+╰──────────────────────────────────────────────────── 00:47:24 ────────────────────────────────────────────────────╯
+╭─────────────────────────────────────────────────── 🧩 PARSER ────────────────────────────────────────────────────╮
+│ Parsed: preety_print_product_metadata_response → {'product_response_list': ['{"id": 1556, "price": 2199.0,       │
+│ "fashionType": "Fashion", "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange",               │
+│ "variantName": "Forclaz Large", "displayCategories": "Accessories and Clearance,Sale and                         │
+│ Clearance,Accessories,Sale"}', '{"id": 4602, "price": 4299.0, "fashionType": "Core", "productDisplayName":       │
+│ "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red", "displayCategories":              │
+│ "Accessories"}', '{"id": 39506, "price": 3799.0, "fashionType": "Fashion", "productDisplayName": "Peter England  │
+│ Unisex Black & Green Hiking Backpack", "variantName": "HIKING BAG", "displayCategories": "Accessories"}',        │
+│ '{"id": 51317, "price": 5699.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft Unisex Orange         │
+│ Alpinist 55 Backpack", "variantName": "Alpinist 55 Orange", "displayCategories": "Accessories"}', '{"id": 32864, │
+│ "price": 1395.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack",        │
+│ "variantName": "Reflex", "displayCategories": "Accessories"}']}                                                  │
+╰──────────────────────────────────────────────────── 00:47:24 ────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────── 🛠️ TOOL ─────────────────────────────────────────────────────╮
+│ ⚙️ Calling 'preety_print_product_metadata_response' with: {'product_response_list': ['{"id": 1556, "price":       │
+│ 2199.0, "fashionType": "Fashion", "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange",       │
+│ "variantName": "Forclaz Large", "displayCategories": "Accessories and Clearance,Sale and                         │
+│ Clearance,Accessories,Sale"}', '{"id": 4602, "price": 4299.0, "fashionType": "Core", "productDisplayName":       │
+│ "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red", "displayCategories":              │
+│ "Accessories"}', '{"id": 39506, "price": 3799.0, "fashionType": "Fashion", "productDisplayName": "Peter England  │
+│ Unisex Black & Green Hiking Backpack", "variantName": "HIKING BAG", "displayCategories": "Accessories"}',        │
+│ '{"id": 51317, "price": 5699.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft Unisex Orange         │
+│ Alpinist 55 Backpack", "variantName": "Alpinist 55 Orange", "displayCategories": "Accessories"}', '{"id": 32864, │
+│ "price": 1395.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack",        │
+│ "variantName": "Reflex", "displayCategories": "Accessories"}']}                                                  │
+╰──────────────────────────────────────────────────── 00:47:24 ────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────── 🛠️ TOOL ─────────────────────────────────────────────────────╮
+│ preety_print_product_metadata_response returned: ['Error formatting product response: 8 validation errors for    │
+│ ProductResponse\nproduct_display_name\n  Field required \n    For further information visit                      │
+│ https://errors.pydantic.dev/2.11/v/missing\ndisplay_categories\n  Field required \n    For further information   │
+│ visit https://errors.pydantic.dev/2.11/v/missing\nproduct_descriptors\n  Field required \n    For further        │
+│ information visit https://errors.pydantic.dev/2.11/v/missing\narticle_attributes\n  Field required \n    For     │
+│ further information visit https://errors.pydantic.dev/2.11/v/missing\nmaster_category\n  Field required \n       │
+│ For further information visit https://errors.pydantic.dev/2.11/v/missing\nsub_category\n  Field required \n      │
+│ For further information visit https://errors.pydantic.dev/2.11/v/missing\narticle_type\n  Field required \n      │
+│ For further information visit https://errors.pydantic.dev/2.11/v/missing\nproduct_metadata\n  Field required \n  │
+│ For further information visit https://errors.pydantic.dev/2.11/v/missing\nInput: [\'{"id": 1556, "price":        │
+│ 2199.0, "fashionType": "Fashion", "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange",       │
+│ "variantName": "Forclaz Large", "displayCategories": "Accessories and Clearance,Sale and                         │
+│ Clearance,Accessories,Sale"}\', \'{"id": 4602, "price": 4299.0, "fashionType": "Core", "productDisplayName":     │
+│ "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red", "displayCategories":              │
+│ "Accessories"}\', \'{"id": 39506, "price": 3799.0, "fashionType": "Fashion", "productDisplayName": "Peter        │
+│ England Unisex Black & Green Hiking Backpack", "variantName": "HIKING BAG", "displayCategories":                 │
+│ "Accessories"}\', \'{"id": 51317, "price": 5699.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft    │
+│ Unisex Orange Alpinist 55 Backpack", "variantName": "Alpinist 55 Orange", "displayCategories": "Accessories"}\', │
+│ \'{"id": 32864, "price": 1395.0, "fashionType": "Fashion", "productDisplayName": "Wildcraft Unisex Pink & Grey   │
+│ Backpack", "variantName": "Reflex", "displayCategories": "Accessories"}\']...']                                  │
+╰──────────────────────────────────────────────────── 00:47:24 ────────────────────────────────────────────────────╯
+╭─── 🔁 LOOP ────╮
+│ Step 4 started │
+╰─── 00:47:26 ───╯
+╭───────────────────────────────────────────────── 🧠 PERCEPTION ──────────────────────────────────────────────────╮
+│ Perception result: {                                                                                             │
+│     "user_input": "Original task: backpack for hiking 50l\nPrevious output: ['Error formatting product response: │
+│ 8 validation errors for ProductResponse\\nproduct_display_name\\n  Field required \\n    For further information │
+│ visit https://errors.pydantic.dev/2.11/v/missing\\ndisplay_categories\\n  Field required \\n    For further      │
+│ information visit https://errors.pydantic.dev/2.11/v/missing\\nproduct_descriptors\\n  Field required \\n    For │
+│ further information visit https://errors.pydantic.dev/2.11/v/missing\\narticle_attributes\\n  Field required \\n │
+│ For further information visit https://errors.pydantic.dev/2.11/v/missing\\nmaster_category\\n  Field required    │
+│ \\n    For further information visit https://errors.pydantic.dev/2.11/v/missing\\nsub_category\\n  Field         │
+│ required \\n    For further information visit https://errors.pydantic.dev/2.11/v/missing\\narticle_type\\n       │
+│ Field required \\n    For further information visit                                                              │
+│ https://errors.pydantic.dev/2.11/v/missing\\nproduct_metadata\\n  Field required \\n    For further information  │
+│ visit https://errors.pydantic.dev/2.11/v/missing\\nInput: [\\'{\"id\": 1556, \"price\": 2199.0, \"fashionType\": │
+│ \"Fashion\", \"productDisplayName\": \"Quechua Forclaz Large  Backpack - 50 ltr Orange\", \"variantName\":       │
+│ \"Forclaz Large\", \"displayCategories\": \"Accessories and Clearance,Sale and Clearance,Accessories,Sale\"}\\', │
+│ \\'{\"id\": 4602, \"price\": 4299.0, \"fashionType\": \"Core\", \"productDisplayName\": \"Wildcraft Unisex Red   │
+│ Trailblazer Backpack\", \"variantName\": \"Trailblazer Red\", \"displayCategories\": \"Accessories\"}\\',        │
+│ \\'{\"id\": 39506, \"price\": 3799.0, \"fashionType\": \"Fashion\", \"productDisplayName\": \"Peter England      │
+│ Unisex Black & Green Hiking Backpack\", \"variantName\": \"HIKING BAG\", \"displayCategories\":                  │
+│ \"Accessories\"}\\', \\'{\"id\": 51317, \"price\": 5699.0, \"fashionType\": \"Fashion\", \"productDisplayName\": │
+│ \"Wildcraft Unisex Orange Alpinist 55 Backpack\", \"variantName\": \"Alpinist 55 Orange\",                       │
+│ \"displayCategories\": \"Accessories\"}\\', \\'{\"id\": 32864, \"price\": 1395.0, \"fashionType\": \"Fashion\",  │
+│ \"productDisplayName\": \"Wildcraft Unisex Pink & Grey Backpack\", \"variantName\": \"Reflex\",                  │
+│ \"displayCategories\": \"Accessories\"}\\']...']\nWhat should I do next?",                                       │
+│     "modified_user_input": "hiking backpack 50l",                                                                │
+│     "intent": "Find a hiking backpack with a capacity of 50 liters.",                                            │
+│     "entities": [                                                                                                │
+│         "ApparelType:backpack",                                                                                  │
+│         "Activity:hiking",                                                                                       │
+│         "Capacity:50l"                                                                                           │
+│     ],                                                                                                           │
+│     "tool_hint": "search_product_documents"                                                                      │
+│ }                                                                                                                │
+╰──────────────────────────────────────────────────── 00:47:27 ────────────────────────────────────────────────────╯
+╭────────── 🧵 MEMORY ──────────╮
+│ Retrieved 3 relevant memories │
+╰────────── 00:47:28 ───────────╯
+╭──────────────────────────────────────────────────── 📋 PLAN ─────────────────────────────────────────────────────╮
+│ LLM output: The previous attempt to format the product response failed. The search query "Backpack Hiking 50L"   │
+│ returned some results. Now, I will display the metadata of the products.                                         │
+│ FUNCTION_CALL: preety_print_product_metadata_response|product_response_list=[{"id": 1556,                        │
+│ "product_display_name": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "display_categories": "Accessories    │
+│ and Clearance,Sale and Clearance,Accessories,Sale", "product_descriptors": {"description": {"value": "1.         │
+│ Capacity: 61 litres 2. Adjustable and designed for comfort with a ventilated mesh back 3. Easy to carry 4. Comes │
+│ with compression straps chest strap tensioners hand rests 5. Ample storage space with pockets provided - 1 inner │
+│ 3 outer 1 on belt This extra-large sized quechua backpack is a perfect excuse to put it all in one bag and shoot │
+│ off on that unplanned but the most welcome trip! It\'s designed to endure harsh conditions encountered in        │
+│ outdoor adventure Sports like trekking or travelling over several days. The accessible bottom of the backpack    │
+│ multiple compartments and pockets adjustable straps and dry-Fit cushioned back make the FORCLAZ Blue - Large -   │
+│ 61 litre backpack a great backpack and a wise buy! Care instructions: Clean by hand using lukewarm soapy water   │
+│ and a brush. Use a waterproofing spray to renew the water-repellent properties of the fabric if required. How to │
+│ pack a rucksack - Put sleeping equipment at the bottom. Position heavy items close to the back. Clothes can be   │
+│ placed all around these. You can put a mattress under the lid and a tent can be fixed underneath the rucksack if │
+│ there is no room left inside. Use the pockets to store the small accessories you will need during the hike. How  │
+│ to fit a rucksack - Loosen all the straps (shoulder strap hip belt tensioners). Wear and carry backpack on your  │
+│ back."}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 1556, "price": 2199.0,            │
+│ "discountedPrice": 2199.0, "styleType": "P", "productTypeId": 294, "articleNumber": "922866",                    │
+│ "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "variantName": "Forclaz Large",         │
+│ "myntraRating": 10.0, "catalogAddDate": 1445524255, "brandName": "Quechua", "ageGroup": "Adults-Unisex",         │
+│ "gender": "Unisex", "baseColour": "Black", "colour1": "Orange", "colour2": "NA", "fashionType": "Fashion",       │
+│ "season": "Summer", "year": "2011", "usage": "Sports", "vat": 14.5, "displayCategories": "Accessories and        │
+│ Clearance,Sale and Clearance,Accessories,Sale"}}, {"id": 4602, "product_display_name": "Wildcraft Unisex Red     │
+│ Trailblazer Backpack", "display_categories": "Accessories", "product_descriptors": {"materials_care_desc":       │
+│ {"value": "Nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 74 cm Width: 22  │
+│ cm Depth: 32 cm"}, "description": {"value": "Red and black backpack has a flap across the mouth with a zip       │
+│ pocket secured with click clasp closures One haul loop two adjustable and padded shoulder straps One main        │
+│ compartment with drawstring closure and click clasp straps Two zip pockets on the sides Has a waist belt with a  │
+│ click clasp closure Disclaimer: Please note that the thread colour in the brand logo may vary from the image     │
+│ shown Note: The inner lining material/colour may vary from what is shown in the image Warranty: 5 years against  │
+│ manufacturing defects"}, "style_note": {"value": "The Trailblazer from Wildcraft is a top loading backpack with  │
+│ compression straps for squishing the load and enhancing load stability. Step out of your comfort zone and        │
+│ indulge in the mystery of the great outdoors with this trusty backpack."}}, "article_attributes": {"Occasion":   │
+│ "Casual", "Size": "Medium", "Laptop Size": "NA", "Material": "PVC", "Compartment Closure": "Flap", "Number of    │
+│ Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName":  │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 4602, "price": 4299.0,            │
+│ "discountedPrice": 1719.0, "styleType": "P", "productTypeId": 597, "articleNumber": "8903338319207",             │
+│ "productDisplayName": "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red",             │
+│ "myntraRating": 1.0, "catalogAddDate": 1460462084, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Red", "colour1": "Grey", "colour2": "NA", "fashionType": "Core", "season":    │
+│ "Winter", "year": "2015", "usage": "Travel", "vat": 14.5, "displayCategories": "Accessories"}}, {"id": 39506,    │
+│ "product_display_name": "Peter England Unisex Black & Green Hiking Backpack", "display_categories":              │
+│ "Accessories", "product_descriptors": {"description": {"value": "Style Note peter england presents a wide range  │
+│ of efficient everyday travel gear combined with impressive style. This hiking bag is a carrier of purpose. The   │
+│ bag comes with attractive and smartly designed compartments and pouches to suit the outdoors and is also sleek   │
+│ and stylish. So saddle up and have a hiking trip of a lifetime! Product Details One main zipped compartment with │
+│ an insert pocket click clasps and an adjustable toggle strap Click clasps on the sides Waist band with click     │
+│ clasps and one mesh zipped pocket on the waistband Wide adjustable padded handles and padded back for carrying   │
+│ at ease and to protect the shoulders and back from injuries Mesh back for ventilation Branding on the front      │
+│ Material and Care Synthetic Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm    │
+│ Width: 33 cm Depth: 15 cm"}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"},          │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 39506, "price": 3799.0, "discountedPrice": 3077.0, "styleType": "P", "productTypeId": 294, "articleNumber":      │
+│ "PLHK312007", "productDisplayName": "Peter England Unisex Black & Green Hiking Backpack", "variantName": "HIKING │
+│ BAG", "myntraRating": 1.0, "catalogAddDate": 1460461939, "brandName": "Peter England", "ageGroup":               │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Black", "colour1": "Green", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}, {"id": 51317, "product_display_name": "Wildcraft Unisex Orange Alpinist 55 Backpack",           │
+│ "display_categories": "Accessories", "product_descriptors": {"description": {"value": "Style Note For those who  │
+│ love outdoor adventures  this bag from wildcraft is just what you need to well be prepared. A practical bag with │
+│ lots of support ample space and easy to carry this one from Wildcraft is a must have for trips trekking climbing │
+│ or other adventurous activities. Product Details Orange grey and black backpack with branding on the top of the  │
+│ covering flap Two adjustable heavily padded shoulder straps with connecting strap with a click clock closure a   │
+│ padded strap for added support around your waist with click clock closure haul loops at the bottom One main      │
+│ compartment with toggle strap closure and an internal pocket with a flap closure with removable metal insert for │
+│ better support flap with click clock closure an internal zippered pocket and adjustable straps on top to cover   │
+│ the main compartment opening Two zippered compartments on the sides and one zippered compartment near the base   │
+│ in front One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to  │
+│ protect your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap │
+│ around the sides near the bottom Padded back and firm support at the back for support for heavy load Material    │
+│ and Care Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty:  │
+│ 5 years"}}, "article_attributes": {"Laptop Compartment": "NA", "Business Unit": "NA", "Occasion": "Casual",      │
+│ "Size": "Large", "Laptop Size": "NA", "Print or Pattern Type": "Solid", "Number of Components": "1", "Number of  │
+│ Zips": "NA", "Tablet Sleeve": "No", "Segment": "NA", "Shoulder Strap Type": "Ergonomic", "Volume in Litres": "Up │
+│ to 23 Litres", "Technology": "NA", "Back": "Mesh", "Features": "NA", "Compartment Closure": "Flap", "Water       │
+│ Resistance": "No", "Warranty": "5 years", "Number of External Pockets": "NA", "Side Pockets": "NA", "Material":  │
+│ "Nylon", "Padded Shoulder Strap": "Padded", "Number of Main Compartments": "3 and more", "Surface Styling":      │
+│ "NA", "External Pocket": "NA", "Brick": "NA", "Haul Loop Type": "NA", "Add-Ons": "NA", "Features 2": "NA",       │
+│ "Family": "NA", "Class": "NA", "Processing Time": "NA"}, "master_category": {"typeName": "Accessories"},         │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 51317, "price": 5699.0, "discountedPrice": 5699.0, "styleType": "P", "productTypeId": 597, "articleNumber":      │
+│ "8903338000877", "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack", "variantName": "Alpinist  │
+│ 55 Orange", "myntraRating": 0.0, "catalogAddDate": 1460542152, "brandName": "Wildcraft", "ageGroup":             │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Orange", "colour1": "Grey", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2015", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}, {"id": 32864, "product_display_name": "Wildcraft Unisex Pink & Grey Backpack",                  │
+│ "display_categories": "Accessories", "product_descriptors": {"materials_care_desc": {"value": "Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm"}, "description": {"value": "Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown"}, "style_note": {"value": "This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible."}}, "article_attributes":           │
+│ {"Occasion": "Casual", "Size": "Large", "Laptop Size": "NA", "Material": "Leather", "Compartment Closure":       │
+│ "Drawstring", "Number of Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"},      │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 32864, "price": 1395.0, "discountedPrice": 906.0, "styleType": "DEL", "productTypeId": 294, "articleNumber":     │
+│ "8903338006893", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack", "variantName": "Reflex",         │
+│ "myntraRating": 0.0, "catalogAddDate": 1460461939, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Pink", "colour1": "Grey", "colour2": "NA", "fashionType": "Fashion",          │
+│ "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}]        │
+╰──────────────────────────────────────────────────── 00:47:42 ────────────────────────────────────────────────────╯
+╭──────────────────────────────────────────────────── 📋 PLAN ─────────────────────────────────────────────────────╮
+│ Plan generated: FUNCTION_CALL: preety_print_product_metadata_response|product_response_list=[{"id": 1556,        │
+│ "product_display_name": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "display_categories": "Accessories    │
+│ and Clearance,Sale and Clearance,Accessories,Sale", "product_descriptors": {"description": {"value": "1.         │
+│ Capacity: 61 litres 2. Adjustable and designed for comfort with a ventilated mesh back 3. Easy to carry 4. Comes │
+│ with compression straps chest strap tensioners hand rests 5. Ample storage space with pockets provided - 1 inner │
+│ 3 outer 1 on belt This extra-large sized quechua backpack is a perfect excuse to put it all in one bag and shoot │
+│ off on that unplanned but the most welcome trip! It\'s designed to endure harsh conditions encountered in        │
+│ outdoor adventure Sports like trekking or travelling over several days. The accessible bottom of the backpack    │
+│ multiple compartments and pockets adjustable straps and dry-Fit cushioned back make the FORCLAZ Blue - Large -   │
+│ 61 litre backpack a great backpack and a wise buy! Care instructions: Clean by hand using lukewarm soapy water   │
+│ and a brush. Use a waterproofing spray to renew the water-repellent properties of the fabric if required. How to │
+│ pack a rucksack - Put sleeping equipment at the bottom. Position heavy items close to the back. Clothes can be   │
+│ placed all around these. You can put a mattress under the lid and a tent can be fixed underneath the rucksack if │
+│ there is no room left inside. Use the pockets to store the small accessories you will need during the hike. How  │
+│ to fit a rucksack - Loosen all the straps (shoulder strap hip belt tensioners). Wear and carry backpack on your  │
+│ back."}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 1556, "price": 2199.0,            │
+│ "discountedPrice": 2199.0, "styleType": "P", "productTypeId": 294, "articleNumber": "922866",                    │
+│ "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange", "variantName": "Forclaz Large",         │
+│ "myntraRating": 10.0, "catalogAddDate": 1445524255, "brandName": "Quechua", "ageGroup": "Adults-Unisex",         │
+│ "gender": "Unisex", "baseColour": "Black", "colour1": "Orange", "colour2": "NA", "fashionType": "Fashion",       │
+│ "season": "Summer", "year": "2011", "usage": "Sports", "vat": 14.5, "displayCategories": "Accessories and        │
+│ Clearance,Sale and Clearance,Accessories,Sale"}}, {"id": 4602, "product_display_name": "Wildcraft Unisex Red     │
+│ Trailblazer Backpack", "display_categories": "Accessories", "product_descriptors": {"materials_care_desc":       │
+│ {"value": "Nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 74 cm Width: 22  │
+│ cm Depth: 32 cm"}, "description": {"value": "Red and black backpack has a flap across the mouth with a zip       │
+│ pocket secured with click clasp closures One haul loop two adjustable and padded shoulder straps One main        │
+│ compartment with drawstring closure and click clasp straps Two zip pockets on the sides Has a waist belt with a  │
+│ click clasp closure Disclaimer: Please note that the thread colour in the brand logo may vary from the image     │
+│ shown Note: The inner lining material/colour may vary from what is shown in the image Warranty: 5 years against  │
+│ manufacturing defects"}, "style_note": {"value": "The Trailblazer from Wildcraft is a top loading backpack with  │
+│ compression straps for squishing the load and enhancing load stability. Step out of your comfort zone and        │
+│ indulge in the mystery of the great outdoors with this trusty backpack."}}, "article_attributes": {"Occasion":   │
+│ "Casual", "Size": "Medium", "Laptop Size": "NA", "Material": "PVC", "Compartment Closure": "Flap", "Number of    │
+│ Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName":  │
+│ "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 4602, "price": 4299.0,            │
+│ "discountedPrice": 1719.0, "styleType": "P", "productTypeId": 597, "articleNumber": "8903338319207",             │
+│ "productDisplayName": "Wildcraft Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red",             │
+│ "myntraRating": 1.0, "catalogAddDate": 1460462084, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Red", "colour1": "Grey", "colour2": "NA", "fashionType": "Core", "season":    │
+│ "Winter", "year": "2015", "usage": "Travel", "vat": 14.5, "displayCategories": "Accessories"}}, {"id": 39506,    │
+│ "product_display_name": "Peter England Unisex Black & Green Hiking Backpack", "display_categories":              │
+│ "Accessories", "product_descriptors": {"description": {"value": "Style Note peter england presents a wide range  │
+│ of efficient everyday travel gear combined with impressive style. This hiking bag is a carrier of purpose. The   │
+│ bag comes with attractive and smartly designed compartments and pouches to suit the outdoors and is also sleek   │
+│ and stylish. So saddle up and have a hiking trip of a lifetime! Product Details One main zipped compartment with │
+│ an insert pocket click clasps and an adjustable toggle strap Click clasps on the sides Waist band with click     │
+│ clasps and one mesh zipped pocket on the waistband Wide adjustable padded handles and padded back for carrying   │
+│ at ease and to protect the shoulders and back from injuries Mesh back for ventilation Branding on the front      │
+│ Material and Care Synthetic Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm    │
+│ Width: 33 cm Depth: 15 cm"}}, "article_attributes": {}, "master_category": {"typeName": "Accessories"},          │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 39506, "price": 3799.0, "discountedPrice": 3077.0, "styleType": "P", "productTypeId": 294, "articleNumber":      │
+│ "PLHK312007", "productDisplayName": "Peter England Unisex Black & Green Hiking Backpack", "variantName": "HIKING │
+│ BAG", "myntraRating": 1.0, "catalogAddDate": 1460461939, "brandName": "Peter England", "ageGroup":               │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Black", "colour1": "Green", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}, {"id": 51317, "product_display_name": "Wildcraft Unisex Orange Alpinist 55 Backpack",           │
+│ "display_categories": "Accessories", "product_descriptors": {"description": {"value": "Style Note For those who  │
+│ love outdoor adventures  this bag from wildcraft is just what you need to well be prepared. A practical bag with │
+│ lots of support ample space and easy to carry this one from Wildcraft is a must have for trips trekking climbing │
+│ or other adventurous activities. Product Details Orange grey and black backpack with branding on the top of the  │
+│ covering flap Two adjustable heavily padded shoulder straps with connecting strap with a click clock closure a   │
+│ padded strap for added support around your waist with click clock closure haul loops at the bottom One main      │
+│ compartment with toggle strap closure and an internal pocket with a flap closure with removable metal insert for │
+│ better support flap with click clock closure an internal zippered pocket and adjustable straps on top to cover   │
+│ the main compartment opening Two zippered compartments on the sides and one zippered compartment near the base   │
+│ in front One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to  │
+│ protect your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap │
+│ around the sides near the bottom Padded back and firm support at the back for support for heavy load Material    │
+│ and Care Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty:  │
+│ 5 years"}}, "article_attributes": {"Laptop Compartment": "NA", "Business Unit": "NA", "Occasion": "Casual",      │
+│ "Size": "Large", "Laptop Size": "NA", "Print or Pattern Type": "Solid", "Number of Components": "1", "Number of  │
+│ Zips": "NA", "Tablet Sleeve": "No", "Segment": "NA", "Shoulder Strap Type": "Ergonomic", "Volume in Litres": "Up │
+│ to 23 Litres", "Technology": "NA", "Back": "Mesh", "Features": "NA", "Compartment Closure": "Flap", "Water       │
+│ Resistance": "No", "Warranty": "5 years", "Number of External Pockets": "NA", "Side Pockets": "NA", "Material":  │
+│ "Nylon", "Padded Shoulder Strap": "Padded", "Number of Main Compartments": "3 and more", "Surface Styling":      │
+│ "NA", "External Pocket": "NA", "Brick": "NA", "Haul Loop Type": "NA", "Add-Ons": "NA", "Features 2": "NA",       │
+│ "Family": "NA", "Class": "NA", "Processing Time": "NA"}, "master_category": {"typeName": "Accessories"},         │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 51317, "price": 5699.0, "discountedPrice": 5699.0, "styleType": "P", "productTypeId": 597, "articleNumber":      │
+│ "8903338000877", "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack", "variantName": "Alpinist  │
+│ 55 Orange", "myntraRating": 0.0, "catalogAddDate": 1460542152, "brandName": "Wildcraft", "ageGroup":             │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Orange", "colour1": "Grey", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2015", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}, {"id": 32864, "product_display_name": "Wildcraft Unisex Pink & Grey Backpack",                  │
+│ "display_categories": "Accessories", "product_descriptors": {"materials_care_desc": {"value": "Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm"}, "description": {"value": "Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown"}, "style_note": {"value": "This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible."}}, "article_attributes":           │
+│ {"Occasion": "Casual", "Size": "Large", "Laptop Size": "NA", "Material": "Leather", "Compartment Closure":       │
+│ "Drawstring", "Number of Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"},      │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 32864, "price": 1395.0, "discountedPrice": 906.0, "styleType": "DEL", "productTypeId": 294, "articleNumber":     │
+│ "8903338006893", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack", "variantName": "Reflex",         │
+│ "myntraRating": 0.0, "catalogAddDate": 1460461939, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Pink", "colour1": "Grey", "colour2": "NA", "fashionType": "Fashion",          │
+│ "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}]        │
+╰──────────────────────────────────────────────────── 00:47:42 ────────────────────────────────────────────────────╯
+╭─────────────────────────────────────────────────── 🧩 PARSER ────────────────────────────────────────────────────╮
+│ Parsed: preety_print_product_metadata_response → {'product_response_list': [{'id': 1556, 'product_display_name': │
+│ 'Quechua Forclaz Large  Backpack - 50 ltr Orange', 'display_categories': 'Accessories and Clearance,Sale and     │
+│ Clearance,Accessories,Sale', 'product_descriptors': {'description': {'value': "1. Capacity: 61 litres 2.         │
+│ Adjustable and designed for comfort with a ventilated mesh back 3. Easy to carry 4. Comes with compression       │
+│ straps chest strap tensioners hand rests 5. Ample storage space with pockets provided - 1 inner 3 outer 1 on     │
+│ belt This extra-large sized quechua backpack is a perfect excuse to put it all in one bag and shoot off on that  │
+│ unplanned but the most welcome trip! It's designed to endure harsh conditions encountered in outdoor adventure   │
+│ Sports like trekking or travelling over several days. The accessible bottom of the backpack multiple             │
+│ compartments and pockets adjustable straps and dry-Fit cushioned back make the FORCLAZ Blue - Large - 61 litre   │
+│ backpack a great backpack and a wise buy! Care instructions: Clean by hand using lukewarm soapy water and a      │
+│ brush. Use a waterproofing spray to renew the water-repellent properties of the fabric if required. How to pack  │
+│ a rucksack - Put sleeping equipment at the bottom. Position heavy items close to the back. Clothes can be placed │
+│ all around these. You can put a mattress under the lid and a tent can be fixed underneath the rucksack if there  │
+│ is no room left inside. Use the pockets to store the small accessories you will need during the hike. How to fit │
+│ a rucksack - Loosen all the straps (shoulder strap hip belt tensioners). Wear and carry backpack on your         │
+│ back."}}, 'article_attributes': {}, 'master_category': {'typeName': 'Accessories'}, 'sub_category': {'typeName': │
+│ 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id': 1556, 'price': 2199.0,            │
+│ 'discountedPrice': 2199.0, 'styleType': 'P', 'productTypeId': 294, 'articleNumber': '922866',                    │
+│ 'productDisplayName': 'Quechua Forclaz Large  Backpack - 50 ltr Orange', 'variantName': 'Forclaz Large',         │
+│ 'myntraRating': 10.0, 'catalogAddDate': 1445524255, 'brandName': 'Quechua', 'ageGroup': 'Adults-Unisex',         │
+│ 'gender': 'Unisex', 'baseColour': 'Black', 'colour1': 'Orange', 'colour2': 'NA', 'fashionType': 'Fashion',       │
+│ 'season': 'Summer', 'year': '2011', 'usage': 'Sports', 'vat': 14.5, 'displayCategories': 'Accessories and        │
+│ Clearance,Sale and Clearance,Accessories,Sale'}}, {'id': 4602, 'product_display_name': 'Wildcraft Unisex Red     │
+│ Trailblazer Backpack', 'display_categories': 'Accessories', 'product_descriptors': {'materials_care_desc':       │
+│ {'value': 'Nylon Wipe with a clean dry cloth when needed'}, 'size_fit_desc': {'value': 'Height: 74 cm Width: 22  │
+│ cm Depth: 32 cm'}, 'description': {'value': 'Red and black backpack has a flap across the mouth with a zip       │
+│ pocket secured with click clasp closures One haul loop two adjustable and padded shoulder straps One main        │
+│ compartment with drawstring closure and click clasp straps Two zip pockets on the sides Has a waist belt with a  │
+│ click clasp closure Disclaimer: Please note that the thread colour in the brand logo may vary from the image     │
+│ shown Note: The inner lining material/colour may vary from what is shown in the image Warranty: 5 years against  │
+│ manufacturing defects'}, 'style_note': {'value': 'The Trailblazer from Wildcraft is a top loading backpack with  │
+│ compression straps for squishing the load and enhancing load stability. Step out of your comfort zone and        │
+│ indulge in the mystery of the great outdoors with this trusty backpack.'}}, 'article_attributes': {'Occasion':   │
+│ 'Casual', 'Size': 'Medium', 'Laptop Size': 'NA', 'Material': 'PVC', 'Compartment Closure': 'Flap', 'Number of    │
+│ Main Compartments': '3 and more'}, 'master_category': {'typeName': 'Accessories'}, 'sub_category': {'typeName':  │
+│ 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id': 4602, 'price': 4299.0,            │
+│ 'discountedPrice': 1719.0, 'styleType': 'P', 'productTypeId': 597, 'articleNumber': '8903338319207',             │
+│ 'productDisplayName': 'Wildcraft Unisex Red Trailblazer Backpack', 'variantName': 'Trailblazer Red',             │
+│ 'myntraRating': 1.0, 'catalogAddDate': 1460462084, 'brandName': 'Wildcraft', 'ageGroup': 'Adults-Unisex',        │
+│ 'gender': 'Unisex', 'baseColour': 'Red', 'colour1': 'Grey', 'colour2': 'NA', 'fashionType': 'Core', 'season':    │
+│ 'Winter', 'year': '2015', 'usage': 'Travel', 'vat': 14.5, 'displayCategories': 'Accessories'}}, {'id': 39506,    │
+│ 'product_display_name': 'Peter England Unisex Black & Green Hiking Backpack', 'display_categories':              │
+│ 'Accessories', 'product_descriptors': {'description': {'value': 'Style Note peter england presents a wide range  │
+│ of efficient everyday travel gear combined with impressive style. This hiking bag is a carrier of purpose. The   │
+│ bag comes with attractive and smartly designed compartments and pouches to suit the outdoors and is also sleek   │
+│ and stylish. So saddle up and have a hiking trip of a lifetime! Product Details One main zipped compartment with │
+│ an insert pocket click clasps and an adjustable toggle strap Click clasps on the sides Waist band with click     │
+│ clasps and one mesh zipped pocket on the waistband Wide adjustable padded handles and padded back for carrying   │
+│ at ease and to protect the shoulders and back from injuries Mesh back for ventilation Branding on the front      │
+│ Material and Care Synthetic Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm    │
+│ Width: 33 cm Depth: 15 cm'}}, 'article_attributes': {}, 'master_category': {'typeName': 'Accessories'},          │
+│ 'sub_category': {'typeName': 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id':      │
+│ 39506, 'price': 3799.0, 'discountedPrice': 3077.0, 'styleType': 'P', 'productTypeId': 294, 'articleNumber':      │
+│ 'PLHK312007', 'productDisplayName': 'Peter England Unisex Black & Green Hiking Backpack', 'variantName': 'HIKING │
+│ BAG', 'myntraRating': 1.0, 'catalogAddDate': 1460461939, 'brandName': 'Peter England', 'ageGroup':               │
+│ 'Adults-Unisex', 'gender': 'Unisex', 'baseColour': 'Black', 'colour1': 'Green', 'colour2': 'NA', 'fashionType':  │
+│ 'Fashion', 'season': 'Summer', 'year': '2012', 'usage': 'Casual', 'vat': 14.5, 'displayCategories':              │
+│ 'Accessories'}}, {'id': 51317, 'product_display_name': 'Wildcraft Unisex Orange Alpinist 55 Backpack',           │
+│ 'display_categories': 'Accessories', 'product_descriptors': {'description': {'value': 'Style Note For those who  │
+│ love outdoor adventures  this bag from wildcraft is just what you need to well be prepared. A practical bag with │
+│ lots of support ample space and easy to carry this one from Wildcraft is a must have for trips trekking climbing │
+│ or other adventurous activities. Product Details Orange grey and black backpack with branding on the top of the  │
+│ covering flap Two adjustable heavily padded shoulder straps with connecting strap with a click clock closure a   │
+│ padded strap for added support around your waist with click clock closure haul loops at the bottom One main      │
+│ compartment with toggle strap closure and an internal pocket with a flap closure with removable metal insert for │
+│ better support flap with click clock closure an internal zippered pocket and adjustable straps on top to cover   │
+│ the main compartment opening Two zippered compartments on the sides and one zippered compartment near the base   │
+│ in front One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to  │
+│ protect your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap │
+│ around the sides near the bottom Padded back and firm support at the back for support for heavy load Material    │
+│ and Care Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty:  │
+│ 5 years'}}, 'article_attributes': {'Laptop Compartment': 'NA', 'Business Unit': 'NA', 'Occasion': 'Casual',      │
+│ 'Size': 'Large', 'Laptop Size': 'NA', 'Print or Pattern Type': 'Solid', 'Number of Components': '1', 'Number of  │
+│ Zips': 'NA', 'Tablet Sleeve': 'No', 'Segment': 'NA', 'Shoulder Strap Type': 'Ergonomic', 'Volume in Litres': 'Up │
+│ to 23 Litres', 'Technology': 'NA', 'Back': 'Mesh', 'Features': 'NA', 'Compartment Closure': 'Flap', 'Water       │
+│ Resistance': 'No', 'Warranty': '5 years', 'Number of External Pockets': 'NA', 'Side Pockets': 'NA', 'Material':  │
+│ 'Nylon', 'Padded Shoulder Strap': 'Padded', 'Number of Main Compartments': '3 and more', 'Surface Styling':      │
+│ 'NA', 'External Pocket': 'NA', 'Brick': 'NA', 'Haul Loop Type': 'NA', 'Add-Ons': 'NA', 'Features 2': 'NA',       │
+│ 'Family': 'NA', 'Class': 'NA', 'Processing Time': 'NA'}, 'master_category': {'typeName': 'Accessories'},         │
+│ 'sub_category': {'typeName': 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id':      │
+│ 51317, 'price': 5699.0, 'discountedPrice': 5699.0, 'styleType': 'P', 'productTypeId': 597, 'articleNumber':      │
+│ '8903338000877', 'productDisplayName': 'Wildcraft Unisex Orange Alpinist 55 Backpack', 'variantName': 'Alpinist  │
+│ 55 Orange', 'myntraRating': 0.0, 'catalogAddDate': 1460542152, 'brandName': 'Wildcraft', 'ageGroup':             │
+│ 'Adults-Unisex', 'gender': 'Unisex', 'baseColour': 'Orange', 'colour1': 'Grey', 'colour2': 'NA', 'fashionType':  │
+│ 'Fashion', 'season': 'Summer', 'year': '2015', 'usage': 'Casual', 'vat': 14.5, 'displayCategories':              │
+│ 'Accessories'}}, {'id': 32864, 'product_display_name': 'Wildcraft Unisex Pink & Grey Backpack',                  │
+│ 'display_categories': 'Accessories', 'product_descriptors': {'materials_care_desc': {'value': 'Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed'}, 'size_fit_desc': {'value': 'Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm'}, 'description': {'value': 'Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown'}, 'style_note': {'value': 'This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible.'}}, 'article_attributes':           │
+│ {'Occasion': 'Casual', 'Size': 'Large', 'Laptop Size': 'NA', 'Material': 'Leather', 'Compartment Closure':       │
+│ 'Drawstring', 'Number of Main Compartments': '3 and more'}, 'master_category': {'typeName': 'Accessories'},      │
+│ 'sub_category': {'typeName': 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id':      │
+│ 32864, 'price': 1395.0, 'discountedPrice': 906.0, 'styleType': 'DEL', 'productTypeId': 294, 'articleNumber':     │
+│ '8903338006893', 'productDisplayName': 'Wildcraft Unisex Pink & Grey Backpack', 'variantName': 'Reflex',         │
+│ 'myntraRating': 0.0, 'catalogAddDate': 1460461939, 'brandName': 'Wildcraft', 'ageGroup': 'Adults-Unisex',        │
+│ 'gender': 'Unisex', 'baseColour': 'Pink', 'colour1': 'Grey', 'colour2': 'NA', 'fashionType': 'Fashion',          │
+│ 'season': 'Summer', 'year': '2012', 'usage': 'Casual', 'vat': 14.5, 'displayCategories': 'Accessories'}}]}       │
+╰──────────────────────────────────────────────────── 00:47:42 ────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────── 🛠️ TOOL ─────────────────────────────────────────────────────╮
+│ ⚙️ Calling 'preety_print_product_metadata_response' with: {'product_response_list': [{'id': 1556,                 │
+│ 'product_display_name': 'Quechua Forclaz Large  Backpack - 50 ltr Orange', 'display_categories': 'Accessories    │
+│ and Clearance,Sale and Clearance,Accessories,Sale', 'product_descriptors': {'description': {'value': "1.         │
+│ Capacity: 61 litres 2. Adjustable and designed for comfort with a ventilated mesh back 3. Easy to carry 4. Comes │
+│ with compression straps chest strap tensioners hand rests 5. Ample storage space with pockets provided - 1 inner │
+│ 3 outer 1 on belt This extra-large sized quechua backpack is a perfect excuse to put it all in one bag and shoot │
+│ off on that unplanned but the most welcome trip! It's designed to endure harsh conditions encountered in outdoor │
+│ adventure Sports like trekking or travelling over several days. The accessible bottom of the backpack multiple   │
+│ compartments and pockets adjustable straps and dry-Fit cushioned back make the FORCLAZ Blue - Large - 61 litre   │
+│ backpack a great backpack and a wise buy! Care instructions: Clean by hand using lukewarm soapy water and a      │
+│ brush. Use a waterproofing spray to renew the water-repellent properties of the fabric if required. How to pack  │
+│ a rucksack - Put sleeping equipment at the bottom. Position heavy items close to the back. Clothes can be placed │
+│ all around these. You can put a mattress under the lid and a tent can be fixed underneath the rucksack if there  │
+│ is no room left inside. Use the pockets to store the small accessories you will need during the hike. How to fit │
+│ a rucksack - Loosen all the straps (shoulder strap hip belt tensioners). Wear and carry backpack on your         │
+│ back."}}, 'article_attributes': {}, 'master_category': {'typeName': 'Accessories'}, 'sub_category': {'typeName': │
+│ 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id': 1556, 'price': 2199.0,            │
+│ 'discountedPrice': 2199.0, 'styleType': 'P', 'productTypeId': 294, 'articleNumber': '922866',                    │
+│ 'productDisplayName': 'Quechua Forclaz Large  Backpack - 50 ltr Orange', 'variantName': 'Forclaz Large',         │
+│ 'myntraRating': 10.0, 'catalogAddDate': 1445524255, 'brandName': 'Quechua', 'ageGroup': 'Adults-Unisex',         │
+│ 'gender': 'Unisex', 'baseColour': 'Black', 'colour1': 'Orange', 'colour2': 'NA', 'fashionType': 'Fashion',       │
+│ 'season': 'Summer', 'year': '2011', 'usage': 'Sports', 'vat': 14.5, 'displayCategories': 'Accessories and        │
+│ Clearance,Sale and Clearance,Accessories,Sale'}}, {'id': 4602, 'product_display_name': 'Wildcraft Unisex Red     │
+│ Trailblazer Backpack', 'display_categories': 'Accessories', 'product_descriptors': {'materials_care_desc':       │
+│ {'value': 'Nylon Wipe with a clean dry cloth when needed'}, 'size_fit_desc': {'value': 'Height: 74 cm Width: 22  │
+│ cm Depth: 32 cm'}, 'description': {'value': 'Red and black backpack has a flap across the mouth with a zip       │
+│ pocket secured with click clasp closures One haul loop two adjustable and padded shoulder straps One main        │
+│ compartment with drawstring closure and click clasp straps Two zip pockets on the sides Has a waist belt with a  │
+│ click clasp closure Disclaimer: Please note that the thread colour in the brand logo may vary from the image     │
+│ shown Note: The inner lining material/colour may vary from what is shown in the image Warranty: 5 years against  │
+│ manufacturing defects'}, 'style_note': {'value': 'The Trailblazer from Wildcraft is a top loading backpack with  │
+│ compression straps for squishing the load and enhancing load stability. Step out of your comfort zone and        │
+│ indulge in the mystery of the great outdoors with this trusty backpack.'}}, 'article_attributes': {'Occasion':   │
+│ 'Casual', 'Size': 'Medium', 'Laptop Size': 'NA', 'Material': 'PVC', 'Compartment Closure': 'Flap', 'Number of    │
+│ Main Compartments': '3 and more'}, 'master_category': {'typeName': 'Accessories'}, 'sub_category': {'typeName':  │
+│ 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id': 4602, 'price': 4299.0,            │
+│ 'discountedPrice': 1719.0, 'styleType': 'P', 'productTypeId': 597, 'articleNumber': '8903338319207',             │
+│ 'productDisplayName': 'Wildcraft Unisex Red Trailblazer Backpack', 'variantName': 'Trailblazer Red',             │
+│ 'myntraRating': 1.0, 'catalogAddDate': 1460462084, 'brandName': 'Wildcraft', 'ageGroup': 'Adults-Unisex',        │
+│ 'gender': 'Unisex', 'baseColour': 'Red', 'colour1': 'Grey', 'colour2': 'NA', 'fashionType': 'Core', 'season':    │
+│ 'Winter', 'year': '2015', 'usage': 'Travel', 'vat': 14.5, 'displayCategories': 'Accessories'}}, {'id': 39506,    │
+│ 'product_display_name': 'Peter England Unisex Black & Green Hiking Backpack', 'display_categories':              │
+│ 'Accessories', 'product_descriptors': {'description': {'value': 'Style Note peter england presents a wide range  │
+│ of efficient everyday travel gear combined with impressive style. This hiking bag is a carrier of purpose. The   │
+│ bag comes with attractive and smartly designed compartments and pouches to suit the outdoors and is also sleek   │
+│ and stylish. So saddle up and have a hiking trip of a lifetime! Product Details One main zipped compartment with │
+│ an insert pocket click clasps and an adjustable toggle strap Click clasps on the sides Waist band with click     │
+│ clasps and one mesh zipped pocket on the waistband Wide adjustable padded handles and padded back for carrying   │
+│ at ease and to protect the shoulders and back from injuries Mesh back for ventilation Branding on the front      │
+│ Material and Care Synthetic Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm    │
+│ Width: 33 cm Depth: 15 cm'}}, 'article_attributes': {}, 'master_category': {'typeName': 'Accessories'},          │
+│ 'sub_category': {'typeName': 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id':      │
+│ 39506, 'price': 3799.0, 'discountedPrice': 3077.0, 'styleType': 'P', 'productTypeId': 294, 'articleNumber':      │
+│ 'PLHK312007', 'productDisplayName': 'Peter England Unisex Black & Green Hiking Backpack', 'variantName': 'HIKING │
+│ BAG', 'myntraRating': 1.0, 'catalogAddDate': 1460461939, 'brandName': 'Peter England', 'ageGroup':               │
+│ 'Adults-Unisex', 'gender': 'Unisex', 'baseColour': 'Black', 'colour1': 'Green', 'colour2': 'NA', 'fashionType':  │
+│ 'Fashion', 'season': 'Summer', 'year': '2012', 'usage': 'Casual', 'vat': 14.5, 'displayCategories':              │
+│ 'Accessories'}}, {'id': 51317, 'product_display_name': 'Wildcraft Unisex Orange Alpinist 55 Backpack',           │
+│ 'display_categories': 'Accessories', 'product_descriptors': {'description': {'value': 'Style Note For those who  │
+│ love outdoor adventures  this bag from wildcraft is just what you need to well be prepared. A practical bag with │
+│ lots of support ample space and easy to carry this one from Wildcraft is a must have for trips trekking climbing │
+│ or other adventurous activities. Product Details Orange grey and black backpack with branding on the top of the  │
+│ covering flap Two adjustable heavily padded shoulder straps with connecting strap with a click clock closure a   │
+│ padded strap for added support around your waist with click clock closure haul loops at the bottom One main      │
+│ compartment with toggle strap closure and an internal pocket with a flap closure with removable metal insert for │
+│ better support flap with click clock closure an internal zippered pocket and adjustable straps on top to cover   │
+│ the main compartment opening Two zippered compartments on the sides and one zippered compartment near the base   │
+│ in front One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to  │
+│ protect your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap │
+│ around the sides near the bottom Padded back and firm support at the back for support for heavy load Material    │
+│ and Care Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty:  │
+│ 5 years'}}, 'article_attributes': {'Laptop Compartment': 'NA', 'Business Unit': 'NA', 'Occasion': 'Casual',      │
+│ 'Size': 'Large', 'Laptop Size': 'NA', 'Print or Pattern Type': 'Solid', 'Number of Components': '1', 'Number of  │
+│ Zips': 'NA', 'Tablet Sleeve': 'No', 'Segment': 'NA', 'Shoulder Strap Type': 'Ergonomic', 'Volume in Litres': 'Up │
+│ to 23 Litres', 'Technology': 'NA', 'Back': 'Mesh', 'Features': 'NA', 'Compartment Closure': 'Flap', 'Water       │
+│ Resistance': 'No', 'Warranty': '5 years', 'Number of External Pockets': 'NA', 'Side Pockets': 'NA', 'Material':  │
+│ 'Nylon', 'Padded Shoulder Strap': 'Padded', 'Number of Main Compartments': '3 and more', 'Surface Styling':      │
+│ 'NA', 'External Pocket': 'NA', 'Brick': 'NA', 'Haul Loop Type': 'NA', 'Add-Ons': 'NA', 'Features 2': 'NA',       │
+│ 'Family': 'NA', 'Class': 'NA', 'Processing Time': 'NA'}, 'master_category': {'typeName': 'Accessories'},         │
+│ 'sub_category': {'typeName': 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id':      │
+│ 51317, 'price': 5699.0, 'discountedPrice': 5699.0, 'styleType': 'P', 'productTypeId': 597, 'articleNumber':      │
+│ '8903338000877', 'productDisplayName': 'Wildcraft Unisex Orange Alpinist 55 Backpack', 'variantName': 'Alpinist  │
+│ 55 Orange', 'myntraRating': 0.0, 'catalogAddDate': 1460542152, 'brandName': 'Wildcraft', 'ageGroup':             │
+│ 'Adults-Unisex', 'gender': 'Unisex', 'baseColour': 'Orange', 'colour1': 'Grey', 'colour2': 'NA', 'fashionType':  │
+│ 'Fashion', 'season': 'Summer', 'year': '2015', 'usage': 'Casual', 'vat': 14.5, 'displayCategories':              │
+│ 'Accessories'}}, {'id': 32864, 'product_display_name': 'Wildcraft Unisex Pink & Grey Backpack',                  │
+│ 'display_categories': 'Accessories', 'product_descriptors': {'materials_care_desc': {'value': 'Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed'}, 'size_fit_desc': {'value': 'Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm'}, 'description': {'value': 'Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown'}, 'style_note': {'value': 'This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible.'}}, 'article_attributes':           │
+│ {'Occasion': 'Casual', 'Size': 'Large', 'Laptop Size': 'NA', 'Material': 'Leather', 'Compartment Closure':       │
+│ 'Drawstring', 'Number of Main Compartments': '3 and more'}, 'master_category': {'typeName': 'Accessories'},      │
+│ 'sub_category': {'typeName': 'Bags'}, 'article_type': {'typeName': 'Backpacks'}, 'product_metadata': {'id':      │
+│ 32864, 'price': 1395.0, 'discountedPrice': 906.0, 'styleType': 'DEL', 'productTypeId': 294, 'articleNumber':     │
+│ '8903338006893', 'productDisplayName': 'Wildcraft Unisex Pink & Grey Backpack', 'variantName': 'Reflex',         │
+│ 'myntraRating': 0.0, 'catalogAddDate': 1460461939, 'brandName': 'Wildcraft', 'ageGroup': 'Adults-Unisex',        │
+│ 'gender': 'Unisex', 'baseColour': 'Pink', 'colour1': 'Grey', 'colour2': 'NA', 'fashionType': 'Fashion',          │
+│ 'season': 'Summer', 'year': '2012', 'usage': 'Casual', 'vat': 14.5, 'displayCategories': 'Accessories'}}]}       │
+╰──────────────────────────────────────────────────── 00:47:42 ────────────────────────────────────────────────────╯
+╭───────────────────────────────────────────────────── 🛠️ TOOL ─────────────────────────────────────────────────────╮
+│ preety_print_product_metadata_response returned: ['{\n  "id": 1556,\n  "price": 2199.0,\n  "fashionType":        │
+│ "Fashion",\n  "productDisplayName": "Quechua Forclaz Large  Backpack - 50 ltr Orange",\n  "variantName":         │
+│ "Forclaz Large",\n  "displayCategories": "Accessories and Clearance,Sale and                                     │
+│ Clearance,Accessories,Sale"\n}\n\n{\n  "id": 4602,\n  "price": 4299.0,\n  "fashionType": "Core",\n               │
+│ "productDisplayName": "Wildcraft Unisex Red Trailblazer Backpack",\n  "variantName": "Trailblazer Red",\n        │
+│ "displayCategories": "Accessories"\n}\n\n{\n  "id": 39506,\n  "price": 3799.0,\n  "fashionType": "Fashion",\n    │
+│ "productDisplayName": "Peter England Unisex Black & Green Hiking Backpack",\n  "variantName": "HIKING BAG",\n    │
+│ "displayCategories": "Accessories"\n}\n\n{\n  "id": 51317,\n  "price": 5699.0,\n  "fashionType": "Fashion",\n    │
+│ "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack",\n  "variantName": "Alpinist 55 Orange",\n  │
+│ "displayCategories": "Accessories"\n}\n\n{\n  "id": 32864,\n  "price": 1395.0,\n  "fashionType": "Fashion",\n    │
+│ "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack",\n  "variantName": "Reflex",\n                     │
+│ "displayCategories": "Accessories"\n}']                                                                          │
+╰──────────────────────────────────────────────────── 00:47:42 ────────────────────────────────────────────────────╯
+╭─── 🔁 LOOP ────╮
+│ Step 5 started │
+╰─── 00:47:46 ───╯
+╭───────────────────────────────────────────────── 🧠 PERCEPTION ──────────────────────────────────────────────────╮
+│ Perception result: {                                                                                             │
+│     "user_input": "Original task: backpack for hiking 50l\nPrevious output: ['{\\n  \"id\": 1556,\\n  \"price\": │
+│ 2199.0,\\n  \"fashionType\": \"Fashion\",\\n  \"productDisplayName\": \"Quechua Forclaz Large  Backpack - 50 ltr │
+│ Orange\",\\n  \"variantName\": \"Forclaz Large\",\\n  \"displayCategories\": \"Accessories and Clearance,Sale    │
+│ and Clearance,Accessories,Sale\"\\n}\\n\\n{\\n  \"id\": 4602,\\n  \"price\": 4299.0,\\n  \"fashionType\":        │
+│ \"Core\",\\n  \"productDisplayName\": \"Wildcraft Unisex Red Trailblazer Backpack\",\\n  \"variantName\":        │
+│ \"Trailblazer Red\",\\n  \"displayCategories\": \"Accessories\"\\n}\\n\\n{\\n  \"id\": 39506,\\n  \"price\":     │
+│ 3799.0,\\n  \"fashionType\": \"Fashion\",\\n  \"productDisplayName\": \"Peter England Unisex Black & Green       │
+│ Hiking Backpack\",\\n  \"variantName\": \"HIKING BAG\",\\n  \"displayCategories\": \"Accessories\"\\n}\\n\\n{\\n │
+│ \"id\": 51317,\\n  \"price\": 5699.0,\\n  \"fashionType\": \"Fashion\",\\n  \"productDisplayName\": \"Wildcraft  │
+│ Unisex Orange Alpinist 55 Backpack\",\\n  \"variantName\": \"Alpinist 55 Orange\",\\n  \"displayCategories\":    │
+│ \"Accessories\"\\n}\\n\\n{\\n  \"id\": 32864,\\n  \"price\": 1395.0,\\n  \"fashionType\": \"Fashion\",\\n        │
+│ \"productDisplayName\": \"Wildcraft Unisex Pink & Grey Backpack\",\\n  \"variantName\": \"Reflex\",\\n           │
+│ \"displayCategories\": \"Accessories\"\\n}']\nWhat should I do next?",                                           │
+│     "modified_user_input": "Hiking backpack with 50L capacity",                                                  │
+│     "intent": "Find a hiking backpack with 50L capacity",                                                        │
+│     "entities": [                                                                                                │
+│         "ApparelType:backpack",                                                                                  │
+│         "Activity:hiking",                                                                                       │
+│         "Capacity:50L"                                                                                           │
+│     ],                                                                                                           │
+│     "tool_hint": "search_product_documents"                                                                      │
+│ }                                                                                                                │
+╰──────────────────────────────────────────────────── 00:47:47 ────────────────────────────────────────────────────╯
+╭────────── 🧵 MEMORY ──────────╮
+│ Retrieved 3 relevant memories │
+╰────────── 00:47:48 ───────────╯
+╭──────────────────────────────────────────────────── 📋 PLAN ─────────────────────────────────────────────────────╮
+│ LLM output: The previous `preety_print_product_metadata_response` calls failed due to validation errors. Let's   │
+│ try calling `search_product_documents` again with a more focused query.                                          │
+│                                                                                                                  │
+│ FUNCTION_CALL: search_product_documents|query="Backpack hiking 50L",top_k=5                                      │
+╰──────────────────────────────────────────────────── 00:47:49 ────────────────────────────────────────────────────╯
+╭────────────────────────────────────────── 📋 PLAN ──────────────────────────────────────────╮
+│ Plan generated: FUNCTION_CALL: search_product_documents|query="Backpack hiking 50L",top_k=5 │
+╰───────────────────────────────────────── 00:47:49 ──────────────────────────────────────────╯
+╭────────────────────────────────── 🧩 PARSER ──────────────────────────────────╮
+│ Parsed: search_product_documents → {'query': '"Backpack hiking 50L",top_k=5'} │
+╰────────────────────────────────── 00:47:49 ───────────────────────────────────╯
+╭─────────────────────────────────────── 🛠️ TOOL ────────────────────────────────────────╮
+│ ⚙️ Calling 'search_product_documents' with: {'query': '"Backpack hiking 50L",top_k=5'} │
+╰────────────────────────────────────── 00:47:49 ───────────────────────────────────────╯
+╭───────────────────────────────────────────────────── 🛠️ TOOL ─────────────────────────────────────────────────────╮
+│ search_product_documents returned: ['{"id": 1556, "product_display_name": "Quechua Forclaz Large  Backpack - 50  │
+│ ltr Orange", "display_categories": "Accessories and Clearance,Sale and Clearance,Accessories,Sale",              │
+│ "product_descriptors": {"description": {"value": "1. Capacity: 61 litres 2. Adjustable and designed for comfort  │
+│ with a ventilated mesh back 3. Easy to carry 4. Comes with compression straps chest strap tensioners hand rests  │
+│ 5. Ample storage space with pockets provided - 1 inner 3 outer 1 on belt This extra-large sized quechua backpack │
+│ is a perfect excuse to put it all in one bag and shoot off on that unplanned but the most welcome trip! It\'s    │
+│ designed to endure harsh conditions encountered in outdoor adventure Sports like trekking or travelling over     │
+│ several days. The accessible bottom of the backpack multiple compartments and pockets adjustable straps and      │
+│ dry-Fit cushioned back make the FORCLAZ Blue - Large - 61 litre backpack a great backpack and a wise buy! Care   │
+│ instructions: Clean by hand using lukewarm soapy water and a brush. Use a waterproofing spray to renew the       │
+│ water-repellent properties of the fabric if required. How to pack a rucksack - Put sleeping equipment at the     │
+│ bottom. Position heavy items close to the back. Clothes can be placed all around these. You can put a mattress   │
+│ under the lid and a tent can be fixed underneath the rucksack if there is no room left inside. Use the pockets   │
+│ to store the small accessories you will need during the hike. How to fit a rucksack - Loosen all the straps      │
+│ (shoulder strap hip belt tensioners). Wear and carry backpack on your back."}}, "article_attributes": {},        │
+│ "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": "Bags"}, "article_type":            │
+│ {"typeName": "Backpacks"}, "product_metadata": {"id": 1556, "price": 2199.0, "discountedPrice": 2199.0,          │
+│ "styleType": "P", "productTypeId": 294, "articleNumber": "922866", "productDisplayName": "Quechua Forclaz Large  │
+│ Backpack - 50 ltr Orange", "variantName": "Forclaz Large", "myntraRating": 10.0, "catalogAddDate": 1445524255,   │
+│ "brandName": "Quechua", "ageGroup": "Adults-Unisex", "gender": "Unisex", "baseColour": "Black", "colour1":       │
+│ "Orange", "colour2": "NA", "fashionType": "Fashion", "season": "Summer", "year": "2011", "usage": "Sports",      │
+│ "vat": 14.5, "displayCategories": "Accessories and Clearance,Sale and Clearance,Accessories,Sale"}}', '{"id":    │
+│ 4602, "product_display_name": "Wildcraft Unisex Red Trailblazer Backpack", "display_categories": "Accessories",  │
+│ "product_descriptors": {"materials_care_desc": {"value": "Nylon Wipe with a clean dry cloth when needed"},       │
+│ "size_fit_desc": {"value": "Height: 74 cm Width: 22 cm Depth: 32 cm"}, "description": {"value": "Red and black   │
+│ backpack has a flap across the mouth with a zip pocket secured with click clasp closures One haul loop two       │
+│ adjustable and padded shoulder straps One main compartment with drawstring closure and click clasp straps Two    │
+│ zip pockets on the sides Has a waist belt with a click clasp closure Disclaimer: Please note that the thread     │
+│ colour in the brand logo may vary from the image shown Note: The inner lining material/colour may vary from what │
+│ is shown in the image Warranty: 5 years against manufacturing defects"}, "style_note": {"value": "The            │
+│ Trailblazer from Wildcraft is a top loading backpack with compression straps for squishing the load and          │
+│ enhancing load stability. Step out of your comfort zone and indulge in the mystery of the great outdoors with    │
+│ this trusty backpack."}}, "article_attributes": {"Occasion": "Casual", "Size": "Medium", "Laptop Size": "NA",    │
+│ "Material": "PVC", "Compartment Closure": "Flap", "Number of Main Compartments": "3 and more"},                  │
+│ "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": "Bags"}, "article_type":            │
+│ {"typeName": "Backpacks"}, "product_metadata": {"id": 4602, "price": 4299.0, "discountedPrice": 1719.0,          │
+│ "styleType": "P", "productTypeId": 597, "articleNumber": "8903338319207", "productDisplayName": "Wildcraft       │
+│ Unisex Red Trailblazer Backpack", "variantName": "Trailblazer Red", "myntraRating": 1.0, "catalogAddDate":       │
+│ 1460462084, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex", "gender": "Unisex", "baseColour": "Red",      │
+│ "colour1": "Grey", "colour2": "NA", "fashionType": "Core", "season": "Winter", "year": "2015", "usage":          │
+│ "Travel", "vat": 14.5, "displayCategories": "Accessories"}}', '{"id": 39506, "product_display_name": "Peter      │
+│ England Unisex Black & Green Hiking Backpack", "display_categories": "Accessories", "product_descriptors":       │
+│ {"description": {"value": "Style Note peter england presents a wide range of efficient everyday travel gear      │
+│ combined with impressive style. This hiking bag is a carrier of purpose. The bag comes with attractive and       │
+│ smartly designed compartments and pouches to suit the outdoors and is also sleek and stylish. So saddle up and   │
+│ have a hiking trip of a lifetime! Product Details One main zipped compartment with an insert pocket click clasps │
+│ and an adjustable toggle strap Click clasps on the sides Waist band with click clasps and one mesh zipped pocket │
+│ on the waistband Wide adjustable padded handles and padded back for carrying at ease and to protect the          │
+│ shoulders and back from injuries Mesh back for ventilation Branding on the front Material and Care Synthetic     │
+│ Wipe with a clean dry cloth to remove dust Warranty : 6 months Size Height: 64 cm Width: 33 cm Depth: 15 cm"}},  │
+│ "article_attributes": {}, "master_category": {"typeName": "Accessories"}, "sub_category": {"typeName": "Bags"},  │
+│ "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id": 39506, "price": 3799.0, "discountedPrice": │
+│ 3077.0, "styleType": "P", "productTypeId": 294, "articleNumber": "PLHK312007", "productDisplayName": "Peter      │
+│ England Unisex Black & Green Hiking Backpack", "variantName": "HIKING BAG", "myntraRating": 1.0,                 │
+│ "catalogAddDate": 1460461939, "brandName": "Peter England", "ageGroup": "Adults-Unisex", "gender": "Unisex",     │
+│ "baseColour": "Black", "colour1": "Green", "colour2": "NA", "fashionType": "Fashion", "season": "Summer",        │
+│ "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}', '{"id": 51317,            │
+│ "product_display_name": "Wildcraft Unisex Orange Alpinist 55 Backpack", "display_categories": "Accessories",     │
+│ "product_descriptors": {"description": {"value": "Style Note For those who love outdoor adventures  this bag     │
+│ from wildcraft is just what you need to well be prepared. A practical bag with lots of support ample space and   │
+│ easy to carry this one from Wildcraft is a must have for trips trekking climbing or other adventurous            │
+│ activities. Product Details Orange grey and black backpack with branding on the top of the covering flap Two     │
+│ adjustable heavily padded shoulder straps with connecting strap with a click clock closure a padded strap for    │
+│ added support around your waist with click clock closure haul loops at the bottom One main compartment with      │
+│ toggle strap closure and an internal pocket with a flap closure with removable metal insert for better support   │
+│ flap with click clock closure an internal zippered pocket and adjustable straps on top to cover the main         │
+│ compartment opening Two zippered compartments on the sides and one zippered compartment near the base in front   │
+│ One zippered compartment at the bottom to store the attached and elasticated rain cover for the bag to protect   │
+│ your belongings Adjustable straps with click clock closures around the sides and bottom Adjustable strap around  │
+│ the sides near the bottom Padded back and firm support at the back for support for heavy load Material and Care  │
+│ Synthetic Machine wash only Do not bleach iron or tumble dry Size Height: 74 cm Width: 38 cm Warranty: 5         │
+│ years"}}, "article_attributes": {"Laptop Compartment": "NA", "Business Unit": "NA", "Occasion": "Casual",        │
+│ "Size": "Large", "Laptop Size": "NA", "Print or Pattern Type": "Solid", "Number of Components": "1", "Number of  │
+│ Zips": "NA", "Tablet Sleeve": "No", "Segment": "NA", "Shoulder Strap Type": "Ergonomic", "Volume in Litres": "Up │
+│ to 23 Litres", "Technology": "NA", "Back": "Mesh", "Features": "NA", "Compartment Closure": "Flap", "Water       │
+│ Resistance": "No", "Warranty": "5 years", "Number of External Pockets": "NA", "Side Pockets": "NA", "Material":  │
+│ "Nylon", "Padded Shoulder Strap": "Padded", "Number of Main Compartments": "3 and more", "Surface Styling":      │
+│ "NA", "External Pocket": "NA", "Brick": "NA", "Haul Loop Type": "NA", "Add-Ons": "NA", "Features 2": "NA",       │
+│ "Family": "NA", "Class": "NA", "Processing Time": "NA"}, "master_category": {"typeName": "Accessories"},         │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 51317, "price": 5699.0, "discountedPrice": 5699.0, "styleType": "P", "productTypeId": 597, "articleNumber":      │
+│ "8903338000877", "productDisplayName": "Wildcraft Unisex Orange Alpinist 55 Backpack", "variantName": "Alpinist  │
+│ 55 Orange", "myntraRating": 0.0, "catalogAddDate": 1460542152, "brandName": "Wildcraft", "ageGroup":             │
+│ "Adults-Unisex", "gender": "Unisex", "baseColour": "Orange", "colour1": "Grey", "colour2": "NA", "fashionType":  │
+│ "Fashion", "season": "Summer", "year": "2015", "usage": "Casual", "vat": 14.5, "displayCategories":              │
+│ "Accessories"}}', '{"id": 32864, "product_display_name": "Wildcraft Unisex Pink & Grey Backpack",                │
+│ "display_categories": "Accessories", "product_descriptors": {"materials_care_desc": {"value": "Polyester and     │
+│ nylon Wipe with a clean dry cloth when needed"}, "size_fit_desc": {"value": "Height: 45 cm Width: 30 cm Depth:   │
+│ 18 cm"}, "description": {"value": "Pink and grey backpack One haul loop two padded and adjustable shoulder       │
+│ straps Two main zip compartments one with an organizer sleeve Two external zip pockets on the front A mesh stash │
+│ pocket on one side Padded back Warranty: 5 years from the date of purchase against manufacturing defects Note:   │
+│ The inner lining material/colour may vary from what is shown in the image Disclaimer: Please note that the       │
+│ thread colour in the brand logo may vary from the image shown"}, "style_note": {"value": "This backpack from     │
+│ Wildcraft easily balances the fine line between sport and style with its minimalist design. Wear this to a road  │
+│ trip or a trek into the woods to keep your belongings secure and accessible."}}, "article_attributes":           │
+│ {"Occasion": "Casual", "Size": "Large", "Laptop Size": "NA", "Material": "Leather", "Compartment Closure":       │
+│ "Drawstring", "Number of Main Compartments": "3 and more"}, "master_category": {"typeName": "Accessories"},      │
+│ "sub_category": {"typeName": "Bags"}, "article_type": {"typeName": "Backpacks"}, "product_metadata": {"id":      │
+│ 32864, "price": 1395.0, "discountedPrice": 906.0, "styleType": "DEL", "productTypeId": 294, "articleNumber":     │
+│ "8903338006893", "productDisplayName": "Wildcraft Unisex Pink & Grey Backpack", "variantName": "Reflex",         │
+│ "myntraRating": 0.0, "catalogAddDate": 1460461939, "brandName": "Wildcraft", "ageGroup": "Adults-Unisex",        │
+│ "gender": "Unisex", "baseColour": "Pink", "colour1": "Grey", "colour2": "NA", "fashionType": "Fashion",          │
+│ "season": "Summer", "year": "2012", "usage": "Casual", "vat": 14.5, "displayCategories": "Accessories"}}']       │
+╰──────────────────────────────────────────────────── 00:47:49 ────────────────────────────────────────────────────╯
+╭─────── 🤖 AGENT ────────╮
+│ Agent session complete. │
+╰─────── 00:47:53 ────────╯

@@ -1,5 +1,5 @@
 
-# Agentic AI and Birth of Model Context Protocol (MCP) - ECommerce Product Search RAG Agent Case Study
+# Rise of Agentic AI and Birth of Model Context Protocol (MCP)
 
 ## The Evolution of AI: From Text Generation to Agentic Action
 
@@ -327,7 +327,7 @@ Action executes the strategic decisions formulated previously. It involves **dyn
 **MCP** standardizes interactions with external tools, providing a unified interface for **dynamic execution and structured communication.**
 
 ---
-The Model Context Protocol acts like a smart control center. It helps the **agent manage its memory, tools, and actions smoothly.**
+The Model Context Protocol acts like a smart control center. It helps the **agent manage its memory, tools, and actions smoothly.
 
 With MCP, the agent can:
 1. Easily understand what tools are available
@@ -407,7 +407,15 @@ Technical Highlights
 ├── memory.py           # Memory management using FAISS
 ├── models.py           # Data models for structured data exchange
 └── perception.py       # Extracts structured perception data from user inputs
+└── .env                # ADD GEMINI_API_KEY variable 
+
+how to run
+
+python3 agent.py
+
 ```
+
+
 
 
 ### Logs 

@@ -54,3 +54,6 @@ urllib3==2.4.0
 uvicorn==0.34.1
 websockets==15.0.1
 xlsxwriter==3.2.3
+faiss-cpu==1.10.0
+markitdown==0.1.1
+tqdm

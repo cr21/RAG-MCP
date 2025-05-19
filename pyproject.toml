@@ -1,21 +1,11 @@
 [project]
 name = "rag-mcp"
 version = "0.1.0"
-description = "Agentic RAG with Model Context Protocol"
+description = "MCP RAG Agent"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.13"
 dependencies = [
-    "faiss-cpu>=1.10.0",
-    "fastmcp>=2.2.0",
-    "google-genai>=1.11.0",
-    "pillow>=11.2.1",
-    "rich>=14.0.0",
-    "scipy>=1.15.2",
+    "faiss-cpu>=1.11.0",
+    "markitdown>=0.1.1",
     "tqdm>=4.67.1",
-    "torch==2.2.0",
-    "torchvision>=0.16.0",
-    "open_clip_torch>=2.20.0",
-    "numpy<2",
-    "markitdown>=0.0.2",
-    "colorlog>=6.9.0",
 ]

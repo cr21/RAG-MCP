@@ -503,9 +503,10 @@ def ensure_faiss_ready():
     """
     index_path = ROOT / "faiss_index" / "index.bin"
     metadata_path = ROOT / "faiss_index" / "metadata.json"
-
+    mcp_log("INFO", f"ensure_faiss_ready called")
     if not(index_path.exists() and metadata_path.exists()):
         mcp_log("INFO", "Index and metadata file not found - running process_product_documents()...")
+        mcp_log("INFO", f"let's called process_product documents called")
         process_product_documents()
     else:
         mcp_log("INFO", "Index already exists. Skipping regeneration.")
@@ -525,7 +526,8 @@ if __name__ == "__main__":
         server_thread.start()   
     
         time.sleep(2)
-        #process_product_documents()
+        print("Indexing documents with MarkItDown...")
+        process_product_documents()
 
         # search_product_documents("backpack")
         try:
